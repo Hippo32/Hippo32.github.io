@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="RuiYi&#39;s Notebook">
 <meta property="og:description" content="经常会看到一些关于css的知识点，不记下来浑身不自在，担心我这鱼的记忆转眼就忘了，所以就有了这篇文章的存在。不是干货，纯属查漏补缺。  关于CSS的不同浏览器的兼容性，应该把标准语法排在最后。  提供回退机制是一种很好的做法，这样可以确保你的网站不会在低版本浏览器中挂掉。比如想弄一个渐变色的背景，应该在前面添加一行实色背景的声明。  添加实色的一个好方法是取渐变色的平均色值。 // 代码出自《CS">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-23T16:07:19.203Z">
+<meta property="og:updated_time" content="2019-07-24T15:59:25.192Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于CSS的那些事">
 <meta name="twitter:description" content="经常会看到一些关于css的知识点，不记下来浑身不自在，担心我这鱼的记忆转眼就忘了，所以就有了这篇文章的存在。不是干货，纯属查漏补缺。  关于CSS的不同浏览器的兼容性，应该把标准语法排在最后。  提供回退机制是一种很好的做法，这样可以确保你的网站不会在低版本浏览器中挂掉。比如想弄一个渐变色的背景，应该在前面添加一行实色背景的声明。  添加实色的一个好方法是取渐变色的平均色值。 // 代码出自《CS">
@@ -392,7 +392,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-07-24 00:07:19" itemprop="dateModified" datetime="2019-07-24T00:07:19+08:00">2019-07-24</time>
+                <time title="修改时间：2019-07-24 23:59:25" itemprop="dateModified" datetime="2019-07-24T23:59:25+08:00">2019-07-24</time>
               </span>
             
           
@@ -456,7 +456,13 @@ background: rgb(255, 128, 0);
 background: -moz-linear-gradient(0deg, yellow, red);
 background: -o-linear-gradient(0deg, yellow, red);
 background: -webkit-linear-gradient(0deg, yellow, red);
-background: linear-gradient(90deg, yellow, red);</code></pre></li>
+background: linear-gradient(90deg, yellow, red); // IE9及之前的版本不支持渐变</code></pre></li>
+<li><p><strong><code>CSS.supports</code></strong></p>
+<p>  JavaScript里提供了window.CSS.supports方法。<code>CSS.supports</code>的接口规范提供两种调用方法。第一种方法是使用两个参数：一个是属性名，另一个是属性值：</p>
+<pre><code>var supportsFlex = CSS.supports(&quot;display&quot;, &quot;flex&quot;); // true</code></pre><p>  第二种用法是简单的提供整个需要分析的样式字串：</p>
+<pre><code>var supportsFlexAndAppearance = CSS.supports(&quot;(display: flex) and (-webkit-appearance: caret)&quot;); // false</code></pre></li>
+<li><p><strong>如果要检测某个样式属性是否被支持，核心思路就是在任一元素的element.style对象上检查该属性是否存在。</strong></p>
+</li>
 </ul>
 <p>持续更新中…</p>
 
