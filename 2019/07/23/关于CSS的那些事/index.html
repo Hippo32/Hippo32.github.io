@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="RuiYi&#39;s Notebook">
 <meta property="og:description" content="经常会看到一些关于css的知识点，不记下来浑身不自在，担心我这鱼的记忆转眼就忘了，所以就有了这篇文章的存在。不是干货，纯属查漏补缺。 浏览器兼容性 关于CSS的不同浏览器的兼容性，应该把标准语法排在最后。  提供回退机制是一种很好的做法，这样可以确保你的网站不会在低版本浏览器中挂掉。比如想弄一个渐变色的背景，应该在前面添加一行实色背景的声明。  添加实色的一个好方法是取渐变色的平均色值。 // 代">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-28T15:49:24.698Z">
+<meta property="og:updated_time" content="2019-07-30T15:33:27.128Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于CSS的那些事">
 <meta name="twitter:description" content="经常会看到一些关于css的知识点，不记下来浑身不自在，担心我这鱼的记忆转眼就忘了，所以就有了这篇文章的存在。不是干货，纯属查漏补缺。 浏览器兼容性 关于CSS的不同浏览器的兼容性，应该把标准语法排在最后。  提供回退机制是一种很好的做法，这样可以确保你的网站不会在低版本浏览器中挂掉。比如想弄一个渐变色的背景，应该在前面添加一行实色背景的声明。  添加实色的一个好方法是取渐变色的平均色值。 // 代">
@@ -392,7 +392,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-07-28 23:49:24" itemprop="dateModified" datetime="2019-07-28T23:49:24+08:00">2019-07-28</time>
+                <time title="修改时间：2019-07-30 23:33:27" itemprop="dateModified" datetime="2019-07-30T23:33:27+08:00">2019-07-30</time>
               </span>
             
           
@@ -480,6 +480,49 @@ background: linear-gradient(90deg, yellow, red); // IE9及之前的版本不支�
 <li>当图片（或其他元素）以行列式进行布局时，让视口的宽度来决定列的数量。弹性盒布局（即Flexbox）或者display: inline-block加上常规的文本折行行为，都可以实现这一点。</li>
 <li>在使用多列文本时，指定column-width（列宽）而不是指定column-count（列数），这样它就可以在较小的屏幕上自动显示为单列布局。</li>
 <li>优化网页在小屏幕上的表现，其实只意味着把一些外边距收拢到最小程度，然后把因为屏幕太窄而无法显示成双列的侧栏调整为单列布局而已。</li>
+</ul>
+<h2 id="基于关系的选择器"><a href="#基于关系的选择器" class="headerlink" title="基于关系的选择器"></a>基于关系的选择器</h2><table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>选择的元素</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>A E</code></td>
+<td>元素A的任一后代E（后代节点指A的子节点，子节点的子节点，以此类推）</td>
+</tr>
+<tr>
+<td><code>A &gt; E</code></td>
+<td>元素A的任一子元素E（也就是直系后代）</td>
+</tr>
+<tr>
+<td><code>E:first-child</code></td>
+<td>任一是其父母节点的第一个子节点的元素E</td>
+</tr>
+<tr>
+<td><code>B + E</code></td>
+<td>元素B的任一下一个兄弟元素E</td>
+</tr>
+<tr>
+<td><code>B ~ E</code></td>
+<td>B元素后面的拥有共同父元素的兄弟元素E</td>
+</tr>
+</tbody></table>
+<p>p,span{}选择了p元素和span元素，这是多元素选择器，同时选择多个元素，元素之间用逗号分隔。</p>
+<h2 id="优先级积分"><a href="#优先级积分" class="headerlink" title="优先级积分"></a>优先级积分</h2><ul>
+<li>标签选择符、伪类及伪对象：优先级积分为1</li>
+<li>类选择符、属性选择符：优先级积分为10</li>
+<li>ID选择符：优先级积分为100</li>
+<li>style属性：优先级积分为1000</li>
+<li>其他选择符，如通配符选择符等：优先级积分为0</li>
+</ul>
+<h2 id="CSS样式所采用的优先顺序为："><a href="#CSS样式所采用的优先顺序为：" class="headerlink" title="CSS样式所采用的优先顺序为："></a>CSS样式所采用的优先顺序为：</h2><ul>
+<li>标有<code>!important</code>关键字声明的属性</li>
+<li>HTML中的CSS样式属性</li>
+<li>作者编辑的CSS文件样式属性</li>
+<li>用户设置的样式</li>
+<li>浏览器默认的样式</li>
 </ul>
 <h2 id="小tips"><a href="#小tips" class="headerlink" title="小tips"></a>小tips</h2><ul>
 <li><code>font-size</code>没有设置值时，各浏览器的默认值基本都为16px。</li>
@@ -727,7 +770,7 @@ background: linear-gradient(90deg, yellow, red); // IE9及之前的版本不支�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器兼容性"><span class="nav-number">1.</span> <span class="nav-text">浏览器兼容性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS编码技巧"><span class="nav-number">2.</span> <span class="nav-text">CSS编码技巧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#响应式网页设计"><span class="nav-number">3.</span> <span class="nav-text">响应式网页设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小tips"><span class="nav-number">4.</span> <span class="nav-text">小tips</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器兼容性"><span class="nav-number">1.</span> <span class="nav-text">浏览器兼容性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS编码技巧"><span class="nav-number">2.</span> <span class="nav-text">CSS编码技巧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#响应式网页设计"><span class="nav-number">3.</span> <span class="nav-text">响应式网页设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基于关系的选择器"><span class="nav-number">4.</span> <span class="nav-text">基于关系的选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优先级积分"><span class="nav-number">5.</span> <span class="nav-text">优先级积分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS样式所采用的优先顺序为："><span class="nav-number">6.</span> <span class="nav-text">CSS样式所采用的优先顺序为：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小tips"><span class="nav-number">7.</span> <span class="nav-text">小tips</span></a></li></ol></div>
             
 
           </div>
