@@ -94,18 +94,18 @@
 
 
 
-  <meta name="description" content="日常的总结和感悟">
+  <meta name="description" content="Adapterary创建一个最多接受n个参数的函数，多余的参数将被忽略。使用Array.prototype.slice(0,n)和扩展运算符(...)，调用提供的函数fn，并且最多有n个参数。 const ary = (fn, n) =&amp;gt; (...args) =&amp;gt; fn(...args.slice(0, n));  // examples const firstTwoMax = ary">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="30秒一个JS片段">
 <meta property="og:url" content="http://yoursite.com/2019/09/04/30秒一个JS片段/index.html">
 <meta property="og:site_name" content="RuiYi&#39;s Notebook">
-<meta property="og:description" content="日常的总结和感悟">
+<meta property="og:description" content="Adapterary创建一个最多接受n个参数的函数，多余的参数将被忽略。使用Array.prototype.slice(0,n)和扩展运算符(...)，调用提供的函数fn，并且最多有n个参数。 const ary = (fn, n) =&amp;gt; (...args) =&amp;gt; fn(...args.slice(0, n));  // examples const firstTwoMax = ary">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-04T15:53:05.035Z">
+<meta property="og:updated_time" content="2019-09-17T16:26:46.952Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="30秒一个JS片段">
-<meta name="twitter:description" content="日常的总结和感悟">
+<meta name="twitter:description" content="Adapterary创建一个最多接受n个参数的函数，多余的参数将被忽略。使用Array.prototype.slice(0,n)和扩展运算符(...)，调用提供的函数fn，并且最多有n个参数。 const ary = (fn, n) =&amp;gt; (...args) =&amp;gt; fn(...args.slice(0, n));  // examples const firstTwoMax = ary">
 
 
 
@@ -377,13 +377,23 @@
                 
               
 
-              <time title="创建时间：2019-09-04 22:29:38 / 修改时间：23:53:05" itemprop="dateCreated datePublished" datetime="2019-09-04T22:29:38+08:00">2019-09-04</time>
+              <time title="创建时间：2019-09-04 22:29:38" itemprop="dateCreated datePublished" datetime="2019-09-04T22:29:38+08:00">2019-09-04</time>
             </span>
           
 
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-09-18 00:26:46" itemprop="dateModified" datetime="2019-09-18T00:26:46+08:00">2019-09-18</time>
+              </span>
             
           
 
@@ -444,7 +454,31 @@
       
 
       
-        
+        <h2 id="Adapter"><a href="#Adapter" class="headerlink" title="Adapter"></a>Adapter</h2><p><strong>ary</strong><br>创建一个最多接受<code>n</code>个参数的函数，多余的参数将被忽略。<br>使用<code>Array.prototype.slice(0,n)</code>和扩展运算符(<code>...</code>)，调用提供的函数fn，并且最多有n个参数。</p>
+<pre><code>const ary = (fn, n) =&gt; (...args) =&gt; fn(...args.slice(0, n));
+
+// examples
+const firstTwoMax = ary(Math.max, 2);
+[[2, 6, &apos;a&apos;], [6, 4, 8], [10]].map(x =&gt; firstTwoMax(...x)); // [6, 6, 10]</code></pre><p><em>Tips：多个连续箭头就是es6的多次柯里化的写法</em></p>
+<blockquote>
+<p>wiki 的柯里化定义：把接受多个参数的函数变换成接受一个单一参数的函数，并且返回（接受余下的参数而且返回结果的）新函数的技术。</p>
+</blockquote>
+<p><em>n个连续箭头组成的函数实际上就是柯里化了 n - 1 次</em></p>
+<blockquote>
+<p>前 n - 1 次调用，其实是提前将参数传递进去，并没有调用最内层函数体，最后一次调用才会调用最内层函数体，并返回最内层函数体的返回值。</p>
+</blockquote>
+<p><strong>call</strong><br>接受一个键值和一组参数，在给定上下文时调用它们。主要用于合并。</p>
+<p>使用闭包调用上下文中key对应的值，即带有存储参数的函数。</p>
+<pre><code>const call = (key, ...args) =&gt; context =&gt; context[key](...args);
+
+// examples（神仙代码，30s看懂是不存在的，我还是太菜了）
+Promise.resolve([1, 2, 3])
+    .then(call(&apos;map&apos;, x =&gt; 2 * x))
+    .then(console.log); // [2, 4, 6]
+const map = call.bind(null, &apos;map&apos;);
+Promise.resolve([1, 2, 3])
+    .then(map(x =&gt; 2 * x))
+    .then(console.log); // [2, 4, 6]</code></pre>
       
     </div>
 
@@ -535,8 +569,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -668,6 +711,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Adapter"><span class="nav-number">1.</span> <span class="nav-text">Adapter</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
