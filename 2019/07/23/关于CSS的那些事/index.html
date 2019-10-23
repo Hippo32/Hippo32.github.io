@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="RuiYi&#39;s Notebook">
 <meta property="og:description" content="经常会看到一些关于css的知识点，不记下来浑身不自在，担心我这鱼的记忆转眼就忘了，所以就有了这篇文章的存在。不是干货，纯属查漏补缺。 CSS模块 CSS语法 CSS层叠与继承 CSS颜色 选择符 CSS背景与边框 CSS值与单位 CSS文本排版 CSS文本装饰效果 CSS字体 CSS基本UI特性 CSS变形 图像混合效果 滤镜效果 CSS遮罩 CSS伸缩盒布局 CSS网格布局  浏览器兼容性 关于">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-14T15:10:13.965Z">
+<meta property="og:updated_time" content="2019-10-10T15:13:11.643Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于CSS的那些事">
 <meta name="twitter:description" content="经常会看到一些关于css的知识点，不记下来浑身不自在，担心我这鱼的记忆转眼就忘了，所以就有了这篇文章的存在。不是干货，纯属查漏补缺。 CSS模块 CSS语法 CSS层叠与继承 CSS颜色 选择符 CSS背景与边框 CSS值与单位 CSS文本排版 CSS文本装饰效果 CSS字体 CSS基本UI特性 CSS变形 图像混合效果 滤镜效果 CSS遮罩 CSS伸缩盒布局 CSS网格布局  浏览器兼容性 关于">
@@ -392,7 +392,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-09-14 23:10:13" itemprop="dateModified" datetime="2019-09-14T23:10:13+08:00">2019-09-14</time>
+                <time title="修改时间：2019-10-10 23:13:11" itemprop="dateModified" datetime="2019-10-10T23:13:11+08:00">2019-10-10</time>
               </span>
             
           
@@ -544,10 +544,22 @@ background: linear-gradient(90deg, yellow, red); // IE9及之前的版本不支�
 <li><code>:active</code></li>
 <li><code>:hover</code></li>
 <li><code>:focus</code></li>
-<li><code>:first-child</code></li>
-<li><code>:nth-child()</code></li>
-<li><code>:nth-last-child</code></li>
-<li><code>:nth-of-type()</code></li>
+<li><code>:first-child</code>：表示在一组兄弟元素中的第一个元素。</li>
+<li><code>:last-child</code>：表示父元素的最后一个子元素。相当于<code>:nth-last-child(1)</code></li>
+<li><code>:nth-child()</code><ul>
+<li><code>:nth-child(n)</code>：匹配父元素中的第n个子元素</li>
+<li><code>:nth-child(2n+1)</code> = <code>:nth-child(odd)</code></li>
+<li><code>:nth-child(2n)</code> = <code>:nth-child(even)</code></li>
+<li><code>span:nth-child(0n+1)</code>：表示子元素中第一个且为span的元素，与<code>:first-child</code>选择器作用相同</li>
+<li><code>span:nth-child(1)</code>：表示父元素中子元素为第一的并且名字为span的标签被选中</li>
+<li><code>span:nth-child(-n+3)</code>：匹配前三个子元素中的span元素</li>
+</ul>
+</li>
+<li><code>:nth-last-child</code>：从兄弟节点中从后往前匹配处于某些位置的元素。</li>
+<li><code>:nth-of-type()</code><ul>
+<li><code>:nth-of-type(n)</code>：匹配同类型中的第n个同级兄弟元素</li>
+</ul>
+</li>
 <li><code>:first-of-type</code></li>
 <li><code>:last-of-type</code></li>
 <li><code>:empty</code></li>
@@ -555,6 +567,7 @@ background: linear-gradient(90deg, yellow, red); // IE9及之前的版本不支�
 <li><code>:checked</code></li>
 <li><code>:enabled</code></li>
 <li><code>:disabled</code></li>
+<li><code>:only-child</code>：匹配没有任何兄弟元素的元素，等效于<code>:first-child:last-child</code>，即如果第一项同时也是最后一项，那从逻辑上来说它就是唯一的那一项。</li>
 </ul>
 <h2 id="优先级积分"><a href="#优先级积分" class="headerlink" title="优先级积分"></a>优先级积分</h2><ul>
 <li>标签选择符、伪类及伪对象：优先级积分为1</li>

@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="RuiYi&#39;s Notebook">
 <meta property="og:description" content="Adapterary创建一个最多接受n个参数的函数，多余的参数将被忽略。使用Array.prototype.slice(0,n)和扩展运算符(...)，调用提供的函数fn，并且最多有n个参数。 const ary = (fn, n) =&amp;gt; (...args) =&amp;gt; fn(...args.slice(0, n));  // examples const firstTwoMax = ary">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-17T16:26:46.952Z">
+<meta property="og:updated_time" content="2019-09-29T15:56:22.257Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="30秒一个JS片段">
 <meta name="twitter:description" content="Adapterary创建一个最多接受n个参数的函数，多余的参数将被忽略。使用Array.prototype.slice(0,n)和扩展运算符(...)，调用提供的函数fn，并且最多有n个参数。 const ary = (fn, n) =&amp;gt; (...args) =&amp;gt; fn(...args.slice(0, n));  // examples const firstTwoMax = ary">
@@ -392,7 +392,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-09-18 00:26:46" itemprop="dateModified" datetime="2019-09-18T00:26:46+08:00">2019-09-18</time>
+                <time title="修改时间：2019-09-29 23:56:22" itemprop="dateModified" datetime="2019-09-29T23:56:22+08:00">2019-09-29</time>
               </span>
             
           
@@ -478,7 +478,20 @@ Promise.resolve([1, 2, 3])
 const map = call.bind(null, &apos;map&apos;);
 Promise.resolve([1, 2, 3])
     .then(map(x =&gt; 2 * x))
-    .then(console.log); // [2, 4, 6]</code></pre>
+    .then(console.log); // [2, 4, 6]</code></pre><p><strong>collectInto</strong><br>将使用数组为参数的函数修改为使用可变参数的函数。</p>
+<pre><code>const collectInto = fn =&gt; (...args) =&gt; fn(args);
+
+// example
+const p1 = Promise.resolve(1);
+const p2 = new Promise(resolve =&gt; setTimeout(resolve, 2000, 2));
+const Pall = collectInto(Promise.all.bind(Promise));
+Pall(p1, p2).then(console.log); // 2 秒后输出 [1, 2]</code></pre><p><strong>flip</strong><br>以一个函数作为参数，然后把第一个参数作为最后一个参数。</p>
+<pre><code>const flip = fn =&gt; (first, ...rest) =&gt; fn(...rest, first)</code></pre><p><strong>over</strong><br>创建一个函数，这个函数可以调用每一个被传入的并且才有参数的函数，然后返回结果。</p>
+<pre><code>const over = (...fns) =&gt; (...args) =&gt; fns.map(fn =&gt; fn.apply(null, args));
+
+// examples
+const minMax = over(Math.min, Math.max);
+minMax(1, 2, 3, 4, 5); // [1, 5]</code></pre>
       
     </div>
 
