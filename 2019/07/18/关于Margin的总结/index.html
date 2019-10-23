@@ -94,17 +94,18 @@
 
 
 
-  <meta name="description" content="日常的总结和感悟">
+  <meta name="description" content="表现虽然 margin 可以应用在所有元素，但 display 属性不同时，表现也不同。  block 元素可以使用四个方向的 margin 值 inline 元素使用上下方向的 margin 值无效 inline-block 使用上下方向的 margin 负值看上去无效  注意：inline-block 使用上下方向的 margin 负值只是看上去无效，这与其默认的 vertical-align">
+<meta name="keywords" content="CSS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于Margin的总结">
 <meta property="og:url" content="http://yoursite.com/2019/07/18/关于Margin的总结/index.html">
 <meta property="og:site_name" content="RuiYi&#39;s Notebook">
-<meta property="og:description" content="日常的总结和感悟">
+<meta property="og:description" content="表现虽然 margin 可以应用在所有元素，但 display 属性不同时，表现也不同。  block 元素可以使用四个方向的 margin 值 inline 元素使用上下方向的 margin 值无效 inline-block 使用上下方向的 margin 负值看上去无效  注意：inline-block 使用上下方向的 margin 负值只是看上去无效，这与其默认的 vertical-align">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-18T13:07:28.101Z">
+<meta property="og:updated_time" content="2019-10-23T05:11:34.083Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于Margin的总结">
-<meta name="twitter:description" content="日常的总结和感悟">
+<meta name="twitter:description" content="表现虽然 margin 可以应用在所有元素，但 display 属性不同时，表现也不同。  block 元素可以使用四个方向的 margin 值 inline 元素使用上下方向的 margin 值无效 inline-block 使用上下方向的 margin 负值看上去无效  注意：inline-block 使用上下方向的 margin 负值只是看上去无效，这与其默认的 vertical-align">
 
 
 
@@ -376,13 +377,23 @@
                 
               
 
-              <time title="创建时间：2019-07-18 20:22:39 / 修改时间：21:07:28" itemprop="dateCreated datePublished" datetime="2019-07-18T20:22:39+08:00">2019-07-18</time>
+              <time title="创建时间：2019-07-18 20:22:39" itemprop="dateCreated datePublished" datetime="2019-07-18T20:22:39+08:00">2019-07-18</time>
             </span>
           
 
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-10-23 13:11:34" itemprop="dateModified" datetime="2019-10-23T13:11:34+08:00">2019-10-23</time>
+              </span>
             
           
 
@@ -443,7 +454,67 @@
       
 
       
-        
+        <h2 id="表现"><a href="#表现" class="headerlink" title="表现"></a>表现</h2><p>虽然 <code>margin</code> 可以应用在所有元素，但 <code>display</code> 属性不同时，表现也不同。</p>
+<ul>
+<li><code>block</code> 元素可以使用四个方向的 <code>margin</code> 值</li>
+<li><code>inline</code> 元素使用上下方向的 <code>margin</code> 值无效</li>
+<li><code>inline-block</code> 使用上下方向的 <code>margin</code> 负值看上去无效</li>
+</ul>
+<p><em>注意：<code>inline-block</code> 使用上下方向的 <code>margin</code> 负值只是看上去无效，这与其默认的 <code>vertical-align:baseline</code> 有关系，当垂直对齐的属性值为其他值时，这会显示不同的视觉效果。</em></p>
+<h2 id="margin-为负值的影响"><a href="#margin-为负值的影响" class="headerlink" title="margin 为负值的影响"></a><code>margin</code> 为负值的影响</h2><ul>
+<li>对自身的影响，当元素不存在 <code>width</code> 属性或 <code>width: auto</code> 的时候，负值 <code>margin</code> 会增加元素的宽度。（注意：这仅仅是在元素不存在 <code>width</code> 属性或者 <code>width</code> 属性默认的时候，如果有宽度设置， <code>margin-left</code> 和 <code>margin-right</code> 为负值时，会发生位移。）而 <code>margin-top</code> 为负值的时候，不会增加宽度，而是会让元素上移。 <code>margin-bottom</code> 为负值的时候不会位移，而是会减少自身供 css 读取的高度。</li>
+<li>对文档流的影响：元素如果用了 <code>margin-left: -100px;</code> 其会向左位移 100px ，但是和相对定位不同的是，在其后面的元素会进行补位，也就是后面的行内元素会紧贴在此元素之后。如果不脱离文档流不浮动的话， <code>margin</code> 为负值的元素不会破坏页面的文档流。当然，如果你用负 <code>margin</code> 上移一个元素，接下的元素都会跟着上移。</li>
+<li>对浮动元素的影响，负 <code>margin</code> 会改变浮动元素的显示位置，圣杯布局、双飞翼布局都是利用这个原理实现的。</li>
+<li>对绝对定位的影响。</li>
+</ul>
+<h2 id="Margin-collapsing"><a href="#Margin-collapsing" class="headerlink" title="Margin collapsing"></a><code>Margin collapsing</code></h2><p><code>margin collapsing</code> 出现的几种情况：</p>
+<ul>
+<li>上面的元素有 <code>margin-bottom</code>，而下面的元素有 <code>margin-top</code>，两个 <code>margin</code> 会重叠，取较大的 <code>margin</code>。</li>
+<li>邻近的兄弟姐妹：if you have two elements displaying one after the other in normal flow, the bottom margin of the first element will collapse with the top margin of the following element.</li>
+<li>完全空白的 <code>box</code>：If a box is empty, then it’s top and bottom margin may collapse with each other.</li>
+<li>parent and first or last child element:the margin on the child collapses with any margin on the parent thus ending up on the outside of the parent.</li>
+<li>只有普通文档流中块框的垂直外边距才会发生外边距合并。行内框、浮动框或绝对定位之间的外边距不会合并。</li>
+</ul>
+<p>避免 <code>margin collapsing</code> 出现的几种方案：</p>
+<ul>
+<li>Margins never collapse if an item has absolute positioning, or is floated.</li>
+<li>a box completely empty of content will not collapse it’s top and bottom margin if it has a border,or padding applied.</li>
+<li>If we add a border to the parent, the margins on the children stay inside.</li>
+<li>创建BFC上下文<ul>
+<li>根元素包含根元素的元素</li>
+<li>浮动元素（元素的 <code>float</code> 不是 <code>none</code>）</li>
+<li>绝对定位元素（元素的 <code>position</code> 为 <code>absolute</code> 或 <code>fixed</code> ）</li>
+<li>行内块元素（元素的 <code>display</code> 为 <code>inline-block</code>）</li>
+<li>表格单元格（元素的 <code>display</code> 为 <code>table-cell</code> ， HTML 表格单元格默认为该值）</li>
+<li>表格标题（元素的 <code>display</code> 为 <code>table-caption</code> ， HTML 表格标题默认为该值）</li>
+<li>匿名表格单元格元素（元素的 <code>display</code> 为 <code>table</code>、<code>table-row</code>、<code>table-row-group</code>、<code>table-header-group</code>、<code>table-footer-group</code>（分别是<code>HTML table</code>、<code>row</code>、<code>tbody</code>、<code>thead</code>、<code>tfoot</code>的默认属性）或 <code>inline-table</code>）</li>
+<li><code>overflow</code> 值不为 <code>visible</code>的块元素</li>
+<li><code>display</code> 值为 <code>flow-root</code> 的元素</li>
+<li><code>contain</code> 值为 <code>layout</code>、<code>content</code> 或 <code>strict</code> 的元素</li>
+<li>弹性元素（ <code>display</code> 为 <code>flex</code> 或 <code>inline-flex</code> 元素的直接子元素）</li>
+<li>网格元素（ <code>display</code> 为 <code>grid</code> 或 <code>inlien-grid</code> 元素的直接子元素）</li>
+<li>多列元素（元素的 <code>column-count</code> 或 <code>column-width</code> 不为 <code>auto</code> ，包括 <code>column-count</code> 为 1 ）</li>
+<li><code>column-span</code> 为 <code>all</code> 的元素始终会创建一个新的 BFC ，即使该元素没有抱过在一个多列容器中</li>
+</ul>
+</li>
+<li><code>Flex</code> &amp; <code>Grid</code> 布局</li>
+</ul>
+<h2 id="关于-margin-的一些建议"><a href="#关于-margin-的一些建议" class="headerlink" title="关于 margin 的一些建议"></a>关于 <code>margin</code> 的一些建议</h2><ul>
+<li>只设置 <code>margin-top</code> 或者 <code>margin-bottom</code>，或只设置一个方向的 <code>margin</code>。</li>
+</ul>
+<h2 id="百分比的-margin"><a href="#百分比的-margin" class="headerlink" title="百分比的 margin"></a>百分比的 <code>margin</code></h2><p>当给margin设置百分比的时候，通常会以父元素的内联大小来作为参考。比如，I have a wrapper which is 200 pixels wide, inside is a box which has a 10% margin, the margin is 20 pixels on all sides, that being 10% of 200.</p>
+<h2 id="Margins-In-A-Flow-Relative-World"><a href="#Margins-In-A-Flow-Relative-World" class="headerlink" title="Margins In A Flow-Relative World"></a>Margins In A Flow-Relative World</h2><ul>
+<li>margin-top = margin-block-start</li>
+<li>margin-right = margin-inline-end</li>
+<li>margin-bottom = margin-block-end</li>
+<li>margin-left = margin-inline-start</li>
+</ul>
+<p>We also have two new shorthands which allow for the setting of both blocks at once or both inline.</p>
+<ul>
+<li>margin-block</li>
+<li>margin-inline</li>
+</ul>
+
       
     </div>
 
@@ -463,6 +534,15 @@
     
 
     <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/CSS/" rel="tag"># CSS</a>
+          
+        </div>
       
 
       
@@ -529,8 +609,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -545,7 +634,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -591,7 +680,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">3</span>
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -662,6 +753,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#表现"><span class="nav-number">1.</span> <span class="nav-text">表现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#margin-为负值的影响"><span class="nav-number">2.</span> <span class="nav-text">margin 为负值的影响</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Margin-collapsing"><span class="nav-number">3.</span> <span class="nav-text">Margin collapsing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于-margin-的一些建议"><span class="nav-number">4.</span> <span class="nav-text">关于 margin 的一些建议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#百分比的-margin"><span class="nav-number">5.</span> <span class="nav-text">百分比的 margin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Margins-In-A-Flow-Relative-World"><span class="nav-number">6.</span> <span class="nav-text">Margins In A Flow-Relative World</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
