@@ -94,18 +94,18 @@
 
 
 
-  <meta name="description" content="Adapterary创建一个最多接受n个参数的函数，多余的参数将被忽略。使用Array.prototype.slice(0,n)和扩展运算符(...)，调用提供的函数fn，并且最多有n个参数。 const ary = (fn, n) =&amp;gt; (...args) =&amp;gt; fn(...args.slice(0, n));  // examples const firstTwoMax = ary">
-<meta name="keywords" content="JavaScript">
+  <meta name="description" content="布尔类型 boolean数字类型 number字符串类型 string数组类型 array元组类型 tuple枚举类型 enum任意类型 anynull 和 undefined默认情况下 null 和 undefined 是所有类型的子类型。也就是说你可以把 null 和 undefined 赋值给 number 类型的变量。 然而，当你指定了 --strictNullChecks 标记， nul">
+<meta name="keywords" content="TypeScript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="30秒一个JS片段">
-<meta property="og:url" content="http://yoursite.com/2019/09/04/30秒一个JS片段/index.html">
+<meta property="og:title" content="TypeScript学习系列三——TypeScript中的数据类型">
+<meta property="og:url" content="http://yoursite.com/2019/12/02/TypeScript学习系列三——TypeScript中的数据类型/index.html">
 <meta property="og:site_name" content="RuiYi&#39;s Notebook">
-<meta property="og:description" content="Adapterary创建一个最多接受n个参数的函数，多余的参数将被忽略。使用Array.prototype.slice(0,n)和扩展运算符(...)，调用提供的函数fn，并且最多有n个参数。 const ary = (fn, n) =&amp;gt; (...args) =&amp;gt; fn(...args.slice(0, n));  // examples const firstTwoMax = ary">
+<meta property="og:description" content="布尔类型 boolean数字类型 number字符串类型 string数组类型 array元组类型 tuple枚举类型 enum任意类型 anynull 和 undefined默认情况下 null 和 undefined 是所有类型的子类型。也就是说你可以把 null 和 undefined 赋值给 number 类型的变量。 然而，当你指定了 --strictNullChecks 标记， nul">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-29T15:56:22.257Z">
+<meta property="og:updated_time" content="2019-12-02T16:58:45.246Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="30秒一个JS片段">
-<meta name="twitter:description" content="Adapterary创建一个最多接受n个参数的函数，多余的参数将被忽略。使用Array.prototype.slice(0,n)和扩展运算符(...)，调用提供的函数fn，并且最多有n个参数。 const ary = (fn, n) =&amp;gt; (...args) =&amp;gt; fn(...args.slice(0, n));  // examples const firstTwoMax = ary">
+<meta name="twitter:title" content="TypeScript学习系列三——TypeScript中的数据类型">
+<meta name="twitter:description" content="布尔类型 boolean数字类型 number字符串类型 string数组类型 array元组类型 tuple枚举类型 enum任意类型 anynull 和 undefined默认情况下 null 和 undefined 是所有类型的子类型。也就是说你可以把 null 和 undefined 赋值给 number 类型的变量。 然而，当你指定了 --strictNullChecks 标记， nul">
 
 
 
@@ -113,7 +113,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/09/04/30秒一个JS片段/">
+  <link rel="canonical" href="http://yoursite.com/2019/12/02/TypeScript学习系列三——TypeScript中的数据类型/">
 
 
 
@@ -123,7 +123,7 @@
   };
 </script>
 
-  <title>30秒一个JS片段 | RuiYi's Notebook</title>
+  <title>TypeScript学习系列三——TypeScript中的数据类型 | RuiYi's Notebook</title>
   
 
 
@@ -334,7 +334,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/04/30秒一个JS片段/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/02/TypeScript学习系列三——TypeScript中的数据类型/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hippo">
@@ -351,7 +351,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">30秒一个JS片段
+          <h1 class="post-title" itemprop="name headline">TypeScript学习系列三——TypeScript中的数据类型
 
               
             
@@ -377,7 +377,7 @@
                 
               
 
-              <time title="创建时间：2019-09-04 22:29:38" itemprop="dateCreated datePublished" datetime="2019-09-04T22:29:38+08:00">2019-09-04</time>
+              <time title="创建时间：2019-12-02 23:03:51" itemprop="dateCreated datePublished" datetime="2019-12-02T23:03:51+08:00">2019-12-02</time>
             </span>
           
 
@@ -392,7 +392,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-09-29 23:56:22" itemprop="dateModified" datetime="2019-09-29T23:56:22+08:00">2019-09-29</time>
+                <time title="修改时间：2019-12-03 00:58:45" itemprop="dateModified" datetime="2019-12-03T00:58:45+08:00">2019-12-03</time>
               </span>
             
           
@@ -406,7 +406,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/TypeScript/" itemprop="url" rel="index"><span itemprop="name">TypeScript</span></a></span>
 
                 
                 
@@ -421,7 +421,7 @@
 
           
           
-            <span id="/2019/09/04/30秒一个JS片段/" class="post-meta-item leancloud_visitors" data-flag-title="30秒一个JS片段">
+            <span id="/2019/12/02/TypeScript学习系列三——TypeScript中的数据类型/" class="post-meta-item leancloud_visitors" data-flag-title="TypeScript学习系列三——TypeScript中的数据类型">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -454,44 +454,11 @@
       
 
       
-        <h2 id="Adapter"><a href="#Adapter" class="headerlink" title="Adapter"></a>Adapter</h2><p><strong>ary</strong><br>创建一个最多接受<code>n</code>个参数的函数，多余的参数将被忽略。<br>使用<code>Array.prototype.slice(0,n)</code>和扩展运算符(<code>...</code>)，调用提供的函数fn，并且最多有n个参数。</p>
-<pre><code>const ary = (fn, n) =&gt; (...args) =&gt; fn(...args.slice(0, n));
+        <h2 id="布尔类型-boolean"><a href="#布尔类型-boolean" class="headerlink" title="布尔类型 boolean"></a>布尔类型 boolean</h2><h2 id="数字类型-number"><a href="#数字类型-number" class="headerlink" title="数字类型 number"></a>数字类型 number</h2><h2 id="字符串类型-string"><a href="#字符串类型-string" class="headerlink" title="字符串类型 string"></a>字符串类型 string</h2><h2 id="数组类型-array"><a href="#数组类型-array" class="headerlink" title="数组类型 array"></a>数组类型 array</h2><h2 id="元组类型-tuple"><a href="#元组类型-tuple" class="headerlink" title="元组类型 tuple"></a>元组类型 tuple</h2><h2 id="枚举类型-enum"><a href="#枚举类型-enum" class="headerlink" title="枚举类型 enum"></a>枚举类型 enum</h2><h2 id="任意类型-any"><a href="#任意类型-any" class="headerlink" title="任意类型 any"></a>任意类型 any</h2><h2 id="null-和-undefined"><a href="#null-和-undefined" class="headerlink" title="null 和 undefined"></a>null 和 undefined</h2><p>默认情况下 <code>null</code> 和 <code>undefined</code> 是所有类型的子类型。也就是说你可以把 <code>null</code> 和 <code>undefined</code> 赋值给 <code>number</code> 类型的变量。</p>
+<p>然而，当你指定了 <code>--strictNullChecks</code> 标记， <code>null</code> 和 <code>undefined</code> 只能赋值给 <code>any</code> 和 <code>void</code> 和它们各自的类型。<br>使用了 <code>--strictNullChecks</code> 标记，可选参数会被自动地加上 <code>| undefined</code>，可选属性也会有同样的处理。<br>如果编译器不能够去除 <code>null</code> 和 <code>undefined</code> ，你可以使用类型断言手动去除。语法是添加 <code>!</code> 后缀： <code>identifier!</code> 从 <code>identifier</code> 的类型里去除了 <code>null</code> 和 <code>undefined</code>。</p>
+<h2 id="void-类型"><a href="#void-类型" class="headerlink" title="void 类型"></a>void 类型</h2><p><code>void</code> 表示没有任何类型，当一个函数没有返回值时，通常将其返回值类型设为 <code>void</code>，实际上只有 <code>null</code> 和 <code>undefined</code> 可以赋值给 <code>void</code> 。</p>
+<h2 id="never-类型"><a href="#never-类型" class="headerlink" title="never 类型"></a>never 类型</h2><h2 id="unknown-类型"><a href="#unknown-类型" class="headerlink" title="unknown 类型"></a>unknown 类型</h2><p><code>unknown</code> 是 TypeScript 3.0 引入的新类型，是 <code>any</code> 类型对应的安全类型。</p>
 
-// examples
-const firstTwoMax = ary(Math.max, 2);
-[[2, 6, &apos;a&apos;], [6, 4, 8], [10]].map(x =&gt; firstTwoMax(...x)); // [6, 6, 10]</code></pre><p><em>Tips：多个连续箭头就是es6的多次柯里化的写法</em></p>
-<blockquote>
-<p>wiki 的柯里化定义：把接受多个参数的函数变换成接受一个单一参数的函数，并且返回（接受余下的参数而且返回结果的）新函数的技术。</p>
-</blockquote>
-<p><em>n个连续箭头组成的函数实际上就是柯里化了 n - 1 次</em></p>
-<blockquote>
-<p>前 n - 1 次调用，其实是提前将参数传递进去，并没有调用最内层函数体，最后一次调用才会调用最内层函数体，并返回最内层函数体的返回值。</p>
-</blockquote>
-<p><strong>call</strong><br>接受一个键值和一组参数，在给定上下文时调用它们。主要用于合并。</p>
-<p>使用闭包调用上下文中key对应的值，即带有存储参数的函数。</p>
-<pre><code>const call = (key, ...args) =&gt; context =&gt; context[key](...args);
-
-// examples（神仙代码，30s看懂是不存在的，我还是太菜了）
-Promise.resolve([1, 2, 3])
-    .then(call(&apos;map&apos;, x =&gt; 2 * x))
-    .then(console.log); // [2, 4, 6]
-const map = call.bind(null, &apos;map&apos;);
-Promise.resolve([1, 2, 3])
-    .then(map(x =&gt; 2 * x))
-    .then(console.log); // [2, 4, 6]</code></pre><p><strong>collectInto</strong><br>将使用数组为参数的函数修改为使用可变参数的函数。</p>
-<pre><code>const collectInto = fn =&gt; (...args) =&gt; fn(args);
-
-// example
-const p1 = Promise.resolve(1);
-const p2 = new Promise(resolve =&gt; setTimeout(resolve, 2000, 2));
-const Pall = collectInto(Promise.all.bind(Promise));
-Pall(p1, p2).then(console.log); // 2 秒后输出 [1, 2]</code></pre><p><strong>flip</strong><br>以一个函数作为参数，然后把第一个参数作为最后一个参数。</p>
-<pre><code>const flip = fn =&gt; (first, ...rest) =&gt; fn(...rest, first)</code></pre><p><strong>over</strong><br>创建一个函数，这个函数可以调用每一个被传入的并且才有参数的函数，然后返回结果。</p>
-<pre><code>const over = (...fns) =&gt; (...args) =&gt; fns.map(fn =&gt; fn.apply(null, args));
-
-// examples
-const minMax = over(Math.min, Math.max);
-minMax(1, 2, 3, 4, 5); // [1, 5]</code></pre>
       
     </div>
 
@@ -517,7 +484,7 @@ minMax(1, 2, 3, 4, 5); // [1, 5]</code></pre>
         
         <div class="post-tags">
           
-            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+            <a href="/tags/TypeScript/" rel="tag"># TypeScript</a>
           
         </div>
       
@@ -530,8 +497,8 @@ minMax(1, 2, 3, 4, 5); // [1, 5]</code></pre>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/04/关于数组的用法/" rel="next" title="关于数组的用法">
-                <i class="fa fa-chevron-left"></i> 关于数组的用法
+              <a href="/2019/12/02/TypeScript学习系列二——TypeScript的安装/" rel="next" title="TypeScript学习系列二——TypeScript的安装">
+                <i class="fa fa-chevron-left"></i> TypeScript学习系列二——TypeScript的安装
               </a>
             
           </div>
@@ -539,10 +506,6 @@ minMax(1, 2, 3, 4, 5); // [1, 5]</code></pre>
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/10/23/git的一些总结/" rel="prev" title="git的一些总结">
-                git的一些总结 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -745,7 +708,7 @@ minMax(1, 2, 3, 4, 5); // [1, 5]</code></pre>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Adapter"><span class="nav-number">1.</span> <span class="nav-text">Adapter</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#布尔类型-boolean"><span class="nav-number">1.</span> <span class="nav-text">布尔类型 boolean</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数字类型-number"><span class="nav-number">2.</span> <span class="nav-text">数字类型 number</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串类型-string"><span class="nav-number">3.</span> <span class="nav-text">字符串类型 string</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组类型-array"><span class="nav-number">4.</span> <span class="nav-text">数组类型 array</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元组类型-tuple"><span class="nav-number">5.</span> <span class="nav-text">元组类型 tuple</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#枚举类型-enum"><span class="nav-number">6.</span> <span class="nav-text">枚举类型 enum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#任意类型-any"><span class="nav-number">7.</span> <span class="nav-text">任意类型 any</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null-和-undefined"><span class="nav-number">8.</span> <span class="nav-text">null 和 undefined</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#void-类型"><span class="nav-number">9.</span> <span class="nav-text">void 类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#never-类型"><span class="nav-number">10.</span> <span class="nav-text">never 类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#unknown-类型"><span class="nav-number">11.</span> <span class="nav-text">unknown 类型</span></a></li></ol></div>
             
 
           </div>
