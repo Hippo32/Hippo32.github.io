@@ -94,18 +94,18 @@
 
 
 
-  <meta name="description" content="布尔类型 boolean数字类型 number字符串类型 string数组类型 array元组类型 tuple枚举类型 enum任意类型 anynull 和 undefined默认情况下 null 和 undefined 是所有类型的子类型。也就是说你可以把 null 和 undefined 赋值给 number 类型的变量。 然而，当你指定了 --strictNullChecks 标记， nul">
+  <meta name="description" content="布尔类型 boolean数字类型 number字符串类型 string数组类型 array数组类型有两种定义方式：  类型 + 方括号 let list: number[] = [1, 2, 3]; Array let list: Array&amp;lt;number&amp;gt; = [1, 2, 3];  元组类型 tuple数组合并了相同类型的对象，而元组（Tuple）合并了不同类型的对象。元组类型允许">
 <meta name="keywords" content="TypeScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TypeScript学习系列三——TypeScript中的数据类型">
 <meta property="og:url" content="http://yoursite.com/2019/12/02/TypeScript学习系列三——TypeScript中的数据类型/index.html">
 <meta property="og:site_name" content="RuiYi&#39;s Notebook">
-<meta property="og:description" content="布尔类型 boolean数字类型 number字符串类型 string数组类型 array元组类型 tuple枚举类型 enum任意类型 anynull 和 undefined默认情况下 null 和 undefined 是所有类型的子类型。也就是说你可以把 null 和 undefined 赋值给 number 类型的变量。 然而，当你指定了 --strictNullChecks 标记， nul">
+<meta property="og:description" content="布尔类型 boolean数字类型 number字符串类型 string数组类型 array数组类型有两种定义方式：  类型 + 方括号 let list: number[] = [1, 2, 3]; Array let list: Array&amp;lt;number&amp;gt; = [1, 2, 3];  元组类型 tuple数组合并了相同类型的对象，而元组（Tuple）合并了不同类型的对象。元组类型允许">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-02T16:58:45.246Z">
+<meta property="og:updated_time" content="2019-12-04T16:04:00.733Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TypeScript学习系列三——TypeScript中的数据类型">
-<meta name="twitter:description" content="布尔类型 boolean数字类型 number字符串类型 string数组类型 array元组类型 tuple枚举类型 enum任意类型 anynull 和 undefined默认情况下 null 和 undefined 是所有类型的子类型。也就是说你可以把 null 和 undefined 赋值给 number 类型的变量。 然而，当你指定了 --strictNullChecks 标记， nul">
+<meta name="twitter:description" content="布尔类型 boolean数字类型 number字符串类型 string数组类型 array数组类型有两种定义方式：  类型 + 方括号 let list: number[] = [1, 2, 3]; Array let list: Array&amp;lt;number&amp;gt; = [1, 2, 3];  元组类型 tuple数组合并了相同类型的对象，而元组（Tuple）合并了不同类型的对象。元组类型允许">
 
 
 
@@ -392,7 +392,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-12-03 00:58:45" itemprop="dateModified" datetime="2019-12-03T00:58:45+08:00">2019-12-03</time>
+                <time title="修改时间：2019-12-05 00:04:00" itemprop="dateModified" datetime="2019-12-05T00:04:00+08:00">2019-12-05</time>
               </span>
             
           
@@ -454,10 +454,33 @@
       
 
       
-        <h2 id="布尔类型-boolean"><a href="#布尔类型-boolean" class="headerlink" title="布尔类型 boolean"></a>布尔类型 boolean</h2><h2 id="数字类型-number"><a href="#数字类型-number" class="headerlink" title="数字类型 number"></a>数字类型 number</h2><h2 id="字符串类型-string"><a href="#字符串类型-string" class="headerlink" title="字符串类型 string"></a>字符串类型 string</h2><h2 id="数组类型-array"><a href="#数组类型-array" class="headerlink" title="数组类型 array"></a>数组类型 array</h2><h2 id="元组类型-tuple"><a href="#元组类型-tuple" class="headerlink" title="元组类型 tuple"></a>元组类型 tuple</h2><h2 id="枚举类型-enum"><a href="#枚举类型-enum" class="headerlink" title="枚举类型 enum"></a>枚举类型 enum</h2><h2 id="任意类型-any"><a href="#任意类型-any" class="headerlink" title="任意类型 any"></a>任意类型 any</h2><h2 id="null-和-undefined"><a href="#null-和-undefined" class="headerlink" title="null 和 undefined"></a>null 和 undefined</h2><p>默认情况下 <code>null</code> 和 <code>undefined</code> 是所有类型的子类型。也就是说你可以把 <code>null</code> 和 <code>undefined</code> 赋值给 <code>number</code> 类型的变量。</p>
+        <h2 id="布尔类型-boolean"><a href="#布尔类型-boolean" class="headerlink" title="布尔类型 boolean"></a>布尔类型 boolean</h2><h2 id="数字类型-number"><a href="#数字类型-number" class="headerlink" title="数字类型 number"></a>数字类型 number</h2><h2 id="字符串类型-string"><a href="#字符串类型-string" class="headerlink" title="字符串类型 string"></a>字符串类型 string</h2><h2 id="数组类型-array"><a href="#数组类型-array" class="headerlink" title="数组类型 array"></a>数组类型 array</h2><p>数组类型有两种定义方式：</p>
+<ol>
+<li><p><strong>类型 + 方括号</strong></p>
+<pre><code>let list: number[] = [1, 2, 3];</code></pre></li>
+<li><p><strong>Array<elemtype></elemtype></strong></p>
+<pre><code>let list: Array&lt;number&gt; = [1, 2, 3];</code></pre></li>
+</ol>
+<h2 id="元组类型-tuple"><a href="#元组类型-tuple" class="headerlink" title="元组类型 tuple"></a>元组类型 tuple</h2><p>数组合并了相同类型的对象，而元组（Tuple）合并了不同类型的对象。<br>元组类型允许表示一个已知元素数量和类型的数组，各元素的类型不必相同。</p>
+<p>例子：</p>
+<pre><code>// 定义了一个值分别为 string 和 number 的元组
+let tom: [string, number] = [&apos;Tom&apos;, 25];</code></pre><p>当直接对元组类型的变量进行初始化或者赋值的时候，需要提供所有元组类型中指定的项。不能多也不能少，还不能调换顺序。</p>
+<h2 id="枚举类型-enum"><a href="#枚举类型-enum" class="headerlink" title="枚举类型 enum"></a>枚举类型 enum</h2><p>枚举类型用于取值被限定在一定范围内的场景，比如一周只能有七天，颜色限定为红绿蓝等。</p>
+<p>枚举使用 <code>enum</code> 关键字来定义：</p>
+<pre><code>enum Days {Sun, Mon, Tue, Wed, Thu, Fri, Sat};</code></pre><p>枚举成员会被赋值为从 0 开始递增的数字，同时也会对枚举值到枚举名进行反向映射。</p>
+<p>也可以给枚举项手动赋值，未手动赋值的枚举项会接着上一个枚举项递增。  手动赋值的枚举项可以不是数字。当让，手动赋值的枚举项也可以为小数或负数，此时后续未手动赋值的项的递增项仍为 1 。</p>
+<h2 id="任意类型-any"><a href="#任意类型-any" class="headerlink" title="任意类型 any"></a>任意类型 any</h2><h2 id="null-和-undefined"><a href="#null-和-undefined" class="headerlink" title="null 和 undefined"></a>null 和 undefined</h2><p>默认情况下 <code>null</code> 和 <code>undefined</code> 是所有类型的子类型。也就是说你可以把 <code>null</code> 和 <code>undefined</code> 赋值给 <code>number</code> 类型的变量。</p>
 <p>然而，当你指定了 <code>--strictNullChecks</code> 标记， <code>null</code> 和 <code>undefined</code> 只能赋值给 <code>any</code> 和 <code>void</code> 和它们各自的类型。<br>使用了 <code>--strictNullChecks</code> 标记，可选参数会被自动地加上 <code>| undefined</code>，可选属性也会有同样的处理。<br>如果编译器不能够去除 <code>null</code> 和 <code>undefined</code> ，你可以使用类型断言手动去除。语法是添加 <code>!</code> 后缀： <code>identifier!</code> 从 <code>identifier</code> 的类型里去除了 <code>null</code> 和 <code>undefined</code>。</p>
 <h2 id="void-类型"><a href="#void-类型" class="headerlink" title="void 类型"></a>void 类型</h2><p><code>void</code> 表示没有任何类型，当一个函数没有返回值时，通常将其返回值类型设为 <code>void</code>，实际上只有 <code>null</code> 和 <code>undefined</code> 可以赋值给 <code>void</code> 。</p>
-<h2 id="never-类型"><a href="#never-类型" class="headerlink" title="never 类型"></a>never 类型</h2><h2 id="unknown-类型"><a href="#unknown-类型" class="headerlink" title="unknown 类型"></a>unknown 类型</h2><p><code>unknown</code> 是 TypeScript 3.0 引入的新类型，是 <code>any</code> 类型对应的安全类型。</p>
+<h2 id="never-类型"><a href="#never-类型" class="headerlink" title="never 类型"></a>never 类型</h2><p><code>never</code> 类型表示的是那些不存在的值的类型。例如， <code>never</code> 类型是那些总是会抛出异常或根本就不会有返回值的函数表达式或箭头函数表达式的返回值类型；变量也可能是 <code>never</code> 类型，当它们被永不为真的类型保护所约束时。</p>
+<p><code>never</code> 类型时任何类型的子类型，也可以赋值给任何类型，然而，没有类型是 <code>never</code> 的子类型或可以赋值给 <code>never</code> 类型（除了 <code>never</code> 本身之外）。即使 <code>any</code> 也不可以赋值给 <code>never</code> 。</p>
+<pre><code>// 抛出异常的函数永远不会有返回值
+function error(message: string): never {
+    throw new Error(message);
+}
+
+// 空数组，而且永远是空的
+const empty: never[] = [];</code></pre><h2 id="unknown-类型"><a href="#unknown-类型" class="headerlink" title="unknown 类型"></a>unknown 类型</h2><p><code>unknown</code> 是 TypeScript 3.0 引入的新类型，是 <code>any</code> 类型对应的安全类型。<br><code>unknown</code> 和 <code>any</code> 的主要区别是 <code>unknown</code> 类型会更加严格：在对 <code>unknown</code> 类型的值执行大多数操作之前，我们必须进行某种形式的检查，而在对 <code>any</code> 类型的值执行操作之前，我们不必进行任何检查。<br>当 <code>unknown</code> 类型被确定是某个类型之前，它不能被进行任何操作比如实例化、getter、函数执行等。</p>
 
       
     </div>
