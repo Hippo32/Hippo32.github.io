@@ -102,10 +102,12 @@
 <meta property="og:site_name" content="RuiYi&#39;s Notebook">
 <meta property="og:description" content="布尔类型 boolean数字类型 number字符串类型 string数组类型 array数组类型有两种定义方式：  类型 + 方括号 let list: number[] = [1, 2, 3]; Array let list: Array&amp;lt;number&amp;gt; = [1, 2, 3];  元组类型 tuple数组合并了相同类型的对象，而元组（Tuple）合并了不同类型的对象。元组类型允许">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-04T16:04:00.733Z">
+<meta property="og:image" content="http://yoursite.com/2019/12/02/TypeScript学习系列三——TypeScript中的数据类型/enum1.png">
+<meta property="og:updated_time" content="2019-12-07T06:59:33.792Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TypeScript学习系列三——TypeScript中的数据类型">
 <meta name="twitter:description" content="布尔类型 boolean数字类型 number字符串类型 string数组类型 array数组类型有两种定义方式：  类型 + 方括号 let list: number[] = [1, 2, 3]; Array let list: Array&amp;lt;number&amp;gt; = [1, 2, 3];  元组类型 tuple数组合并了相同类型的对象，而元组（Tuple）合并了不同类型的对象。元组类型允许">
+<meta name="twitter:image" content="http://yoursite.com/2019/12/02/TypeScript学习系列三——TypeScript中的数据类型/enum1.png">
 
 
 
@@ -392,7 +394,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-12-05 00:04:00" itemprop="dateModified" datetime="2019-12-05T00:04:00+08:00">2019-12-05</time>
+                <time title="修改时间：2019-12-07 14:59:33" itemprop="dateModified" datetime="2019-12-07T14:59:33+08:00">2019-12-07</time>
               </span>
             
           
@@ -469,6 +471,69 @@ let tom: [string, number] = [&apos;Tom&apos;, 25];</code></pre><p>当直接对�
 <p>枚举使用 <code>enum</code> 关键字来定义：</p>
 <pre><code>enum Days {Sun, Mon, Tue, Wed, Thu, Fri, Sat};</code></pre><p>枚举成员会被赋值为从 0 开始递增的数字，同时也会对枚举值到枚举名进行反向映射。</p>
 <p>也可以给枚举项手动赋值，未手动赋值的枚举项会接着上一个枚举项递增。  手动赋值的枚举项可以不是数字。当让，手动赋值的枚举项也可以为小数或负数，此时后续未手动赋值的项的递增项仍为 1 。</p>
+<h3 id="枚举项"><a href="#枚举项" class="headerlink" title="枚举项"></a>枚举项</h3><p>枚举项有两种类型：</p>
+<ul>
+<li>常数项</li>
+<li>计算所得项</li>
+</ul>
+<p>如果紧接在计算所得项后面的是未手动赋值的项，那么它就会因为无法获得初始值而报错。</p>
+<p>当满足以下条件时，枚举成员被当作是常数：</p>
+<ul>
+<li><p>不具有初始化函数并且之前的枚举成员是常数，在这种情况下，当前枚举成员的值为上一个枚举成员的值加 1 。第一个枚举元素如果没有初始化方法，那么它的初始化值为 0 。</p>
+</li>
+<li><p>枚举成员使用<strong>常数枚举表达式</strong>初始化。常数枚举表达式时 typescript 表达式的子集，它可以在编译阶段求值。当一个表达式满足下面条件之一时，它就是一个常数枚举表达式：</p>
+</li>
+<li><p>数字字面量或字符串字面量</p>
+</li>
+<li><p>引用之前定义的常数枚举成员（可以是在不用的枚举类型中定义的）如果这个成员是在同一个枚举类型中定义的，可以使用非限定名来引用。</p>
+<p>  <img src="/2019/12/02/TypeScript学习系列三——TypeScript中的数据类型/enum1.png" alt="引用常数枚举成员例子"></p>
+</li>
+<li><p>带括号的常量枚举表达式（这个我还搞不懂具体的例子是怎样的）</p>
+</li>
+<li><p><code>+</code>、<code>-</code>、<code>~</code>一元运算符应用于常数枚举表达式</p>
+</li>
+<li><p><code>+</code>，<code>-</code>，<code>*</code>，<code>/</code>，<code>%</code>，<code>&lt;&lt;</code>，<code>&gt;&gt;</code>，<code>&gt;&gt;&gt;</code>，<code>&amp;</code>，<code>|</code>，<code>^</code>二元运算符，常数枚举表达式作为其一个操作对象。若常数枚举表达式求值后为 <code>NaN</code> 或 <code>Infinity</code>，则会在编译阶段报错。</p>
+</li>
+<li><p>所有其他情况的枚举成员被当作是需要计算得出的值。</p>
+</li>
+</ul>
+<h3 id="常数枚举"><a href="#常数枚举" class="headerlink" title="常数枚举"></a>常数枚举</h3><p>使用 <code>const enum</code> 定义的枚举类型称作常数枚举。<br>常数枚举与普通枚举的区别是，它会在编译阶段被删除，并且不能包含计算成员。假如包含了计算成员，则会在编译阶段报错。这是性能提升的一个方案。</p>
+<pre><code>// enum.ts，编译前
+const enum Direction {
+  Up = &quot;Up&quot;,
+  Down = &quot;Down&quot;,
+  Left = &quot;Left&quot;,
+  Right = &quot;Right&quot;
+}
+const a = Direction.Up;
+
+// 编译后
+var a = &quot;Up&quot;
+
+// 把 const 删去后的编译结果
+var Direction;
+(function (Direction) {
+    Direction[&quot;Up&quot;] = &quot;Up&quot;;
+    Direction[&quot;Down&quot;] = &quot;Down&quot;;
+    Direction[&quot;Left&quot;] = &quot;Left&quot;;
+    Direction[&quot;Right&quot;] = &quot;Right&quot;;
+})(Direction || (Direction = {}));
+var a = Direction.Up;</code></pre><h3 id="外部枚举"><a href="#外部枚举" class="headerlink" title="外部枚举"></a>外部枚举</h3><p>外部枚举是使用 <code>declare enum</code> 定义的枚举类型。</p>
+<p>外部枚举和非外部枚举之间有一个重要区别，在正常的枚举里，没有初始化的方法的成员被当成常量成员。对于外部枚举而言，没有初始化方法是被当作需要经过计算的。</p>
+<p>declare定义的类型只会用于编译时的检查，编译结果中会被删除。<br>外部枚举与声明语句一样，常出现在声明文件中。<br>同时使用 <code>declare</code> 和 <code>const</code> 也是可以的。</p>
+<h3 id="字面量枚举成员"><a href="#字面量枚举成员" class="headerlink" title="字面量枚举成员"></a>字面量枚举成员</h3><p>字面量枚举成员是指不带有初始值的常量枚举成员，或者是值被初始化为</p>
+<ul>
+<li>任何字符串字面量（例如： “foo”, “bar”, “baz”）</li>
+<li>任何数字字面量（例如： 1， 100）</li>
+<li>引用了一元 <code>-</code> 符号的数字字面量（例如： -1， -100）</li>
+</ul>
+<p>当所有枚举成员都拥有字面量枚举值时，它就带有了一种特殊的语义：</p>
+<ol>
+<li>枚举成员成为了类型。例如，我们可以说某些成员只能是枚举成员的值。</li>
+<li>枚举类型本身变成了每个枚举成员的联合。</li>
+</ol>
+<p>我们可以分开声明枚举，它们会自动合并。</p>
+<p>通过结合命名空间 <code>namespace</code> ，我们可以给枚举添加静态方法。</p>
 <h2 id="任意类型-any"><a href="#任意类型-any" class="headerlink" title="任意类型 any"></a>任意类型 any</h2><h2 id="null-和-undefined"><a href="#null-和-undefined" class="headerlink" title="null 和 undefined"></a>null 和 undefined</h2><p>默认情况下 <code>null</code> 和 <code>undefined</code> 是所有类型的子类型。也就是说你可以把 <code>null</code> 和 <code>undefined</code> 赋值给 <code>number</code> 类型的变量。</p>
 <p>然而，当你指定了 <code>--strictNullChecks</code> 标记， <code>null</code> 和 <code>undefined</code> 只能赋值给 <code>any</code> 和 <code>void</code> 和它们各自的类型。<br>使用了 <code>--strictNullChecks</code> 标记，可选参数会被自动地加上 <code>| undefined</code>，可选属性也会有同样的处理。<br>如果编译器不能够去除 <code>null</code> 和 <code>undefined</code> ，你可以使用类型断言手动去除。语法是添加 <code>!</code> 后缀： <code>identifier!</code> 从 <code>identifier</code> 的类型里去除了 <code>null</code> 和 <code>undefined</code>。</p>
 <h2 id="void-类型"><a href="#void-类型" class="headerlink" title="void 类型"></a>void 类型</h2><p><code>void</code> 表示没有任何类型，当一个函数没有返回值时，通常将其返回值类型设为 <code>void</code>，实际上只有 <code>null</code> 和 <code>undefined</code> 可以赋值给 <code>void</code> 。</p>
@@ -529,6 +594,10 @@ const empty: never[] = [];</code></pre><h2 id="unknown-类型"><a href="#unknown
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/07/TypeScript学习系列四——函数/" rel="prev" title="TypeScript学习系列四——函数">
+                TypeScript学习系列四——函数 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -597,7 +666,7 @@ const empty: never[] = [];</code></pre><h2 id="unknown-类型"><a href="#unknown
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-count">21</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -731,7 +800,7 @@ const empty: never[] = [];</code></pre><h2 id="unknown-类型"><a href="#unknown
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#布尔类型-boolean"><span class="nav-number">1.</span> <span class="nav-text">布尔类型 boolean</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数字类型-number"><span class="nav-number">2.</span> <span class="nav-text">数字类型 number</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串类型-string"><span class="nav-number">3.</span> <span class="nav-text">字符串类型 string</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组类型-array"><span class="nav-number">4.</span> <span class="nav-text">数组类型 array</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元组类型-tuple"><span class="nav-number">5.</span> <span class="nav-text">元组类型 tuple</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#枚举类型-enum"><span class="nav-number">6.</span> <span class="nav-text">枚举类型 enum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#任意类型-any"><span class="nav-number">7.</span> <span class="nav-text">任意类型 any</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null-和-undefined"><span class="nav-number">8.</span> <span class="nav-text">null 和 undefined</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#void-类型"><span class="nav-number">9.</span> <span class="nav-text">void 类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#never-类型"><span class="nav-number">10.</span> <span class="nav-text">never 类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#unknown-类型"><span class="nav-number">11.</span> <span class="nav-text">unknown 类型</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#布尔类型-boolean"><span class="nav-number">1.</span> <span class="nav-text">布尔类型 boolean</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数字类型-number"><span class="nav-number">2.</span> <span class="nav-text">数字类型 number</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串类型-string"><span class="nav-number">3.</span> <span class="nav-text">字符串类型 string</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组类型-array"><span class="nav-number">4.</span> <span class="nav-text">数组类型 array</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元组类型-tuple"><span class="nav-number">5.</span> <span class="nav-text">元组类型 tuple</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#枚举类型-enum"><span class="nav-number">6.</span> <span class="nav-text">枚举类型 enum</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#枚举项"><span class="nav-number">6.1.</span> <span class="nav-text">枚举项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常数枚举"><span class="nav-number">6.2.</span> <span class="nav-text">常数枚举</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#外部枚举"><span class="nav-number">6.3.</span> <span class="nav-text">外部枚举</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字面量枚举成员"><span class="nav-number">6.4.</span> <span class="nav-text">字面量枚举成员</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#任意类型-any"><span class="nav-number">7.</span> <span class="nav-text">任意类型 any</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null-和-undefined"><span class="nav-number">8.</span> <span class="nav-text">null 和 undefined</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#void-类型"><span class="nav-number">9.</span> <span class="nav-text">void 类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#never-类型"><span class="nav-number">10.</span> <span class="nav-text">never 类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#unknown-类型"><span class="nav-number">11.</span> <span class="nav-text">unknown 类型</span></a></li></ol></div>
             
 
           </div>
