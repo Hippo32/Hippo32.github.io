@@ -94,18 +94,18 @@
 
 
 
-  <meta name="description" content="函数类型为函数定义类型平常用 js 定义一个函数： function add(x, y) {     return x + y; }下面用 TypeScript 给上面的函数定义类型： function add(x: number, y: number): number {     return x + y; }函数类型前面已经介绍了如何给一个函数添加类型，下面就来介绍一下完整的函数类型 let">
+  <meta name="description" content="函数类型为函数定义类型平常用 js 定义一个函数： 123function add(x, y) &amp;#123;	return x + y;&amp;#125;  下面用 TypeScript 给上面的函数定义类型： 123function add(x: number, y: number): number &amp;#123;	return x + y;&amp;#125;  函数类型前面已经介绍了如何给一个函数添加类型，">
 <meta name="keywords" content="TypeScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TypeScript学习系列四——函数">
 <meta property="og:url" content="http://yoursite.com/2019/12/07/TypeScript学习系列四——函数/index.html">
 <meta property="og:site_name" content="RuiYi&#39;s Notebook">
-<meta property="og:description" content="函数类型为函数定义类型平常用 js 定义一个函数： function add(x, y) {     return x + y; }下面用 TypeScript 给上面的函数定义类型： function add(x: number, y: number): number {     return x + y; }函数类型前面已经介绍了如何给一个函数添加类型，下面就来介绍一下完整的函数类型 let">
+<meta property="og:description" content="函数类型为函数定义类型平常用 js 定义一个函数： 123function add(x, y) &amp;#123;	return x + y;&amp;#125;  下面用 TypeScript 给上面的函数定义类型： 123function add(x: number, y: number): number &amp;#123;	return x + y;&amp;#125;  函数类型前面已经介绍了如何给一个函数添加类型，">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-07T08:23:57.702Z">
+<meta property="og:updated_time" content="2019-12-07T08:27:09.178Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TypeScript学习系列四——函数">
-<meta name="twitter:description" content="函数类型为函数定义类型平常用 js 定义一个函数： function add(x, y) {     return x + y; }下面用 TypeScript 给上面的函数定义类型： function add(x: number, y: number): number {     return x + y; }函数类型前面已经介绍了如何给一个函数添加类型，下面就来介绍一下完整的函数类型 let">
+<meta name="twitter:description" content="函数类型为函数定义类型平常用 js 定义一个函数： 123function add(x, y) &amp;#123;	return x + y;&amp;#125;  下面用 TypeScript 给上面的函数定义类型： 123function add(x: number, y: number): number &amp;#123;	return x + y;&amp;#125;  函数类型前面已经介绍了如何给一个函数添加类型，">
 
 
 
@@ -377,7 +377,7 @@
                 
               
 
-              <time title="创建时间：2019-12-07 15:01:07 / 修改时间：16:23:57" itemprop="dateCreated datePublished" datetime="2019-12-07T15:01:07+08:00">2019-12-07</time>
+              <time title="创建时间：2019-12-07 15:01:07 / 修改时间：16:27:09" itemprop="dateCreated datePublished" datetime="2019-12-07T15:01:07+08:00">2019-12-07</time>
             </span>
           
 
@@ -445,16 +445,15 @@
 
       
         <h2 id="函数类型"><a href="#函数类型" class="headerlink" title="函数类型"></a>函数类型</h2><h3 id="为函数定义类型"><a href="#为函数定义类型" class="headerlink" title="为函数定义类型"></a>为函数定义类型</h3><p>平常用 js 定义一个函数：</p>
-<pre><code>function add(x, y) {
-    return x + y;
-}</code></pre><p>下面用 TypeScript 给上面的函数定义类型：</p>
-<pre><code>function add(x: number, y: number): number {
-    return x + y;
-}</code></pre><h3 id="函数类型-1"><a href="#函数类型-1" class="headerlink" title="函数类型"></a>函数类型</h3><p>前面已经介绍了如何给一个函数添加类型，下面就来介绍一下完整的函数类型</p>
-<pre><code>let myAdd: (x: number, y: number) =&gt; number = 
-    function(x: number, y: number): number {
-        return x + y;
-    };</code></pre><p><em>这里要注意一下 ES6 中的 <code>=&gt;</code> 和 TypeScript 中的 <code>=&gt;</code>。</em><br>在 TypeScript 的类型定义中， <code>=&gt;</code> 用来表示函数的定义，左边是输入类型，需要用括号括起来，右边是输出类型。<br>在 ES6 中， <code>=&gt;</code> 叫做箭头函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>下面用 TypeScript 给上面的函数定义类型：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">x: number, y: number</span>): <span class="title">number</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="函数类型-1"><a href="#函数类型-1" class="headerlink" title="函数类型"></a>函数类型</h3><p>前面已经介绍了如何给一个函数添加类型，下面就来介绍一下完整的函数类型</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> myAdd: <span class="function">(<span class="params">x: number, y: number</span>) =&gt;</span> number = </span><br><span class="line">	<span class="function"><span class="keyword">function</span>(<span class="params">x: number, y: number</span>): <span class="title">number</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> x + y;</span><br><span class="line">	&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><em>这里要注意一下 ES6 中的 <code>=&gt;</code> 和 TypeScript 中的 <code>=&gt;</code>。</em><br>在 TypeScript 的类型定义中， <code>=&gt;</code> 用来表示函数的定义，左边是输入类型，需要用括号括起来，右边是输出类型。<br>在 ES6 中， <code>=&gt;</code> 叫做箭头函数。</p>
 <p>函数类型包含两部分：</p>
 <ul>
 <li>参数类型：为每一个参数指定一个名字和类型。</li>
