@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="RuiYi&#39;s Notebook">
 <meta property="og:description" content="函数类型为函数定义类型平常用 js 定义一个函数： 123function add(x, y) &amp;#123;	return x + y;&amp;#125;  下面用 TypeScript 给上面的函数定义类型： 123function add(x: number, y: number): number &amp;#123;	return x + y;&amp;#125;  函数类型前面已经介绍了如何给一个函数添加类型，">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-07T08:27:09.178Z">
+<meta property="og:updated_time" content="2019-12-07T08:42:21.550Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TypeScript学习系列四——函数">
 <meta name="twitter:description" content="函数类型为函数定义类型平常用 js 定义一个函数： 123function add(x, y) &amp;#123;	return x + y;&amp;#125;  下面用 TypeScript 给上面的函数定义类型： 123function add(x: number, y: number): number &amp;#123;	return x + y;&amp;#125;  函数类型前面已经介绍了如何给一个函数添加类型，">
@@ -377,7 +377,7 @@
                 
               
 
-              <time title="创建时间：2019-12-07 15:01:07 / 修改时间：16:27:09" itemprop="dateCreated datePublished" datetime="2019-12-07T15:01:07+08:00">2019-12-07</time>
+              <time title="创建时间：2019-12-07 15:01:07 / 修改时间：16:42:21" itemprop="dateCreated datePublished" datetime="2019-12-07T15:01:07+08:00">2019-12-07</time>
             </span>
           
 
@@ -462,10 +462,15 @@
 <p>当写出完整函数类型的时候，这两部分都是需要的。</p>
 <h2 id="函数的参数"><a href="#函数的参数" class="headerlink" title="函数的参数"></a>函数的参数</h2><p>TypeScript 里的每个函数参数都是必须的。传递给一个函数的参数个数必须与函数期望的参数个数一致。</p>
 <h3 id="可选参数"><a href="#可选参数" class="headerlink" title="可选参数"></a>可选参数</h3><p>在 TypeScript 里我们可以在参数名旁使用 <code>?</code>实现可选参数的功能。可选参数必须接在必需参数后面，也就是说，可选参数后面不允许再出现必需参数了。</p>
-<pre><code>const add = (a: number, b?: number) =&gt; a + (b ? b : 0);</code></pre><h3 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h3><p>TypeStrict 会将添加了默认值的参数识别为可选参数，与普通可选参数不同的是，带默认值的参数不需要放在必须参数的后面。如果带默认值的参数出现在必须参数前面，用户必须明确的传入 <code>undefined</code> 值来获得默认值。</p>
-<pre><code>const add = (a: number, b = 10) =&gt; a + b;</code></pre><h3 id="剩余参数"><a href="#剩余参数" class="headerlink" title="剩余参数"></a>剩余参数</h3><p>剩余参数与 JS 中的语法类似，需要用 <code>...</code> 来表示剩余参数，而剩余参数则是一个由 number 组成的数组。剩余参数只能是最后一个参数。</p>
-<pre><code>const add = (a: number, ...rest: number[]) =&gt; rest.reduce((a, b) =&gt; a + b, a);</code></pre><h2 id="函数重载"><a href="#函数重载" class="headerlink" title="函数重载"></a>函数重载</h2><p>重载允许一个函数接受不同数量或类型的参数时，作出不同的处理。</p>
-<p>重复定义多次函数，前几次是函数定义，最后一次是函数实现。TypeScript 会优先从最前面的函数定义开始匹配，所以多个函数定义如果有包含关系，需要优先把精确的定义写在前面。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> add = <span class="function">(<span class="params">a: number, b?: number</span>) =&gt;</span> a + (b ? b : <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h3><p>TypeStrict 会将添加了默认值的参数识别为可选参数，与普通可选参数不同的是，带默认值的参数不需要放在必须参数的后面。如果带默认值的参数出现在必须参数前面，用户必须明确的传入 <code>undefined</code> 值来获得默认值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> add = <span class="function">(<span class="params">a: number, b = <span class="number">10</span></span>) =&gt;</span> a + b;</span><br></pre></td></tr></table></figure>
+
+<h3 id="剩余参数"><a href="#剩余参数" class="headerlink" title="剩余参数"></a>剩余参数</h3><p>剩余参数与 JS 中的语法类似，需要用 <code>...</code> 来表示剩余参数，而剩余参数则是一个由 number 组成的数组。剩余参数只能是最后一个参数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> add = <span class="function">(<span class="params">a: number, ...rest: number[]</span>) =&gt;</span> rest.reduce(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a + b, a);</span><br></pre></td></tr></table></figure>
+
+<h2 id="函数重载"><a href="#函数重载" class="headerlink" title="函数重载"></a>函数重载</h2><p>重载允许一个函数接受不同数量或类型的参数时，作出不同的处理。<br>重复定义多次函数，前几次是函数定义，最后一次是函数实现。TypeScript 会优先从最前面的函数定义开始匹配，所以多个函数定义如果有包含关系，需要优先把精确的定义写在前面。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">interface Direction &#123;</span><br><span class="line">  top: number;</span><br><span class="line">  right: number;</span><br><span class="line">  bottom: number;</span><br><span class="line">  left: number;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">assigned</span>(<span class="params">all: number</span>): <span class="title">Direction</span>;</span></span><br><span class="line"><span class="function"><span class="title">function</span> <span class="title">assigned</span>(<span class="params">topAndBottom: number, leftAndRight: number</span>): <span class="title">Direction</span>;</span></span><br><span class="line"><span class="function"><span class="title">function</span> <span class="title">assigned</span>(<span class="params">top: number, right: number, bottom: number, left: number</span>): <span class="title">Direction</span>;</span></span><br><span class="line"><span class="function"><span class="title">function</span> <span class="title">assigned</span>(<span class="params">a: number, b?: number, c?: number, d?: any</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (b === <span class="literal">undefined</span> &amp;&amp; c === <span class="literal">undefined</span> &amp;&amp; d === <span class="literal">undefined</span>) &#123;</span><br><span class="line">    b = c = d = a;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (c === <span class="literal">undefined</span> &amp;&amp; d === <span class="literal">undefined</span>) &#123;</span><br><span class="line">    c = a;</span><br><span class="line">    d = b;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    top: a,</span><br><span class="line">    right: b,</span><br><span class="line">    bottom: c,</span><br><span class="line">    left: d</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line">assigned(<span class="number">1</span>);</span><br><span class="line">assigned(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">assigned(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>); <span class="comment">//Error</span></span><br><span class="line">assigned(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>);</span><br></pre></td></tr></table></figure>
       
     </div>
@@ -514,6 +519,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/07/TypeScript学习系列五——类/" rel="prev" title="TypeScript学习系列五——类">
+                TypeScript学习系列五——类 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -582,7 +591,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

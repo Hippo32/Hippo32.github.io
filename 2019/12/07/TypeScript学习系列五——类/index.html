@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="先介绍一下类的一些基本概念：  类：定义了一件事物的抽象特点，包含它的属性和方法。 对象：类的实例，通过 new 生成。 面向对象（OOP）的三大特性：封装、继承、多态。 封装（Encapsulation）：将对数据的操作细节隐藏起来，只暴露对外的接口。外界调用端不需要（也不可能）知道细节，就能通过对外提供的接口来访问该对象，同时也保证了外界无法任意更改对象内部的数据。 继承（Inhetitanc">
+<meta name="keywords" content="TypeScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TypeScript学习系列五——类">
+<meta property="og:url" content="http://yoursite.com/2019/12/07/TypeScript学习系列五——类/index.html">
+<meta property="og:site_name" content="RuiYi&#39;s Notebook">
+<meta property="og:description" content="先介绍一下类的一些基本概念：  类：定义了一件事物的抽象特点，包含它的属性和方法。 对象：类的实例，通过 new 生成。 面向对象（OOP）的三大特性：封装、继承、多态。 封装（Encapsulation）：将对数据的操作细节隐藏起来，只暴露对外的接口。外界调用端不需要（也不可能）知道细节，就能通过对外提供的接口来访问该对象，同时也保证了外界无法任意更改对象内部的数据。 继承（Inhetitanc">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-12-07T15:04:06.099Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="TypeScript学习系列五——类">
+<meta name="twitter:description" content="先介绍一下类的一些基本概念：  类：定义了一件事物的抽象特点，包含它的属性和方法。 对象：类的实例，通过 new 生成。 面向对象（OOP）的三大特性：封装、继承、多态。 封装（Encapsulation）：将对数据的操作细节隐藏起来，只暴露对外的接口。外界调用端不需要（也不可能）知道细节，就能通过对外提供的接口来访问该对象，同时也保证了外界无法任意更改对象内部的数据。 继承（Inhetitanc">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/12/07/TypeScript学习系列五——类/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>TypeScript学习系列五——类 | RuiYi's Notebook</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">RuiYi's Notebook</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/07/TypeScript学习系列五——类/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hippo">
+      <meta itemprop="description" content="日常的总结和感悟">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="RuiYi's Notebook">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">TypeScript学习系列五——类
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-12-07 16:43:27 / 修改时间：23:04:06" itemprop="dateCreated datePublished" datetime="2019-12-07T16:43:27+08:00">2019-12-07</time>
+            </span>
+          
+
+          
+            
+
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/TypeScript/" itemprop="url" rel="index"><span itemprop="name">TypeScript</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+            <span id="/2019/12/07/TypeScript学习系列五——类/" class="post-meta-item leancloud_visitors" data-flag-title="TypeScript学习系列五——类">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>先介绍一下类的一些基本概念：</p>
+<ul>
+<li>类：定义了一件事物的抽象特点，包含它的属性和方法。</li>
+<li>对象：类的实例，通过 new 生成。</li>
+<li>面向对象（OOP）的三大特性：封装、继承、多态。</li>
+<li>封装（Encapsulation）：将对数据的操作细节隐藏起来，只暴露对外的接口。外界调用端不需要（也不可能）知道细节，就能通过对外提供的接口来访问该对象，同时也保证了外界无法任意更改对象内部的数据。</li>
+<li>继承（Inhetitance）：子类继承父类，子类除了拥有父类的所有特性外，还有一些更具体的特性。</li>
+<li>多态（Polymorphism）：由继承而产生了相关的不同的类，对同一个方法可以有不同的响应。比如 <code>Cat</code> 和 <code>Dog</code> 都继承自 <code>Animal</code>，但是分别实现了自己的 <code>eat</code> 方法，此时针对某一个实例，我们无需了解它是 <code>Cat</code> 还是 <code>Dog</code> ，就可以直接调用 <code>eat</code> 方法，程序会自动判断出来应该如何执行 <code>eat</code> 。</li>
+<li>存取器：用以改变属性的读取和赋值行为。</li>
+<li>修饰符：修饰符是一些关键字，用于限定成员或类型的性质。比如 <code>public</code> 表示公有属性和方法。</li>
+<li>抽象类：抽象类是供其他类继承的基类，抽象类不允许被实例化。抽象类中的抽象方法必须在子类中被实现。</li>
+<li>接口：不同类之间共有的属性和方法，可以抽象成一个接口，接口可以被类实现。一个类只能继承自另一个类，但是可以实现多个接口。</li>
+</ul>
+<p>从 ES6 开始，JavaScript就支持了基于类的面向对象的方式。因此 TypeScript 也支持了这一方式。</p>
+<p>下面来看看例子：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Greeter &#123;</span><br><span class="line">	greeting: <span class="built_in">string</span>;</span><br><span class="line">	<span class="keyword">constructor</span>(<span class="params">message: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">		<span class="keyword">this</span>.greetring = message;</span><br><span class="line">	&#125;</span><br><span class="line">	greet () &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"hello, "</span> + <span class="keyword">this</span>.greeting;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> greeter = <span class="keyword">new</span> Greeter(<span class="string">"world"</span>);</span><br></pre></td></tr></table></figure>
+
+<p>在例子中，声明了一个 Greeter 的类。这个类有 3 个成员：一个叫做 greeting 的属性，一个构造函数和一个 greet 方法。</p>
+<h2 id="类的继承"><a href="#类的继承" class="headerlink" title="类的继承"></a>类的继承</h2><p>基于类的程序设计中一种最基本的模式是允许使用继承来扩展现有的类。<br>在 typescript 中使用 <strong><code>extends</code></strong> 关键字实现继承，子类中使用 <strong><code>super</code></strong> 关键字来调用父类的构造函数和方法。<br><em>派生类通常被称作子类，基类通常被称作超类。</em></p>
+<p>派生类包含了一个构造函数，它必须调用 <code>super()</code> ，它会执行基类的构造函数。这个是 typescript 强制执行的一条重要规则。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    name: string;</span><br><span class="line">    <span class="keyword">constructor</span>(name: string) &#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    run():string &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span> is running.`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Web</span> <span class="keyword">extends</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(name: string) &#123;</span><br><span class="line">        <span class="keyword">super</span>(name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果父类和子类有同样的方法，使用子类的方法。</p>
+<h2 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h2><h3 id="public"><a href="#public" class="headerlink" title="public"></a>public</h3><p>public 修饰的属性或方法是公有的，可以在任何地方被访问到，默认所有的属性和方法都是 public 。</p>
+<h3 id="private"><a href="#private" class="headerlink" title="private"></a>private</h3><p>private 修饰的属性或方法是私有的，不能在声明它的类的外部访问，在子类中也是不允许访问的。当构造函数修饰为 private 时，该类不允许被继承或者实例化。</p>
+<p>需要注意的是：当比较带有 private 或 protected 成员的类型的时候。如果其中一个类型里包含一个 private 成员，那么只有当另外一个类型中也存在这样一个 private 成员，并且它们都是来自同一处声明时，我们才认为这两个类型是兼容的。对于 protected 成员也适用这个规则。</p>
+<h3 id="protected"><a href="#protected" class="headerlink" title="protected"></a>protected</h3><p>protected 修饰的属性或方法是受保护的，它和 private 类似，区别是它在子类中是允许被访问的。当构造函数修饰为 protected 时，该类只允许被继承。</p>
+<h3 id="readonly"><a href="#readonly" class="headerlink" title="readonly"></a>readonly</h3><p>只读属性关键字。只读属性必须在声明时或构造函数里被初始化。</p>
+<p><em>注意：如果 readonly 和其他访问修饰符同时存在的话，需要写在其后面。</em></p>
+<h2 id="参数属性"><a href="#参数属性" class="headerlink" title="参数属性"></a>参数属性</h2><p>修饰符还可以使用在构造函数参数中，等同于类中定义该属性，使代码更简洁。这时称这个属性为参数属性。</p>
+<p>参数属性通过给构造函数参数前面添加一个访问限定符来声明。使用 private 限定一个参数属性会声明并初始化一个私有成员；对于 public 和 protected 来说也是一样。</p>
+<p>看个例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 没使用参数属性的时候</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">	readonly name: string;</span><br><span class="line">	<span class="keyword">constructor</span> (theName: string) &#123;</span><br><span class="line">		<span class="keyword">this</span>.name = theName;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用了参数属性，等同于上面的代码</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">	<span class="keyword">constructor</span> (readonly name: string) &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="静态属性-和-静态方法"><a href="#静态属性-和-静态方法" class="headerlink" title="静态属性 和 静态方法"></a>静态属性 和 静态方法</h2><p>在 ES6 中只有静态方法，没有静态属性。不过在 typescript 中支持静态属性。<br>使用 <code>static</code> 修饰符修饰的属性和方法分别称为静态属性和静态方法。它们不需要实例化，可以直接通过类来调用。静态方法里面没法直接调用类里面的属性。</p>
+<h2 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h2><p>在 typescript 中，用 <code>abstract</code> 定义抽象类和其中的抽象方法。抽象类作为其他派生类的基类使用。</p>
+<ul>
+<li>抽象类不允许被实例化。通常需要我们创建子类继承基类，然后可以实例化子类。</li>
+<li>抽象类中的抽象方法必须被子类实现。</li>
+<li>即使是抽象方法， typescript 的编译结果中，仍然会存在这个类。</li>
+<li>不同于接口，抽象类可以包含成员的实现细节。</li>
+<li>抽象方法只能放在抽象类里面。</li>
+<li>抽象类和抽象方法用来定义标准。</li>
+<li>抽象类中的抽象方法不包含具体实现并且必须在派生类中实现。抽象方法的语法与接口方法相似。两者都是定义方法签名但不包含方法体。然而，抽象方法必须包含 abstract 关键字并且可以包含访问修饰符。</li>
+</ul>
+<p>例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">abstract <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">  abstract makeSound(): <span class="keyword">void</span>;</span><br><span class="line">  move(): <span class="keyword">void</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"roaming the earch..."</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">  makeSound() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"miao miao"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> cat: Animal;</span><br><span class="line">cat = <span class="keyword">new</span> Animal(); <span class="comment">// Error</span></span><br><span class="line">cat = <span class="keyword">new</span> Cat();</span><br><span class="line">cat.makeSound();</span><br><span class="line">cat.move();</span><br></pre></td></tr></table></figure>
+
+<h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><p>类实际上是由两个类型的：</p>
+<ul>
+<li>静态部分类型</li>
+<li>实例部分类型</li>
+</ul>
+<p>拿官方的代码举例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">interface ClockInterface &#123;</span><br><span class="line">    currentTime: <span class="built_in">Date</span>;</span><br><span class="line">    setTime(d: <span class="built_in">Date</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Clock</span> <span class="title">implements</span> <span class="title">ClockInterface</span> </span>&#123;</span><br><span class="line">    currentTime: <span class="built_in">Date</span>;</span><br><span class="line">    setTime(d: <span class="built_in">Date</span>) &#123;</span><br><span class="line">        <span class="keyword">this</span>.currentTime = d;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">constructor</span>(h: number, m: number) &#123; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，<code>currentTime</code> 、 <code>setTime</code> 就是实例的类型。<br>class 里的构造器是静态类型。</p>
+<p>这篇文章讲得挺清楚的：<a href="https://juejin.im/post/5d217c8e518825701d6a4baf" target="_blank" rel="noopener">typescript类类型-实例部分与静态部分详解</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/TypeScript/" rel="tag"># TypeScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/07/TypeScript学习系列四——函数/" rel="next" title="TypeScript学习系列四——函数">
+                <i class="fa fa-chevron-left"></i> TypeScript学习系列四——函数
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/07/TypeScript学习系列六——接口/" rel="prev" title="TypeScript学习系列六——接口">
+                TypeScript学习系列六——接口 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">hippo</p>
+              <div class="site-description motion-element" itemprop="description">日常的总结和感悟</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/Hippo32" title="GitHub &rarr; https://github.com/Hippo32" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://me.csdn.net/hualala_32" title="CSDN &rarr; https://me.csdn.net/hualala_32" rel="noopener" target="_blank"><i class="fa fa-fw fa-globe"></i>CSDN</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                推荐网站
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.zoudupai.com/index.php?action=index&sy=all" title="http://www.zoudupai.com/index.php?action=index&sy=all" rel="noopener" target="_blank">走读派</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://alvabill.ml/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-NexT%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/" title="https://alvabill.ml/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-NexT%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/" rel="noopener" target="_blank">Next主题配置</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#类的继承"><span class="nav-number">1.</span> <span class="nav-text">类的继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修饰符"><span class="nav-number">2.</span> <span class="nav-text">修饰符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#public"><span class="nav-number">2.1.</span> <span class="nav-text">public</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#private"><span class="nav-number">2.2.</span> <span class="nav-text">private</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#protected"><span class="nav-number">2.3.</span> <span class="nav-text">protected</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#readonly"><span class="nav-number">2.4.</span> <span class="nav-text">readonly</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参数属性"><span class="nav-number">3.</span> <span class="nav-text">参数属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#静态属性-和-静态方法"><span class="nav-number">4.</span> <span class="nav-text">静态属性 和 静态方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#抽象类"><span class="nav-number">5.</span> <span class="nav-text">抽象类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扩展"><span class="nav-number">6.</span> <span class="nav-text">扩展</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hippo</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.2</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.2"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $('.leancloud_visitors');
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
+            
+              .done(function() {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.time + 1);
+              })
+            
+              .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+              })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+        .fail(function ({ responseJSON }) {
+          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
+        });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + '89Ijcv6J3iuRaRnYokA8lFTW-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': '89Ijcv6J3iuRaRnYokA8lFTW-gzGzoHsz',
+                'X-LC-Key': 'JvlwwLCCnsM8Ov0SIjLE0l3U',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            const localhost = /http:\/\/(localhost|127.0.0.1|0.0.0.0)/;
+            if (localhost.test(document.URL)) return;
+            addCount(Counter);
+          
+        });
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
