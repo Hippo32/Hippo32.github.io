@@ -94,17 +94,20 @@
 
 
 
-  <meta name="description" content="JS正则表达式供查询|-|-||/g|查找所有可能的匹配，返回的结果可以是多个||/i|表示匹配的时候不区分大小写||/m|表示多行匹配，影响正则中的^$符号||/s|dotAll模式，使得.可以匹配任意单个字符||/u|Unicode模式，用来正确处理大于\uFFFF的Unicode字符||/y|与g修饰符类似，也是全局匹配，后一次匹配都从上一次匹配成功的下一个位置开始。不同之处在于，g修饰符只">
+  <meta name="description" content="搭建vue-cli时的配置： 打开项目，发现最大的不同是额外引入了一个库 vue-property-decorator。 由于它的存在，我们可以使用基于类的注释装饰器进行开发。 vue-property-decorator 主要提供了多个装饰器和一个函数：  @Prop @PropSync @Model @Watch @Provide @Inject @ProvideReactive @Injec">
+<meta name="keywords" content="TypeScript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript的正则表达式">
-<meta property="og:url" content="http://yoursite.com/2019/10/26/JavaScript的正则表达式/index.html">
+<meta property="og:title" content="TypeScript的在Vue中的应用">
+<meta property="og:url" content="http://yoursite.com/2019/12/08/TypeScript的在Vue中的应用/index.html">
 <meta property="og:site_name" content="RuiYi&#39;s Notebook">
-<meta property="og:description" content="JS正则表达式供查询|-|-||/g|查找所有可能的匹配，返回的结果可以是多个||/i|表示匹配的时候不区分大小写||/m|表示多行匹配，影响正则中的^$符号||/s|dotAll模式，使得.可以匹配任意单个字符||/u|Unicode模式，用来正确处理大于\uFFFF的Unicode字符||/y|与g修饰符类似，也是全局匹配，后一次匹配都从上一次匹配成功的下一个位置开始。不同之处在于，g修饰符只">
+<meta property="og:description" content="搭建vue-cli时的配置： 打开项目，发现最大的不同是额外引入了一个库 vue-property-decorator。 由于它的存在，我们可以使用基于类的注释装饰器进行开发。 vue-property-decorator 主要提供了多个装饰器和一个函数：  @Prop @PropSync @Model @Watch @Provide @Inject @ProvideReactive @Injec">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-26T13:42:48.882Z">
+<meta property="og:image" content="http://yoursite.com/2019/12/08/TypeScript的在Vue中的应用/vuecli1.png">
+<meta property="og:updated_time" content="2019-12-08T16:58:31.405Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript的正则表达式">
-<meta name="twitter:description" content="JS正则表达式供查询|-|-||/g|查找所有可能的匹配，返回的结果可以是多个||/i|表示匹配的时候不区分大小写||/m|表示多行匹配，影响正则中的^$符号||/s|dotAll模式，使得.可以匹配任意单个字符||/u|Unicode模式，用来正确处理大于\uFFFF的Unicode字符||/y|与g修饰符类似，也是全局匹配，后一次匹配都从上一次匹配成功的下一个位置开始。不同之处在于，g修饰符只">
+<meta name="twitter:title" content="TypeScript的在Vue中的应用">
+<meta name="twitter:description" content="搭建vue-cli时的配置： 打开项目，发现最大的不同是额外引入了一个库 vue-property-decorator。 由于它的存在，我们可以使用基于类的注释装饰器进行开发。 vue-property-decorator 主要提供了多个装饰器和一个函数：  @Prop @PropSync @Model @Watch @Provide @Inject @ProvideReactive @Injec">
+<meta name="twitter:image" content="http://yoursite.com/2019/12/08/TypeScript的在Vue中的应用/vuecli1.png">
 
 
 
@@ -112,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/10/26/JavaScript的正则表达式/">
+  <link rel="canonical" href="http://yoursite.com/2019/12/08/TypeScript的在Vue中的应用/">
 
 
 
@@ -122,7 +125,7 @@
   };
 </script>
 
-  <title>JavaScript的正则表达式 | RuiYi's Notebook</title>
+  <title>TypeScript的在Vue中的应用 | RuiYi's Notebook</title>
   
 
 
@@ -333,7 +336,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/26/JavaScript的正则表达式/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/08/TypeScript的在Vue中的应用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hippo">
@@ -350,7 +353,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JavaScript的正则表达式
+          <h1 class="post-title" itemprop="name headline">TypeScript的在Vue中的应用
 
               
             
@@ -376,7 +379,7 @@
                 
               
 
-              <time title="创建时间：2019-10-26 21:42:30 / 修改时间：21:42:48" itemprop="dateCreated datePublished" datetime="2019-10-26T21:42:30+08:00">2019-10-26</time>
+              <time title="创建时间：2019-12-08 19:19:44" itemprop="dateCreated datePublished" datetime="2019-12-08T19:19:44+08:00">2019-12-08</time>
             </span>
           
 
@@ -384,8 +387,33 @@
             
 
             
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-12-09 00:58:31" itemprop="dateModified" datetime="2019-12-09T00:58:31+08:00">2019-12-09</time>
+              </span>
+            
           
 
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/TypeScript/" itemprop="url" rel="index"><span itemprop="name">TypeScript</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -395,7 +423,7 @@
 
           
           
-            <span id="/2019/10/26/JavaScript的正则表达式/" class="post-meta-item leancloud_visitors" data-flag-title="JavaScript的正则表达式">
+            <span id="/2019/12/08/TypeScript的在Vue中的应用/" class="post-meta-item leancloud_visitors" data-flag-title="TypeScript的在Vue中的应用">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -428,67 +456,39 @@
       
 
       
-        <h1 id="JS正则表达式"><a href="#JS正则表达式" class="headerlink" title="JS正则表达式"></a>JS正则表达式</h1><h2 id="供查询"><a href="#供查询" class="headerlink" title="供查询"></a>供查询</h2><p>|-|-|<br>|/g|查找所有可能的匹配，返回的结果可以是多个|<br>|/i|表示匹配的时候不区分大小写|<br>|/m|表示多行匹配，影响正则中的<code>^$</code>符号|<br>|/s|dotAll模式，使得<code>.</code>可以匹配任意单个字符|<br>|/u|Unicode模式，用来正确处理大于<code>\uFFFF</code>的Unicode字符|<br>|/y|与g修饰符类似，也是全局匹配，后一次匹配都从上一次匹配成功的下一个位置开始。不同之处在于，g修饰符只要剩余位置中存在匹配就可，而y修饰符确保匹配必须从剩余的第一个位置开始。|</p>
-<p>|-|-|<br>|*|星号代表匹配它前面一个字符任意遍（0或任意次）|<br>|+|表示匹配前面字符一个或多次（至少一次）|<br>|?|问号代表匹配前一个字符0次或1次|<br>|[]|中括号用来表示一个字符集合，<code>^</code>在<code>[]</code>中表示匹配任何不在该集合中的字符|<br>|{}|大括号的作用是指重复前面一个字符多少遍，例{N}：重复n遍；{n,m}：重复n~m遍；{n, }：至少重复n遍；{,m}：最多重复m遍|</p>
-<p>|-|-|<br>|\w|小写w表示字母或数字，等价于[a-zA-Z0-9]|<br>|\W|大写W表示非字母且数字，与\w相反，等价于[^a-zA-Z0-9]|<br>|\s|小写s表示匹配一个空字符，包括空格，换行，回车，tab，等价于[\n\r\t\f]|<br>|\S|大写S匹配非空格字符，与\s相反，等价于[^\n\r\t\f]|<br>|\d|小写d表示十进制数字，等价于[0-9]|<br>|\D|大写D匹配一个非数字字符，等价于[^0-9]|</p>
-<h2 id="的区别"><a href="#的区别" class="headerlink" title="() [] {}的区别"></a>() [] {}的区别</h2><p>|-|-|<br>|()|()的作用是提取匹配的字符串。表达式中有几个()就会得到几个相应的匹配字符串。比如(\s+)表示连续空格的字符串|<br>|[]|[]是定义匹配的字符范围。比如[a-zA-Z0-9]表示字符文本要匹配英文字符和数字|<br>|{}|{}一般用来表示匹配的长度，比如\d{3}表示匹配三个数字，\d{1,3}表示匹配1~3个数字，\d{3,}表示匹配3个以上数字|</p>
-<h2 id="关于空格"><a href="#关于空格" class="headerlink" title="关于空格"></a>关于空格</h2><p>|-|-|<br>|\s|空格|<br>|\uFEFF|ES5新增的空白符，叫<code>字节次序标记字符（Byte Order Mark）</code>，也就是BOM|<br>|\xA0|禁止自动换行空白符，相当于html中的<code>&amp;nbsp;</code>|
-|””,”\x20”,”\u0020”|半角空格符，键盘空格键|<br>|”\t”,”\x09”,”\u0009”|制表符，键盘tab键|<br>|”\v”,”\x0B”,”\u000B”|垂直制表符|<br>|”\f”,”\x0C”,”\u000C”|换页符|<br>|”\r”,”\x0D”,”\u000D”|回车符|<br>|”\n”,”\x0A”,”\u000A”|换行符|</p>
-<p>对于IE低版本，<code>\s</code>等价于<code>[\t\v\f\r\n]</code></p>
-<p>例子：</p>
-<p>trim的polyfill</p>
-<pre><code>if(!String.prototype.trim) {
-    String.prototype.trim = function() {
-        return this.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,&apos;&apos;);
-    };
-}</code></pre><p>解析：</p>
+        <p>搭建vue-cli时的配置：<br><img src="/2019/12/08/TypeScript的在Vue中的应用/vuecli1.png" alt="搭建vue-cli时的配置"></p>
+<p>打开项目，发现最大的不同是额外引入了一个库 <code>vue-property-decorator</code>。
+由于它的存在，我们可以使用基于类的注释装饰器进行开发。</p>
+<p>vue-property-decorator 主要提供了多个装饰器和一个函数：</p>
 <ul>
-<li><code>[]</code>表示范围</li>
-<li><code>^</code>表示行的开头，<code>$</code>表示行的结束</li>
-<li><code>+</code>代表前面的字符必须至少出现一次（1次或多次）</li>
+<li>@Prop</li>
+<li>@PropSync</li>
+<li>@Model</li>
+<li>@Watch</li>
+<li>@Provide</li>
+<li>@Inject</li>
+<li>@ProvideReactive</li>
+<li>@InjectReactive</li>
+<li>@Emit</li>
+<li>@Ref</li>
+<li>@Component（由 vue-class-component 提供）</li>
+<li>Mixins（由 vue-class-component 提供）</li>
 </ul>
-<h2 id="创建一个正则表达式"><a href="#创建一个正则表达式" class="headerlink" title="创建一个正则表达式"></a>创建一个正则表达式</h2><blockquote>
-<p>字面量：<code>var expression = / pattern / flags;</code></p>
-</blockquote>
-<blockquote>
-<p>RegExp构造函数，它接收两个参数：一个是要匹配的字符串模式，另一个是可选的标志字符串。</p>
-</blockquote>
-<p>要注意的是：传递给RegExp构造函数的两个参数都是字符串（不能把正则表达式字面量传递给RegExp构造函数）。由于RegExp构造函数的模式参数是字符串，所以在某些情况下要对字符进行双重转义。所有元字符都必须双重转义。</p>
-<p>其中的模式（pattern）部分可以是任何简单或复杂的正则表达式，可以包含字符类、限定符、分组、向前查找以及反向引用。每个正则表达式都可带有一或多个标志（flags），用以标明正则表达式的行为。</p>
-<p>模式中使用的所有<strong>元字符</strong>都必须转义。正则表达式中的元字符包括：</p>
-<pre><code>( [ { \ ^ $ | ) ? * + . ] }</code></pre><h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><ul>
-<li>flags：返回正则表达式的修饰符。</li>
-<li>sticky：表示是否设置了y修饰符。</li>
-<li>unicode：表示是否设置了u修饰符。</li>
-<li>global：布尔值，表示是否设置了g修饰符。</li>
-<li>ignoreCase：布尔值，表示是否设置了i标志。</li>
-<li>lastIndex：整数，表示开始搜索下一个匹配项的字符位置，从0算起。</li>
-<li>multiline：布尔值，表示是否设置了m标志。</li>
-<li>source：正则表达式的字符串表示。</li>
-</ul>
-<h2 id="RegExp实例方法"><a href="#RegExp实例方法" class="headerlink" title="RegExp实例方法"></a>RegExp实例方法</h2><h3 id="exec"><a href="#exec" class="headerlink" title="exec()"></a>exec()</h3><p>该方法是专门为捕获组而设计的。<code>exec()</code>接收一个参数，即要应用模式的字符串，然后返回包含第一个匹配项信息的数组；或者在没有匹配项的情况下返回null。</p>
-<p>返回的数组包含两个额外的属性：</p>
+<h2 id="Component"><a href="#Component" class="headerlink" title="@Component"></a>@Component</h2><p>Component装饰器它注明了此类为一个 Vue 组件，因此即使没有设置选项也不能省略。如果需要定义比如 name、components、filters、directives以及自定义属性，就可以在Components装饰器中定义。</p>
+<h2 id="Prop"><a href="#Prop" class="headerlink" title="@Prop"></a>@Prop</h2><p>这个装饰器是属性相关</p>
+<h2 id="Vue-Router"><a href="#Vue-Router" class="headerlink" title="Vue Router"></a>Vue Router</h2><p>在 router/index.ts 内为变量添加相应 interface 即可：<br>在 vue-router 中 routes 的类型定义<br>类型：<code>Array&lt;RouteConfig&gt;</code></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> <span class="keyword">type</span> RouteConfig = &#123;</span><br><span class="line">	path: <span class="built_in">string</span>;</span><br><span class="line">	component?: Component;</span><br><span class="line">	name?: <span class="built_in">string</span>; <span class="comment">// for named routes （命名路由）</span></span><br><span class="line">	components?: &#123; [name: <span class="built_in">string</span>]: Component &#125;; <span class="comment">// for named views （命名视图组件）</span></span><br><span class="line">	redirect?: <span class="built_in">string</span> | Location | <span class="built_in">Function</span>;</span><br><span class="line">	alias?: <span class="built_in">string</span> | <span class="built_in">Array</span>&lt;<span class="built_in">string</span>&gt;;</span><br><span class="line">	children?: <span class="built_in">Array</span>&lt;RouteConfig&gt;; <span class="comment">// for nested routes （嵌套路由）</span></span><br><span class="line">	beforeEnter?: <span class="function">(<span class="params">to: Route, <span class="keyword">from</span>: Route, next: <span class="built_in">Function</span></span>) =&gt;</span> <span class="built_in">void</span>;</span><br><span class="line">	meta?: <span class="built_in">any</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在 router/index.ts 里需要加的代码：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line"><span class="keyword">import</span> VueRouter, &#123; RouteConfig &#125; <span class="keyword">from</span> <span class="string">'vue-router'</span>;</span><br><span class="line"><span class="keyword">import</span> Layout <span class="keyword">from</span> <span class="string">'@/views/Layout/index.vue'</span>;</span><br><span class="line"></span><br><span class="line">Vue.use(VueRouter);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> routes: RouteConfig[] = [</span><br><span class="line">	&#123;</span><br><span class="line">		path: <span class="string">"/"</span>,</span><br><span class="line">		name: <span class="string">"layout"</span>,</span><br><span class="line">		component: Layout</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="comment">// ...其他routers</span></span><br><span class="line">]</span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">	routes</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> router;</span><br></pre></td></tr></table></figure>
+
+<p>如果像在组件内使用 Vue Router 导航钩子，必须注册一次：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Component &#125; <span class="keyword">from</span> <span class="string">"vue-property-decorator"</span>;</span><br><span class="line"></span><br><span class="line">Component.registerHooks([</span><br><span class="line">  <span class="string">"beforeRouteEnter"</span>, <span class="comment">// 进入路由之前</span></span><br><span class="line">  <span class="string">"beforeRouteLeave"</span>, <span class="comment">// 离开路由之前</span></span><br><span class="line">  <span class="string">"beforeRouteUpdate"</span></span><br><span class="line">]);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Vuex"><a href="#Vuex" class="headerlink" title="Vuex"></a>Vuex</h2><p>参考文章：</p>
 <ul>
-<li>index：表示匹配项在字符串中的位置</li>
-<li>input：表示应用正则表达式的字符串</li>
-</ul>
-<p>在数组中，第一项是与整个模式匹配的字符串，其他项是与模式中的捕获组匹配的字符串。</p>
-<p>对于<code>exec()</code>方法而言，即使在模式中设置了全局标志（g），它每次也只会返回一个匹配项。在不设置全局标志的情况下，在同一个字符串上多次调用<code>exec()</code>将始终返回第一个匹配项的信息。而在设置全局标志的情况下，每次调用<code>exec()</code>则都会在字符串中继续查找新匹配项。</p>
-<h3 id="test"><a href="#test" class="headerlink" title="test()"></a>test()</h3><p>接收一个字符串参数。在模式与该参数匹配的情况下返回true；否则，返回false。</p>
-<h2 id="字符串的正则方法"><a href="#字符串的正则方法" class="headerlink" title="字符串的正则方法"></a>字符串的正则方法</h2><p>字符串对象共有4个方法，可以使用正则表达式：<code>match()</code>、<code>replace()</code>、<code>search()</code>和<code>split()</code>。</p>
-<h2 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h2><h3 id="先行断言"><a href="#先行断言" class="headerlink" title="先行断言"></a>先行断言</h3><p><code>x</code>只有在<code>y</code>前面才匹配，必须写成<code>/x(?=y)/</code>。</p>
-<h3 id="先行否定断言"><a href="#先行否定断言" class="headerlink" title="先行否定断言"></a>先行否定断言</h3><p><code>x</code>只有不在<code>y</code>前面才匹配，必须写成<code>/x(?!y)/</code>。</p>
-<h3 id="后行断言"><a href="#后行断言" class="headerlink" title="后行断言"></a>后行断言</h3><p><code>x</code>只有在<code>y</code>后面才匹配，必须写成<code>/(?&lt;=y)x/</code>。</p>
-<h3 id="后行否定断言"><a href="#后行否定断言" class="headerlink" title="后行否定断言"></a>后行否定断言</h3><p><code>x</code>只有不在<code>y</code>后面才匹配，必须写成<code>/(?&lt;!y)x/</code>。</p>
-<h2 id="具名组匹配"><a href="#具名组匹配" class="headerlink" title="具名组匹配"></a>具名组匹配</h2><p>允许为每一个组匹配指定一个名字，既便于阅读代码，又便于引用。</p>
-<p>“具名组匹配”在圆括号内部，模式的头部天剑“问号+尖括号+组名”（<code>?&lt;year&gt;</code>)，然后就可以在<code>exec</code>方法返回结果的<code>groups</code>属性上引用该组名。</p>
-<p>字符串替换时，使用<code>$&lt;组名&gt;</code>引用具名组。</p>
-<pre><code>let re = /(?&lt;year&gt;\d{4})-(?&lt;month&gt;\d{2})-(?&lt;day&gt;\d{2})/u;
-&apos;2015-01-02&apos;.replace(re, &apos;$&lt;day&gt;/$&lt;month&gt;/$&lt;year&gt;&apos;)
-// &apos;02/01/2015&apos;</code></pre><p>参考:</p>
-<ul>
-<li><a href="https://www.jb51.net/article/96272.htm" target="_blank" rel="noopener">https://www.jb51.net/article/96272.htm</a></li>
-<li><a href="https://www.cnblogs.com/onepixel/p/5218904.html" target="_blank" rel="noopener">https://www.cnblogs.com/onepixel/p/5218904.html</a></li>
+<li><a href="https://www.uis.cc/2018/02/27/New-features-of-vue-cli-3-speed/" target="_blank" rel="noopener">vue-cli 3.0 新特性速读</a></li>
+<li><a href="https://blog.csdn.net/github_36978270/article/details/78771262" target="_blank" rel="noopener">vue-cli 中使用 TypeScript</a></li>
 </ul>
 
       
@@ -511,6 +511,15 @@
 
     <footer class="post-footer">
       
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/TypeScript/" rel="tag"># TypeScript</a>
+          
+        </div>
+      
 
       
       
@@ -520,8 +529,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/26/发现生命中的美好/" rel="next" title="发现生命中的美好">
-                <i class="fa fa-chevron-left"></i> 发现生命中的美好
+              <a href="/2019/12/08/TypeScript学习系列八——一些常用的知识点/" rel="next" title="TypeScript学习系列八——一些常用的知识点">
+                <i class="fa fa-chevron-left"></i> TypeScript学习系列八——一些常用的知识点
               </a>
             
           </div>
@@ -529,10 +538,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/10/28/CSS选择符/" rel="prev" title="CSS选择符">
-                CSS选择符 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -735,7 +740,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JS正则表达式"><span class="nav-number">1.</span> <span class="nav-text">JS正则表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#供查询"><span class="nav-number">1.1.</span> <span class="nav-text">供查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#的区别"><span class="nav-number">1.2.</span> <span class="nav-text">() [] {}的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于空格"><span class="nav-number">1.3.</span> <span class="nav-text">关于空格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建一个正则表达式"><span class="nav-number">1.4.</span> <span class="nav-text">创建一个正则表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性"><span class="nav-number">1.5.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RegExp实例方法"><span class="nav-number">1.6.</span> <span class="nav-text">RegExp实例方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#exec"><span class="nav-number">1.6.1.</span> <span class="nav-text">exec()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#test"><span class="nav-number">1.6.2.</span> <span class="nav-text">test()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串的正则方法"><span class="nav-number">1.7.</span> <span class="nav-text">字符串的正则方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#断言"><span class="nav-number">1.8.</span> <span class="nav-text">断言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#先行断言"><span class="nav-number">1.8.1.</span> <span class="nav-text">先行断言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#先行否定断言"><span class="nav-number">1.8.2.</span> <span class="nav-text">先行否定断言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后行断言"><span class="nav-number">1.8.3.</span> <span class="nav-text">后行断言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后行否定断言"><span class="nav-number">1.8.4.</span> <span class="nav-text">后行否定断言</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#具名组匹配"><span class="nav-number">1.9.</span> <span class="nav-text">具名组匹配</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Component"><span class="nav-number">1.</span> <span class="nav-text">@Component</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prop"><span class="nav-number">2.</span> <span class="nav-text">@Prop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue-Router"><span class="nav-number">3.</span> <span class="nav-text">Vue Router</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vuex"><span class="nav-number">4.</span> <span class="nav-text">Vuex</span></a></li></ol></div>
             
 
           </div>
