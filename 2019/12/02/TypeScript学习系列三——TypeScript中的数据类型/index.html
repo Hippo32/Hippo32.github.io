@@ -94,19 +94,19 @@
 
 
 
-  <meta name="description" content="布尔类型 boolean1let isAwesome: boolean = true;  数字类型 number1let age: number = 18  字符串类型 string1let name: string = &apos;huangry`  数组类型 array数组类型有两种定义方式：  类型 + 方括号 1let list: number[] = [1, 2, 3];  Array 1let">
+  <meta name="description" content="布尔类型 boolean我们用 boolean 来表示布尔类型，注意开头是小写的，如果你在 TypeScript 文件中写成 Boolean 那代表是 JavaScript 中的布尔对象。 1let isAwesome: boolean = true;   这里需要提示一下，很多 TypeScript 的原始类型比如 boolean、 number、string等等，在 JavaScript 中都">
 <meta name="keywords" content="TypeScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TypeScript学习系列三——TypeScript中的数据类型">
 <meta property="og:url" content="http://yoursite.com/2019/12/02/TypeScript学习系列三——TypeScript中的数据类型/index.html">
 <meta property="og:site_name" content="RuiYi&#39;s Notebook">
-<meta property="og:description" content="布尔类型 boolean1let isAwesome: boolean = true;  数字类型 number1let age: number = 18  字符串类型 string1let name: string = &apos;huangry`  数组类型 array数组类型有两种定义方式：  类型 + 方括号 1let list: number[] = [1, 2, 3];  Array 1let">
+<meta property="og:description" content="布尔类型 boolean我们用 boolean 来表示布尔类型，注意开头是小写的，如果你在 TypeScript 文件中写成 Boolean 那代表是 JavaScript 中的布尔对象。 1let isAwesome: boolean = true;   这里需要提示一下，很多 TypeScript 的原始类型比如 boolean、 number、string等等，在 JavaScript 中都">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/2019/12/02/TypeScript学习系列三——TypeScript中的数据类型/enum1.png">
-<meta property="og:updated_time" content="2019-12-08T08:04:35.894Z">
+<meta property="og:updated_time" content="2019-12-10T09:56:48.235Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TypeScript学习系列三——TypeScript中的数据类型">
-<meta name="twitter:description" content="布尔类型 boolean1let isAwesome: boolean = true;  数字类型 number1let age: number = 18  字符串类型 string1let name: string = &apos;huangry`  数组类型 array数组类型有两种定义方式：  类型 + 方括号 1let list: number[] = [1, 2, 3];  Array 1let">
+<meta name="twitter:description" content="布尔类型 boolean我们用 boolean 来表示布尔类型，注意开头是小写的，如果你在 TypeScript 文件中写成 Boolean 那代表是 JavaScript 中的布尔对象。 1let isAwesome: boolean = true;   这里需要提示一下，很多 TypeScript 的原始类型比如 boolean、 number、string等等，在 JavaScript 中都">
 <meta name="twitter:image" content="http://yoursite.com/2019/12/02/TypeScript学习系列三——TypeScript中的数据类型/enum1.png">
 
 
@@ -394,7 +394,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-12-08 16:04:35" itemprop="dateModified" datetime="2019-12-08T16:04:35+08:00">2019-12-08</time>
+                <time title="修改时间：2019-12-10 17:56:48" itemprop="dateModified" datetime="2019-12-10T17:56:48+08:00">2019-12-10</time>
               </span>
             
           
@@ -456,15 +456,33 @@
       
 
       
-        <h2 id="布尔类型-boolean"><a href="#布尔类型-boolean" class="headerlink" title="布尔类型 boolean"></a>布尔类型 boolean</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> isAwesome: <span class="built_in">boolean</span> = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
+        <h2 id="布尔类型-boolean"><a href="#布尔类型-boolean" class="headerlink" title="布尔类型 boolean"></a>布尔类型 boolean</h2><p>我们用 <code>boolean</code> 来表示布尔类型，注意开头是小写的，如果你在 TypeScript 文件中写成 <code>Boolean</code> 那代表是 JavaScript 中的布尔对象。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> isAwesome: <span class="built_in">boolean</span> = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
 
-<h2 id="数字类型-number"><a href="#数字类型-number" class="headerlink" title="数字类型 number"></a>数字类型 number</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> age: <span class="built_in">number</span> = <span class="number">18</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这里需要提示一下，很多 TypeScript 的原始类型比如 boolean、 number、string等等，在 JavaScript 中都有类似的关键字 Boolean、Number、String，后者是 JavaScript 的构造函数，比如我们用 Number 用于数字类型转化或者构造 Number 对象用的，而 TypeScript 中的 number 类型仅仅是表示类型，两者完全不同。</p>
+</blockquote>
+<h2 id="数字类型-number"><a href="#数字类型-number" class="headerlink" title="数字类型 number"></a>数字类型 number</h2><p>JavaScript 中的二进制、十进制、十六进制等数都可以用 number 类型来表示。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> age: <span class="built_in">number</span> = <span class="number">18</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="字符串类型-string"><a href="#字符串类型-string" class="headerlink" title="字符串类型 string"></a>字符串类型 string</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> name: <span class="built_in">string</span> = <span class="string">'huangry`</span></span><br></pre></td></tr></table></figure>
 
+<h2 id="void-类型"><a href="#void-类型" class="headerlink" title="void 类型"></a>void 类型</h2><p><code>void</code> 表示没有任何类型，当一个函数没有返回值时，通常将其返回值类型设为 <code>void</code>，实际上只有 <code>null</code> 和 <code>undefined</code> 可以赋值给 <code>void</code> 。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">warnUser</span>(<span class="params"></span>): <span class="title">void</span> </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'return void'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="null-和-undefined"><a href="#null-和-undefined" class="headerlink" title="null 和 undefined"></a>null 和 undefined</h2><p>默认情况下 <code>null</code> 和 <code>undefined</code> 是所有类型的子类型。也就是说你可以把 <code>null</code> 和 <code>undefined</code> 赋值给 <code>number</code> 类型的变量。</p>
+<p>然而，当你指定了 <code>--strictNullChecks</code> 标记， <code>null</code> 和 <code>undefined</code> 只能赋值给 <code>any</code> 和 <code>void</code> 和它们各自的类型。<br>使用了 <code>--strictNullChecks</code> 标记，可选参数会被自动地加上 <code>| undefined</code>，可选属性也会有同样的处理。</p>
+<h2 id="任意类型-any"><a href="#任意类型-any" class="headerlink" title="任意类型 any"></a>任意类型 any</h2><p>有时候，我们会想要为那些编程阶段还不清楚类型的变量指定一个类型。这些值可能来自于动态的内容，比如来自用户输入或第三方代码库。这种情况下，我们不希望类型检查器对这些值进行检查而是直接让它们通过编译阶段的检查。那么我们可以使用 <code>any</code> 类型来标记这些变量：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> notSure: <span class="built_in">any</span> = <span class="number">4</span>;</span><br><span class="line">notSure = <span class="string">"maybe a string instead"</span>;</span><br></pre></td></tr></table></figure>
+
+<p>除非在不得已的情况下，否则不应该首先考虑使用此类型。</p>
+<h2 id="never-类型"><a href="#never-类型" class="headerlink" title="never 类型"></a>never 类型</h2><p><code>never</code> 类型表示的是那些不存在的值的类型。例如， <code>never</code> 类型是那些总是会抛出异常或根本就不会有返回值的函数表达式或箭头函数表达式的返回值类型；变量也可能是 <code>never</code> 类型，当它们被永不为真的类型保护所约束时。</p>
+<p><code>never</code> 类型时任何类型的子类型，也可以赋值给任何类型，然而，没有类型是 <code>never</code> 的子类型或可以赋值给 <code>never</code> 类型（除了 <code>never</code> 本身之外）。即使 <code>any</code> 也不可以赋值给 <code>never</code> 。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 抛出异常的函数永远不会有返回值</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">error</span>(<span class="params">message: <span class="built_in">string</span></span>): <span class="title">never</span> </span>&#123;</span><br><span class="line">	<span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(message);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 空数组，而且永远是空的</span></span><br><span class="line"><span class="keyword">const</span> empty: never[] = [];</span><br></pre></td></tr></table></figure>
+
 <h2 id="数组类型-array"><a href="#数组类型-array" class="headerlink" title="数组类型 array"></a>数组类型 array</h2><p>数组类型有两种定义方式：</p>
 <ol>
-<li><p><strong>类型 + 方括号</strong></p>
+<li><p><strong>元素类型 + []</strong></p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> list: <span class="built_in">number</span>[] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>Array<elemtype></elemtype></strong></p>
@@ -476,7 +494,9 @@
 <p>例子：</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义了一个值分别为 string 和 number 的元组</span></span><br><span class="line"><span class="keyword">let</span> tom: [<span class="built_in">string</span>, <span class="built_in">number</span>] = [<span class="string">'Tom'</span>, <span class="number">25</span>];</span><br></pre></td></tr></table></figure>
 
-<p>当直接对元组类型的变量进行初始化或者赋值的时候，需要提供所有元组类型中指定的项。不能多也不能少，还不能调换顺序。</p>
+<p>当直接对元组类型的变量进行初始化或者赋值的时候，需要提供所有元组类型中指定的项。不能多也不能少，还不能调换顺序。<br>我们可以把元组看成严格版的数组，元组继承于数组，但是比数组拥有更严格的类型检查。不如 <code>[string, number]</code> 我们可以看成是：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Tuple <span class="keyword">extends</span> Array&lt;string | number&gt; &#123;</span><br><span class="line">	<span class="number">0</span>: <span class="built_in">string</span>;</span><br><span class="line">	<span class="number">1</span>: <span class="built_in">number</span>;</span><br><span class="line">	length: <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h2 id="枚举类型-enum"><a href="#枚举类型-enum" class="headerlink" title="枚举类型 enum"></a>枚举类型 enum</h2><p>枚举类型用于取值被限定在一定范围内的场景，比如一周只能有七天，颜色限定为红绿蓝等。</p>
 <p>枚举使用 <code>enum</code> 关键字来定义：</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> Days &#123;Sun, Mon, Tue, Wed, Thu, Fri, Sat&#125;;</span><br></pre></td></tr></table></figure>
@@ -488,27 +508,25 @@
 <li>常数项</li>
 <li>计算所得项</li>
 </ul>
-<p>如果紧接在计算所得项后面的是未手动赋值的项，那么它就会因为无法获得初始值而报错。</p>
 <p>当满足以下条件时，枚举成员被当作是常数：</p>
 <ul>
 <li><p>不具有初始化函数并且之前的枚举成员是常数，在这种情况下，当前枚举成员的值为上一个枚举成员的值加 1 。第一个枚举元素如果没有初始化方法，那么它的初始化值为 0 。</p>
 </li>
-<li><p>枚举成员使用<strong>常数枚举表达式</strong>初始化。常数枚举表达式时 typescript 表达式的子集，它可以在编译阶段求值。当一个表达式满足下面条件之一时，它就是一个常数枚举表达式：</p>
+<li><p>枚举成员使用<strong>常数枚举表达式</strong>初始化。常数枚举表达式是 typescript 表达式的子集，它可以在编译阶段求值。当一个表达式满足下面条件之一时，它就是一个常数枚举表达式：</p>
 </li>
 <li><p>数字字面量或字符串字面量</p>
 </li>
 <li><p>引用之前定义的常数枚举成员（可以是在不用的枚举类型中定义的）如果这个成员是在同一个枚举类型中定义的，可以使用非限定名来引用。</p>
 <p>  <img src="/2019/12/02/TypeScript学习系列三——TypeScript中的数据类型/enum1.png" alt="引用常数枚举成员例子"></p>
 </li>
-<li><p>带括号的常量枚举表达式（这个我还搞不懂具体的例子是怎样的）</p>
+<li><p>带括号的常数枚举表达式</p>
 </li>
 <li><p><code>+</code>、<code>-</code>、<code>~</code>一元运算符应用于常数枚举表达式</p>
 </li>
 <li><p><code>+</code>，<code>-</code>，<code>*</code>，<code>/</code>，<code>%</code>，<code>&lt;&lt;</code>，<code>&gt;&gt;</code>，<code>&gt;&gt;&gt;</code>，<code>&amp;</code>，<code>|</code>，<code>^</code>二元运算符，常数枚举表达式作为其一个操作对象。若常数枚举表达式求值后为 <code>NaN</code> 或 <code>Infinity</code>，则会在编译阶段报错。</p>
 </li>
-<li><p>所有其他情况的枚举成员被当作是需要计算得出的值。</p>
-</li>
 </ul>
+<p>所有其他情况的枚举成员被当作是需要计算得出的值。如果紧接在计算所得项后面的是未手动赋值的项，那么它就会因为无法获得初始值而报错。</p>
 <h3 id="常数枚举"><a href="#常数枚举" class="headerlink" title="常数枚举"></a>常数枚举</h3><p>使用 <code>const enum</code> 定义的枚举类型称作常数枚举。<br>常数枚举与普通枚举的区别是，它会在编译阶段被删除，并且不能包含计算成员。假如包含了计算成员，则会在编译阶段报错。这是性能提升的一个方案。</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// enum.ts，编译前</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">enum</span> Direction &#123;</span><br><span class="line">  Up = <span class="string">"Up"</span>,</span><br><span class="line">  Down = <span class="string">"Down"</span>,</span><br><span class="line">  Left = <span class="string">"Left"</span>,</span><br><span class="line">  Right = <span class="string">"Right"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> a = Direction.Up;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 编译后</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="string">"Up"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 把 const 删去后的编译结果</span></span><br><span class="line"><span class="keyword">var</span> Direction;</span><br><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">Direction</span>) </span>&#123;</span><br><span class="line">    Direction[<span class="string">"Up"</span>] = <span class="string">"Up"</span>;</span><br><span class="line">    Direction[<span class="string">"Down"</span>] = <span class="string">"Down"</span>;</span><br><span class="line">    Direction[<span class="string">"Left"</span>] = <span class="string">"Left"</span>;</span><br><span class="line">    Direction[<span class="string">"Right"</span>] = <span class="string">"Right"</span>;</span><br><span class="line">&#125;)(Direction || (Direction = &#123;&#125;));</span><br><span class="line"><span class="keyword">var</span> a = Direction.Up;</span><br></pre></td></tr></table></figure>
 
@@ -526,16 +544,6 @@
 <li>枚举成员成为了类型。例如，我们可以说某些成员只能是枚举成员的值。</li>
 <li>枚举类型本身变成了每个枚举成员的联合。</li>
 </ol>
-<p>我们可以分开声明枚举，它们会自动合并。</p>
-<p>通过结合命名空间 <code>namespace</code> ，我们可以给枚举添加静态方法。</p>
-<h2 id="任意类型-any"><a href="#任意类型-any" class="headerlink" title="任意类型 any"></a>任意类型 any</h2><h2 id="null-和-undefined"><a href="#null-和-undefined" class="headerlink" title="null 和 undefined"></a>null 和 undefined</h2><p>默认情况下 <code>null</code> 和 <code>undefined</code> 是所有类型的子类型。也就是说你可以把 <code>null</code> 和 <code>undefined</code> 赋值给 <code>number</code> 类型的变量。</p>
-<p>然而，当你指定了 <code>--strictNullChecks</code> 标记， <code>null</code> 和 <code>undefined</code> 只能赋值给 <code>any</code> 和 <code>void</code> 和它们各自的类型。<br>使用了 <code>--strictNullChecks</code> 标记，可选参数会被自动地加上 <code>| undefined</code>，可选属性也会有同样的处理。<br>如果编译器不能够去除 <code>null</code> 和 <code>undefined</code> ，你可以使用类型断言手动去除。语法是添加 <code>!</code> 后缀： <code>identifier!</code> 从 <code>identifier</code> 的类型里去除了 <code>null</code> 和 <code>undefined</code>。</p>
-<h2 id="void-类型"><a href="#void-类型" class="headerlink" title="void 类型"></a>void 类型</h2><p><code>void</code> 表示没有任何类型，当一个函数没有返回值时，通常将其返回值类型设为 <code>void</code>，实际上只有 <code>null</code> 和 <code>undefined</code> 可以赋值给 <code>void</code> 。</p>
-<h2 id="never-类型"><a href="#never-类型" class="headerlink" title="never 类型"></a>never 类型</h2><p><code>never</code> 类型表示的是那些不存在的值的类型。例如， <code>never</code> 类型是那些总是会抛出异常或根本就不会有返回值的函数表达式或箭头函数表达式的返回值类型；变量也可能是 <code>never</code> 类型，当它们被永不为真的类型保护所约束时。</p>
-<p><code>never</code> 类型时任何类型的子类型，也可以赋值给任何类型，然而，没有类型是 <code>never</code> 的子类型或可以赋值给 <code>never</code> 类型（除了 <code>never</code> 本身之外）。即使 <code>any</code> 也不可以赋值给 <code>never</code> 。</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 抛出异常的函数永远不会有返回值</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">error</span>(<span class="params">message: <span class="built_in">string</span></span>): <span class="title">never</span> </span>&#123;</span><br><span class="line">	<span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(message);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 空数组，而且永远是空的</span></span><br><span class="line"><span class="keyword">const</span> empty: never[] = [];</span><br></pre></td></tr></table></figure>
-
-<h2 id="unknown-类型"><a href="#unknown-类型" class="headerlink" title="unknown 类型"></a>unknown 类型</h2><p><code>unknown</code> 是 TypeScript 3.0 引入的新类型，是 <code>any</code> 类型对应的安全类型。<br><code>unknown</code> 和 <code>any</code> 的主要区别是 <code>unknown</code> 类型会更加严格：在对 <code>unknown</code> 类型的值执行大多数操作之前，我们必须进行某种形式的检查，而在对 <code>any</code> 类型的值执行操作之前，我们不必进行任何检查。<br>当 <code>unknown</code> 类型被确定是某个类型之前，它不能被进行任何操作比如实例化、getter、函数执行等。</p>
 
       
     </div>
@@ -790,7 +798,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#布尔类型-boolean"><span class="nav-number">1.</span> <span class="nav-text">布尔类型 boolean</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数字类型-number"><span class="nav-number">2.</span> <span class="nav-text">数字类型 number</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串类型-string"><span class="nav-number">3.</span> <span class="nav-text">字符串类型 string</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组类型-array"><span class="nav-number">4.</span> <span class="nav-text">数组类型 array</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元组类型-tuple"><span class="nav-number">5.</span> <span class="nav-text">元组类型 tuple</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#枚举类型-enum"><span class="nav-number">6.</span> <span class="nav-text">枚举类型 enum</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#枚举项"><span class="nav-number">6.1.</span> <span class="nav-text">枚举项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常数枚举"><span class="nav-number">6.2.</span> <span class="nav-text">常数枚举</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#外部枚举"><span class="nav-number">6.3.</span> <span class="nav-text">外部枚举</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字面量枚举成员"><span class="nav-number">6.4.</span> <span class="nav-text">字面量枚举成员</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#任意类型-any"><span class="nav-number">7.</span> <span class="nav-text">任意类型 any</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null-和-undefined"><span class="nav-number">8.</span> <span class="nav-text">null 和 undefined</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#void-类型"><span class="nav-number">9.</span> <span class="nav-text">void 类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#never-类型"><span class="nav-number">10.</span> <span class="nav-text">never 类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#unknown-类型"><span class="nav-number">11.</span> <span class="nav-text">unknown 类型</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#布尔类型-boolean"><span class="nav-number">1.</span> <span class="nav-text">布尔类型 boolean</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数字类型-number"><span class="nav-number">2.</span> <span class="nav-text">数字类型 number</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串类型-string"><span class="nav-number">3.</span> <span class="nav-text">字符串类型 string</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#void-类型"><span class="nav-number">4.</span> <span class="nav-text">void 类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null-和-undefined"><span class="nav-number">5.</span> <span class="nav-text">null 和 undefined</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#任意类型-any"><span class="nav-number">6.</span> <span class="nav-text">任意类型 any</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#never-类型"><span class="nav-number">7.</span> <span class="nav-text">never 类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组类型-array"><span class="nav-number">8.</span> <span class="nav-text">数组类型 array</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元组类型-tuple"><span class="nav-number">9.</span> <span class="nav-text">元组类型 tuple</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#枚举类型-enum"><span class="nav-number">10.</span> <span class="nav-text">枚举类型 enum</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#枚举项"><span class="nav-number">10.1.</span> <span class="nav-text">枚举项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常数枚举"><span class="nav-number">10.2.</span> <span class="nav-text">常数枚举</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#外部枚举"><span class="nav-number">10.3.</span> <span class="nav-text">外部枚举</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字面量枚举成员"><span class="nav-number">10.4.</span> <span class="nav-text">字面量枚举成员</span></a></li></ol></li></ol></div>
             
 
           </div>

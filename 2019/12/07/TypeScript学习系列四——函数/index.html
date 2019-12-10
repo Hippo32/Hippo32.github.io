@@ -94,18 +94,18 @@
 
 
 
-  <meta name="description" content="函数类型为函数定义类型平常用 js 定义一个函数： 123function add(x, y) &amp;#123;	return x + y;&amp;#125;  下面用 TypeScript 给上面的函数定义类型： 123function add(x: number, y: number): number &amp;#123;	return x + y;&amp;#125;  函数类型前面已经介绍了如何给一个函数添加类型，">
+  <meta name="description" content="函数类型为函数定义类型平常用 javascript 定义一个函数： 123function add(x, y) &amp;#123;	return x + y;&amp;#125;  下面用 TypeScript 给上面的函数定义类型： 123function add(x: number, y: number): number &amp;#123;	return x + y;&amp;#125;  函数类型前面已经介绍了如何给一">
 <meta name="keywords" content="TypeScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TypeScript学习系列四——函数">
 <meta property="og:url" content="http://yoursite.com/2019/12/07/TypeScript学习系列四——函数/index.html">
 <meta property="og:site_name" content="RuiYi&#39;s Notebook">
-<meta property="og:description" content="函数类型为函数定义类型平常用 js 定义一个函数： 123function add(x, y) &amp;#123;	return x + y;&amp;#125;  下面用 TypeScript 给上面的函数定义类型： 123function add(x: number, y: number): number &amp;#123;	return x + y;&amp;#125;  函数类型前面已经介绍了如何给一个函数添加类型，">
+<meta property="og:description" content="函数类型为函数定义类型平常用 javascript 定义一个函数： 123function add(x, y) &amp;#123;	return x + y;&amp;#125;  下面用 TypeScript 给上面的函数定义类型： 123function add(x: number, y: number): number &amp;#123;	return x + y;&amp;#125;  函数类型前面已经介绍了如何给一">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-09T17:28:57.598Z">
+<meta property="og:updated_time" content="2019-12-10T10:11:22.514Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TypeScript学习系列四——函数">
-<meta name="twitter:description" content="函数类型为函数定义类型平常用 js 定义一个函数： 123function add(x, y) &amp;#123;	return x + y;&amp;#125;  下面用 TypeScript 给上面的函数定义类型： 123function add(x: number, y: number): number &amp;#123;	return x + y;&amp;#125;  函数类型前面已经介绍了如何给一个函数添加类型，">
+<meta name="twitter:description" content="函数类型为函数定义类型平常用 javascript 定义一个函数： 123function add(x, y) &amp;#123;	return x + y;&amp;#125;  下面用 TypeScript 给上面的函数定义类型： 123function add(x: number, y: number): number &amp;#123;	return x + y;&amp;#125;  函数类型前面已经介绍了如何给一">
 
 
 
@@ -392,7 +392,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-12-10 01:28:57" itemprop="dateModified" datetime="2019-12-10T01:28:57+08:00">2019-12-10</time>
+                <time title="修改时间：2019-12-10 18:11:22" itemprop="dateModified" datetime="2019-12-10T18:11:22+08:00">2019-12-10</time>
               </span>
             
           
@@ -454,7 +454,7 @@
       
 
       
-        <h2 id="函数类型"><a href="#函数类型" class="headerlink" title="函数类型"></a>函数类型</h2><h3 id="为函数定义类型"><a href="#为函数定义类型" class="headerlink" title="为函数定义类型"></a>为函数定义类型</h3><p>平常用 js 定义一个函数：</p>
+        <h2 id="函数类型"><a href="#函数类型" class="headerlink" title="函数类型"></a>函数类型</h2><h3 id="为函数定义类型"><a href="#为函数定义类型" class="headerlink" title="为函数定义类型"></a>为函数定义类型</h3><p>平常用 javascript 定义一个函数：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>下面用 TypeScript 给上面的函数定义类型：</p>
@@ -471,10 +471,10 @@
 </ul>
 <p>当写出完整函数类型的时候，这两部分都是需要的。</p>
 <h2 id="函数的参数"><a href="#函数的参数" class="headerlink" title="函数的参数"></a>函数的参数</h2><p>TypeScript 里的每个函数参数都是必须的。传递给一个函数的参数个数必须与函数期望的参数个数一致。</p>
-<h3 id="可选参数"><a href="#可选参数" class="headerlink" title="可选参数"></a>可选参数</h3><p>在 TypeScript 里我们可以在参数名旁使用 <code>?</code>实现可选参数的功能。可选参数必须接在必需参数后面，也就是说，可选参数后面不允许再出现必需参数了。</p>
+<h3 id="可选参数"><a href="#可选参数" class="headerlink" title="可选参数"></a>可选参数</h3><p>在 TypeScript 里我们可以在参数名旁使用 <code>?</code> 实现可选参数的功能。可选参数必须接在必需参数后面，也就是说，可选参数后面不允许再出现必需参数了。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> add = <span class="function">(<span class="params">a: number, b?: number</span>) =&gt;</span> a + (b ? b : <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
 
-<h3 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h3><p>TypeStrict 会将添加了默认值的参数识别为可选参数，与普通可选参数不同的是，带默认值的参数不需要放在必须参数的后面。如果带默认值的参数出现在必须参数前面，用户必须明确的传入 <code>undefined</code> 值来获得默认值。</p>
+<h3 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h3><p>TypeStript 会将添加了默认值的参数识别为可选参数，与普通可选参数不同的是，带默认值的参数不需要放在必须参数的后面。如果带默认值的参数出现在必须参数前面，用户必须明确的传入 <code>undefined</code> 值来获得默认值。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> add = <span class="function">(<span class="params">a: number, b = <span class="number">10</span></span>) =&gt;</span> a + b;</span><br></pre></td></tr></table></figure>
 
 <h3 id="剩余参数"><a href="#剩余参数" class="headerlink" title="剩余参数"></a>剩余参数</h3><p>剩余参数与 JS 中的语法类似，需要用 <code>...</code> 来表示剩余参数，而剩余参数则是一个由 <code>number</code> 组成的数组。剩余参数只能是最后一个参数。</p>
