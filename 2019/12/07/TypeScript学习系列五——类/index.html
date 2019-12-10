@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="RuiYi&#39;s Notebook">
 <meta property="og:description" content="先介绍一下类的一些基本概念：  类：定义了一件事物的抽象特点，包含它的属性和方法。 对象：类的实例，通过 new 生成。 面向对象（OOP）的三大特性：封装、继承、多态。 封装（Encapsulation）：将对数据的操作细节隐藏起来，只暴露对外的接口。外界调用端不需要（也不可能）知道细节，就能通过对外提供的接口来访问该对象，同时也保证了外界无法任意更改对象内部的数据。 继承（Inhetitanc">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-07T15:04:06.099Z">
+<meta property="og:updated_time" content="2019-12-09T17:34:15.058Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TypeScript学习系列五——类">
 <meta name="twitter:description" content="先介绍一下类的一些基本概念：  类：定义了一件事物的抽象特点，包含它的属性和方法。 对象：类的实例，通过 new 生成。 面向对象（OOP）的三大特性：封装、继承、多态。 封装（Encapsulation）：将对数据的操作细节隐藏起来，只暴露对外的接口。外界调用端不需要（也不可能）知道细节，就能通过对外提供的接口来访问该对象，同时也保证了外界无法任意更改对象内部的数据。 继承（Inhetitanc">
@@ -377,13 +377,23 @@
                 
               
 
-              <time title="创建时间：2019-12-07 16:43:27 / 修改时间：23:04:06" itemprop="dateCreated datePublished" datetime="2019-12-07T16:43:27+08:00">2019-12-07</time>
+              <time title="创建时间：2019-12-07 16:43:27" itemprop="dateCreated datePublished" datetime="2019-12-07T16:43:27+08:00">2019-12-07</time>
             </span>
           
 
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-12-10 01:34:15" itemprop="dateModified" datetime="2019-12-10T01:34:15+08:00">2019-12-10</time>
+              </span>
             
           
 
@@ -457,24 +467,24 @@
 <li>抽象类：抽象类是供其他类继承的基类，抽象类不允许被实例化。抽象类中的抽象方法必须在子类中被实现。</li>
 <li>接口：不同类之间共有的属性和方法，可以抽象成一个接口，接口可以被类实现。一个类只能继承自另一个类，但是可以实现多个接口。</li>
 </ul>
-<p>从 ES6 开始，JavaScript就支持了基于类的面向对象的方式。因此 TypeScript 也支持了这一方式。</p>
+<p>从 <code>ES6</code> 开始， <code>JavaScript</code> 就支持了基于类的面向对象的方式。因此 <code>TypeScript</code> 也支持了这一方式。</p>
 <p>下面来看看例子：</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Greeter &#123;</span><br><span class="line">	greeting: <span class="built_in">string</span>;</span><br><span class="line">	<span class="keyword">constructor</span>(<span class="params">message: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">		<span class="keyword">this</span>.greetring = message;</span><br><span class="line">	&#125;</span><br><span class="line">	greet () &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"hello, "</span> + <span class="keyword">this</span>.greeting;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> greeter = <span class="keyword">new</span> Greeter(<span class="string">"world"</span>);</span><br></pre></td></tr></table></figure>
 
-<p>在例子中，声明了一个 Greeter 的类。这个类有 3 个成员：一个叫做 greeting 的属性，一个构造函数和一个 greet 方法。</p>
+<p>在例子中，声明了一个 <code>Greeter</code> 的类。这个类有 3 个成员：一个叫做 <code>greeting</code> 的属性，一个构造函数和一个 <code>greet</code> 方法。</p>
 <h2 id="类的继承"><a href="#类的继承" class="headerlink" title="类的继承"></a>类的继承</h2><p>基于类的程序设计中一种最基本的模式是允许使用继承来扩展现有的类。<br>在 typescript 中使用 <strong><code>extends</code></strong> 关键字实现继承，子类中使用 <strong><code>super</code></strong> 关键字来调用父类的构造函数和方法。<br><em>派生类通常被称作子类，基类通常被称作超类。</em></p>
 <p>派生类包含了一个构造函数，它必须调用 <code>super()</code> ，它会执行基类的构造函数。这个是 typescript 强制执行的一条重要规则。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    name: string;</span><br><span class="line">    <span class="keyword">constructor</span>(name: string) &#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    run():string &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span> is running.`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Web</span> <span class="keyword">extends</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(name: string) &#123;</span><br><span class="line">        <span class="keyword">super</span>(name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>如果父类和子类有同样的方法，使用子类的方法。</p>
-<h2 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h2><h3 id="public"><a href="#public" class="headerlink" title="public"></a>public</h3><p>public 修饰的属性或方法是公有的，可以在任何地方被访问到，默认所有的属性和方法都是 public 。</p>
-<h3 id="private"><a href="#private" class="headerlink" title="private"></a>private</h3><p>private 修饰的属性或方法是私有的，不能在声明它的类的外部访问，在子类中也是不允许访问的。当构造函数修饰为 private 时，该类不允许被继承或者实例化。</p>
-<p>需要注意的是：当比较带有 private 或 protected 成员的类型的时候。如果其中一个类型里包含一个 private 成员，那么只有当另外一个类型中也存在这样一个 private 成员，并且它们都是来自同一处声明时，我们才认为这两个类型是兼容的。对于 protected 成员也适用这个规则。</p>
-<h3 id="protected"><a href="#protected" class="headerlink" title="protected"></a>protected</h3><p>protected 修饰的属性或方法是受保护的，它和 private 类似，区别是它在子类中是允许被访问的。当构造函数修饰为 protected 时，该类只允许被继承。</p>
+<h2 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h2><h3 id="public"><a href="#public" class="headerlink" title="public"></a>public</h3><p><code>public</code> 修饰的属性或方法是公有的，可以在任何地方被访问到，默认所有的属性和方法都是 <code>public</code> 。</p>
+<h3 id="private"><a href="#private" class="headerlink" title="private"></a>private</h3><p><code>private</code> 修饰的属性或方法是私有的，不能在声明它的类的外部访问，在子类中也是不允许访问的。当构造函数修饰为 <code>private</code> 时，该类不允许被继承或者实例化。</p>
+<p>需要注意的是：当比较带有 <code>private</code> 或 <code>protected</code> 成员的类型的时候。如果其中一个类型里包含一个 <code>private</code> 成员，那么只有当另外一个类型中也存在这样一个 <code>private</code> 成员，并且它们都是来自同一处声明时，我们才认为这两个类型是兼容的。对于 <code>protected</code> 成员也适用这个规则。</p>
+<h3 id="protected"><a href="#protected" class="headerlink" title="protected"></a>protected</h3><p><code>protected</code> 修饰的属性或方法是受保护的，它和 <code>private</code> 类似，区别是它在子类中是允许被访问的。当构造函数修饰为 <code>protected</code> 时，该类只允许被继承。</p>
 <h3 id="readonly"><a href="#readonly" class="headerlink" title="readonly"></a>readonly</h3><p>只读属性关键字。只读属性必须在声明时或构造函数里被初始化。</p>
-<p><em>注意：如果 readonly 和其他访问修饰符同时存在的话，需要写在其后面。</em></p>
+<p><em>注意：如果 <code>readonly</code> 和其他访问修饰符同时存在的话，需要写在其后面。</em></p>
 <h2 id="参数属性"><a href="#参数属性" class="headerlink" title="参数属性"></a>参数属性</h2><p>修饰符还可以使用在构造函数参数中，等同于类中定义该属性，使代码更简洁。这时称这个属性为参数属性。</p>
-<p>参数属性通过给构造函数参数前面添加一个访问限定符来声明。使用 private 限定一个参数属性会声明并初始化一个私有成员；对于 public 和 protected 来说也是一样。</p>
+<p>参数属性通过给构造函数参数前面添加一个访问限定符来声明。使用 <code>private</code> 限定一个参数属性会声明并初始化一个私有成员；对于 <code>public</code> 和 <code>protected</code> 来说也是一样。</p>
 <p>看个例子：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 没使用参数属性的时候</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">	readonly name: string;</span><br><span class="line">	<span class="keyword">constructor</span> (theName: string) &#123;</span><br><span class="line">		<span class="keyword">this</span>.name = theName;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用了参数属性，等同于上面的代码</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">	<span class="keyword">constructor</span> (readonly name: string) &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 

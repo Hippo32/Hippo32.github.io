@@ -103,7 +103,7 @@
 <meta property="og:description" content="TypeScript 是 JavaScript 的一个超集，即支持 ES6，同时还额外扩充了一些内容。由微软开发，代码开源。TypeScript 可以编译成 JavaScript 从而在支持 JavaScript 的环境中运行。 TypeScript 的第一个版本发布于 2012年10月 ， 现在是 2019 年，已经过去了 7 年，如今 TypeScript 已经成为前端社区中不可忽视的力量，">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/2019/12/01/TypeScript的介绍/TSandJS.png">
-<meta property="og:updated_time" content="2019-12-01T16:00:23.141Z">
+<meta property="og:updated_time" content="2019-12-09T17:15:19.122Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TypeScript的介绍">
 <meta name="twitter:description" content="TypeScript 是 JavaScript 的一个超集，即支持 ES6，同时还额外扩充了一些内容。由微软开发，代码开源。TypeScript 可以编译成 JavaScript 从而在支持 JavaScript 的环境中运行。 TypeScript 的第一个版本发布于 2012年10月 ， 现在是 2019 年，已经过去了 7 年，如今 TypeScript 已经成为前端社区中不可忽视的力量，">
@@ -394,7 +394,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-12-02 00:00:23" itemprop="dateModified" datetime="2019-12-02T00:00:23+08:00">2019-12-02</time>
+                <time title="修改时间：2019-12-10 01:15:19" itemprop="dateModified" datetime="2019-12-10T01:15:19+08:00">2019-12-10</time>
               </span>
             
           
@@ -467,16 +467,12 @@
 </ul>
 <p><em>TypeScript 提供了静态语言强类型支持，同时兼容动态语言弱类型的语法。</em></p>
 <h2 id="TypeScript-与-JavaScript-的区别"><a href="#TypeScript-与-JavaScript-的区别" class="headerlink" title="TypeScript 与 JavaScript 的区别"></a>TypeScript 与 JavaScript 的区别</h2><p>下面来看两段非常简单的代码：</p>
-<pre><code>// JavaScript
-var name = &apos;James&apos;
-var sum = 1 + 2
-name = sum
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// JavaScript</span></span><br><span class="line"><span class="keyword">var</span> name = <span class="string">'James'</span></span><br><span class="line"><span class="keyword">var</span> sum = <span class="number">1</span> + <span class="number">2</span></span><br><span class="line">name = sum</span><br><span class="line"></span><br><span class="line"><span class="comment">// TypeScript</span></span><br><span class="line"><span class="keyword">var</span> name: string = <span class="string">'James'</span></span><br></pre></td></tr></table></figure>
 
-// TypeScript
-var name: string = &apos;James&apos;</code></pre><p>从上面的代码可以看出，在 JavaScript 中，值是具有类型的，而变量是可以随时保存任何类型的值。<br>然而，我们在声明一个变量的时候，往往有非常明确的使用意图。如果这些变量和参数被重新赋值为与我们原先赋值不同类型的值，那么有可能某些东西并不是我们预期的那样工作的。</p>
+<p>从上面的代码可以看出，在 JavaScript 中，值是具有类型的，而变量是可以随时保存任何类型的值。<br>然而，我们在声明一个变量的时候，往往有非常明确的使用意图。如果这些变量和参数被重新赋值为与我们原先赋值不同类型的值，那么有可能某些东西并不是我们预期的那样工作的。</p>
 <h2 id="TypeScript-的优点"><a href="#TypeScript-的优点" class="headerlink" title="TypeScript 的优点"></a>TypeScript 的优点</h2><ul>
 <li>增加了代码的可读性和可维护性，最好的文档就是代码</li>
-<li>非常包容</li>
+<li>非常包容，即使类型报错了还是可以编译成 javascript</li>
 <li>拥有活跃的社区</li>
 <li>强大的 IDE 支持<ul>
 <li>类型检查</li>
