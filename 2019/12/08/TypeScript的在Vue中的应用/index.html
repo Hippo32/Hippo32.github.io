@@ -103,7 +103,7 @@
 <meta property="og:description" content="搭建vue-cli时的配置： 打开项目，发现最大的不同是额外引入了一个库 vue-property-decorator 以及多了三个文件： shims-tsx.d.ts、shims-vue.d.ts 和 tsconfig.json。  shims-tsx.d.ts 允许你使用 .tsx 结尾的文件，用来在 Vue 项目中使用 tsx 语法。 tsx 语法就是 jsx 语法的 typescript">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/2019/12/08/TypeScript的在Vue中的应用/vuecli1.png">
-<meta property="og:updated_time" content="2019-12-09T17:02:13.909Z">
+<meta property="og:updated_time" content="2019-12-10T15:55:17.432Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TypeScript的在Vue中的应用">
 <meta name="twitter:description" content="搭建vue-cli时的配置： 打开项目，发现最大的不同是额外引入了一个库 vue-property-decorator 以及多了三个文件： shims-tsx.d.ts、shims-vue.d.ts 和 tsconfig.json。  shims-tsx.d.ts 允许你使用 .tsx 结尾的文件，用来在 Vue 项目中使用 tsx 语法。 tsx 语法就是 jsx 语法的 typescript">
@@ -394,7 +394,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-12-10 01:02:13" itemprop="dateModified" datetime="2019-12-10T01:02:13+08:00">2019-12-10</time>
+                <time title="修改时间：2019-12-10 23:55:17" itemprop="dateModified" datetime="2019-12-10T23:55:17+08:00">2019-12-10</time>
               </span>
             
           
@@ -519,7 +519,8 @@
 <p>如果像在组件内使用 Vue Router 导航钩子，必须注册一次：</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Component &#125; <span class="keyword">from</span> <span class="string">"vue-property-decorator"</span>;</span><br><span class="line"></span><br><span class="line">Component.registerHooks([</span><br><span class="line">  <span class="string">"beforeRouteEnter"</span>, <span class="comment">// 进入路由之前</span></span><br><span class="line">  <span class="string">"beforeRouteLeave"</span>, <span class="comment">// 离开路由之前</span></span><br><span class="line">  <span class="string">"beforeRouteUpdate"</span></span><br><span class="line">]);</span><br></pre></td></tr></table></figure>
 
-<h2 id="Vuex"><a href="#Vuex" class="headerlink" title="Vuex"></a>Vuex</h2><p>参考文章：</p>
+<p>值得注意的是，目前 vue2.x 虽然对 TypeScript 的支持已经有了一定进步，但是整体的代码提示还是不到位，仍然存在一些问题。 vue3.0 要到2020年一季度发布，这个版本的 vue 只是个过渡，想要让 vue 更好的与 typescript 结合，我们可以期待 vue3.0 的到来。</p>
+<p>参考文章：</p>
 <ul>
 <li><a href="https://www.uis.cc/2018/02/27/New-features-of-vue-cli-3-speed/" target="_blank" rel="noopener">vue-cli 3.0 新特性速读</a></li>
 <li><a href="https://blog.csdn.net/github_36978270/article/details/78771262" target="_blank" rel="noopener">vue-cli 中使用 TypeScript</a></li>
@@ -776,7 +777,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#data"><span class="nav-number">1.</span> <span class="nav-text">data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#computed"><span class="nav-number">2.</span> <span class="nav-text">computed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Component"><span class="nav-number">3.</span> <span class="nav-text">@Component</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prop"><span class="nav-number">4.</span> <span class="nav-text">@Prop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Watch"><span class="nav-number">5.</span> <span class="nav-text">@Watch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Emit"><span class="nav-number">6.</span> <span class="nav-text">@Emit</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue-Router"><span class="nav-number">7.</span> <span class="nav-text">Vue Router</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vuex"><span class="nav-number">8.</span> <span class="nav-text">Vuex</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#data"><span class="nav-number">1.</span> <span class="nav-text">data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#computed"><span class="nav-number">2.</span> <span class="nav-text">computed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Component"><span class="nav-number">3.</span> <span class="nav-text">@Component</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prop"><span class="nav-number">4.</span> <span class="nav-text">@Prop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Watch"><span class="nav-number">5.</span> <span class="nav-text">@Watch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Emit"><span class="nav-number">6.</span> <span class="nav-text">@Emit</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue-Router"><span class="nav-number">7.</span> <span class="nav-text">Vue Router</span></a></li></ol></div>
             
 
           </div>
