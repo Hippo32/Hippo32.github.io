@@ -103,7 +103,7 @@
 <meta property="og:description" content="布尔类型 boolean我们用 boolean 来表示布尔类型，注意开头是小写的，如果你在 TypeScript 文件中写成 Boolean 那代表是 JavaScript 中的布尔对象。 1let isAwesome: boolean = true;   这里需要提示一下，很多 TypeScript 的原始类型比如 boolean、 number、string等等，在 JavaScript 中都">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/2019/12/02/TypeScript学习系列三——TypeScript中的数据类型/enum1.png">
-<meta property="og:updated_time" content="2019-12-10T09:56:48.235Z">
+<meta property="og:updated_time" content="2019-12-10T12:01:26.748Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TypeScript学习系列三——TypeScript中的数据类型">
 <meta name="twitter:description" content="布尔类型 boolean我们用 boolean 来表示布尔类型，注意开头是小写的，如果你在 TypeScript 文件中写成 Boolean 那代表是 JavaScript 中的布尔对象。 1let isAwesome: boolean = true;   这里需要提示一下，很多 TypeScript 的原始类型比如 boolean、 number、string等等，在 JavaScript 中都">
@@ -394,7 +394,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-12-10 17:56:48" itemprop="dateModified" datetime="2019-12-10T17:56:48+08:00">2019-12-10</time>
+                <time title="修改时间：2019-12-10 20:01:26" itemprop="dateModified" datetime="2019-12-10T20:01:26+08:00">2019-12-10</time>
               </span>
             
           
@@ -494,7 +494,7 @@
 <p>例子：</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义了一个值分别为 string 和 number 的元组</span></span><br><span class="line"><span class="keyword">let</span> tom: [<span class="built_in">string</span>, <span class="built_in">number</span>] = [<span class="string">'Tom'</span>, <span class="number">25</span>];</span><br></pre></td></tr></table></figure>
 
-<p>当直接对元组类型的变量进行初始化或者赋值的时候，需要提供所有元组类型中指定的项。不能多也不能少，还不能调换顺序。<br>我们可以把元组看成严格版的数组，元组继承于数组，但是比数组拥有更严格的类型检查。不如 <code>[string, number]</code> 我们可以看成是：</p>
+<p>当直接对元组类型的变量进行初始化或者赋值的时候，需要提供所有元组类型中指定的项。不能多也不能少，还不能调换顺序。<br>我们可以把元组看成严格版的数组，元组继承于数组，但是比数组拥有更严格的类型检查。假如 <code>[string, number]</code> 我们可以看成是：</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Tuple <span class="keyword">extends</span> Array&lt;string | number&gt; &#123;</span><br><span class="line">	<span class="number">0</span>: <span class="built_in">string</span>;</span><br><span class="line">	<span class="number">1</span>: <span class="built_in">number</span>;</span><br><span class="line">	length: <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="枚举类型-enum"><a href="#枚举类型-enum" class="headerlink" title="枚举类型 enum"></a>枚举类型 enum</h2><p>枚举类型用于取值被限定在一定范围内的场景，比如一周只能有七天，颜色限定为红绿蓝等。</p>
