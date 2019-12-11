@@ -103,7 +103,7 @@
 <meta property="og:description" content="布尔类型 boolean我们用 boolean 来表示布尔类型，注意开头是小写的，如果你在 TypeScript 文件中写成 Boolean 那代表是 JavaScript 中的布尔对象。 1let isAwesome: boolean = true;   这里需要提示一下，很多 TypeScript 的原始类型比如 boolean、 number、string等等，在 JavaScript 中都">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/2019/12/02/TypeScript学习系列三——TypeScript中的数据类型/enum1.png">
-<meta property="og:updated_time" content="2019-12-10T12:01:26.748Z">
+<meta property="og:updated_time" content="2019-12-10T16:38:48.189Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TypeScript学习系列三——TypeScript中的数据类型">
 <meta name="twitter:description" content="布尔类型 boolean我们用 boolean 来表示布尔类型，注意开头是小写的，如果你在 TypeScript 文件中写成 Boolean 那代表是 JavaScript 中的布尔对象。 1let isAwesome: boolean = true;   这里需要提示一下，很多 TypeScript 的原始类型比如 boolean、 number、string等等，在 JavaScript 中都">
@@ -394,7 +394,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-12-10 20:01:26" itemprop="dateModified" datetime="2019-12-10T20:01:26+08:00">2019-12-10</time>
+                <time title="修改时间：2019-12-11 00:38:48" itemprop="dateModified" datetime="2019-12-11T00:38:48+08:00">2019-12-11</time>
               </span>
             
           
@@ -477,7 +477,7 @@
 
 <p>除非在不得已的情况下，否则不应该首先考虑使用此类型。</p>
 <h2 id="never-类型"><a href="#never-类型" class="headerlink" title="never 类型"></a>never 类型</h2><p><code>never</code> 类型表示的是那些不存在的值的类型。例如， <code>never</code> 类型是那些总是会抛出异常或根本就不会有返回值的函数表达式或箭头函数表达式的返回值类型；变量也可能是 <code>never</code> 类型，当它们被永不为真的类型保护所约束时。</p>
-<p><code>never</code> 类型时任何类型的子类型，也可以赋值给任何类型，然而，没有类型是 <code>never</code> 的子类型或可以赋值给 <code>never</code> 类型（除了 <code>never</code> 本身之外）。即使 <code>any</code> 也不可以赋值给 <code>never</code> 。</p>
+<p><code>never</code> 类型是任何类型的子类型，也可以赋值给任何类型，然而，没有类型是 <code>never</code> 的子类型或可以赋值给 <code>never</code> 类型（除了 <code>never</code> 本身之外）。即使 <code>any</code> 也不可以赋值给 <code>never</code> 。</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 抛出异常的函数永远不会有返回值</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">error</span>(<span class="params">message: <span class="built_in">string</span></span>): <span class="title">never</span> </span>&#123;</span><br><span class="line">	<span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(message);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 空数组，而且永远是空的</span></span><br><span class="line"><span class="keyword">const</span> empty: never[] = [];</span><br></pre></td></tr></table></figure>
 
 <h2 id="数组类型-array"><a href="#数组类型-array" class="headerlink" title="数组类型 array"></a>数组类型 array</h2><p>数组类型有两种定义方式：</p>
@@ -485,7 +485,7 @@
 <li><p><strong>元素类型 + []</strong></p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> list: <span class="built_in">number</span>[] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br></pre></td></tr></table></figure>
 </li>
-<li><p><strong>Array<elemtype></elemtype></strong></p>
+<li><p><strong><code>Array&lt;elemType&gt;</code></strong></p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> list: <span class="built_in">Array</span>&lt;<span class="built_in">number</span>&gt; = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br></pre></td></tr></table></figure>
 
 </li>
@@ -502,7 +502,7 @@
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> Days &#123;Sun, Mon, Tue, Wed, Thu, Fri, Sat&#125;;</span><br></pre></td></tr></table></figure>
 
 <p>枚举成员会被赋值为从 0 开始递增的数字，同时也会对枚举值到枚举名进行反向映射。</p>
-<p>也可以给枚举项手动赋值，未手动赋值的枚举项会接着上一个枚举项递增。  手动赋值的枚举项可以不是数字。当让，手动赋值的枚举项也可以为小数或负数，此时后续未手动赋值的项的递增项仍为 1 。</p>
+<p>也可以给枚举项手动赋值，未手动赋值的枚举项会接着上一个枚举项递增。  手动赋值的枚举项可以不是数字。当然，手动赋值的枚举项也可以为小数或负数，此时后续未手动赋值的项的递增项仍为 1 。</p>
 <h3 id="枚举项"><a href="#枚举项" class="headerlink" title="枚举项"></a>枚举项</h3><p>枚举项有两种类型：</p>
 <ul>
 <li>常数项</li>
@@ -513,17 +513,19 @@
 <li><p>不具有初始化函数并且之前的枚举成员是常数，在这种情况下，当前枚举成员的值为上一个枚举成员的值加 1 。第一个枚举元素如果没有初始化方法，那么它的初始化值为 0 。</p>
 </li>
 <li><p>枚举成员使用<strong>常数枚举表达式</strong>初始化。常数枚举表达式是 typescript 表达式的子集，它可以在编译阶段求值。当一个表达式满足下面条件之一时，它就是一个常数枚举表达式：</p>
-</li>
+<ul>
 <li><p>数字字面量或字符串字面量</p>
 </li>
 <li><p>引用之前定义的常数枚举成员（可以是在不用的枚举类型中定义的）如果这个成员是在同一个枚举类型中定义的，可以使用非限定名来引用。</p>
-<p>  <img src="/2019/12/02/TypeScript学习系列三——TypeScript中的数据类型/enum1.png" alt="引用常数枚举成员例子"></p>
+<p><img src="/2019/12/02/TypeScript学习系列三——TypeScript中的数据类型/enum1.png" alt="引用常数枚举成员例子"></p>
 </li>
 <li><p>带括号的常数枚举表达式</p>
 </li>
 <li><p><code>+</code>、<code>-</code>、<code>~</code>一元运算符应用于常数枚举表达式</p>
 </li>
 <li><p><code>+</code>，<code>-</code>，<code>*</code>，<code>/</code>，<code>%</code>，<code>&lt;&lt;</code>，<code>&gt;&gt;</code>，<code>&gt;&gt;&gt;</code>，<code>&amp;</code>，<code>|</code>，<code>^</code>二元运算符，常数枚举表达式作为其一个操作对象。若常数枚举表达式求值后为 <code>NaN</code> 或 <code>Infinity</code>，则会在编译阶段报错。</p>
+</li>
+</ul>
 </li>
 </ul>
 <p>所有其他情况的枚举成员被当作是需要计算得出的值。如果紧接在计算所得项后面的是未手动赋值的项，那么它就会因为无法获得初始值而报错。</p>
