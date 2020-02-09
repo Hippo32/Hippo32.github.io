@@ -97,7 +97,7 @@
   <meta name="description" content="日常的总结和感悟">
 <meta property="og:type" content="website">
 <meta property="og:title" content="RuiYi&#39;s Notebook">
-<meta property="og:url" content="http://yoursite.com/categories/JavaScript/index.html">
+<meta property="og:url" content="http://yoursite.com/categories/javaScript/index.html">
 <meta property="og:site_name" content="RuiYi&#39;s Notebook">
 <meta property="og:description" content="日常的总结和感悟">
 <meta property="og:locale" content="zh-CN">
@@ -111,7 +111,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/categories/JavaScript/">
+  <link rel="canonical" href="http://yoursite.com/categories/javaScript/">
 
 
 
@@ -121,7 +121,7 @@
   };
 </script>
 
-  <title>分类: JavaScript | RuiYi's Notebook</title>
+  <title>分类: javaScript | RuiYi's Notebook</title>
   
 
 
@@ -345,7 +345,7 @@
 
     <div id="posts" class="posts-collapse">
       <div class="collection-title">
-        <h1>JavaScript<small>分类</small>
+        <h1>javaScript<small>分类</small>
         </h1>
       </div>
 
@@ -357,16 +357,94 @@
 
       <h2 class="post-title">
         
-          <a class="post-title-link" href="/2019/09/04/30秒一个JS片段/" itemprop="url">
+          <a class="post-title-link" href="/2019/11/07/点击事件的单击和双击的冲突解决/" itemprop="url">
             
-              <span itemprop="name">30秒一个JS片段</span>
+              <span itemprop="name">点击事件的单击和双击的冲突解决</span>
             
           </a>
         
       </h2>
 
       <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-09-04T22:29:38+08:00" content="2019-09-04">
+        <time class="post-time" itemprop="dateCreated" datetime="2019-11-07T13:23:26+08:00" content="2019-11-07">
+          11-07
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+          <a class="post-title-link" href="/2019/10/31/JavaSrcipt基础知识/" itemprop="url">
+            
+              <span itemprop="name">JavaSrcipt基础知识</span>
+            
+          </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated" datetime="2019-10-31T15:02:50+08:00" content="2019-10-31">
+          10-31
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+          <a class="post-title-link" href="/2019/10/26/JavaScript的正则表达式/" itemprop="url">
+            
+              <span itemprop="name">JavaScript的正则表达式</span>
+            
+          </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated" datetime="2019-10-26T21:42:30+08:00" content="2019-10-26">
+          10-26
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+          <a class="post-title-link" href="/2019/09/04/关于数组的用法/" itemprop="url">
+            
+              <span itemprop="name">关于数组的用法</span>
+            
+          </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated" datetime="2019-09-04T09:22:38+08:00" content="2019-09-04">
           09-04
         </time>
       </div>
@@ -424,7 +502,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">27</span>
+                    <span class="site-state-item-count">30</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -461,7 +539,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">10</span>
+                      
+                    
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -737,94 +817,6 @@
       $visitors.each(function() {
         entries.push( $(this).attr('id').trim() );
       });
-
-      Counter('get', '/classes/Counter', { where: JSON.stringify({ url: { '$in': entries } }) })
-        .done(function({ results }) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.url;
-            var time = item.time;
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for (var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if (countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function ({ responseJSON }) {
-          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
-        });
-    }
-    
-
-    $(function() {
-      $.get('https://app-router.leancloud.cn/2/route?appId=' + '89Ijcv6J3iuRaRnYokA8lFTW-gzGzoHsz')
-        .done(function({ api_server }) {
-          var Counter = function(method, url, data) {
-            return $.ajax({
-              method: method,
-              url: 'https://' + api_server + '/1.1' + url,
-              headers: {
-                'X-LC-Id': '89Ijcv6J3iuRaRnYokA8lFTW-gzGzoHsz',
-                'X-LC-Key': 'JvlwwLCCnsM8Ov0SIjLE0l3U',
-                'Content-Type': 'application/json',
-              },
-              data: data
-            });
-          };
-          
-            if ($('.post-title-link').length >= 1) {
-              showTime(Counter);
-            }
-          
-        });
-    });
-  </script>
-
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-</body>
-</html>
- });
 
       Counter('get', '/classes/Counter', { where: JSON.stringify({ url: { '$in': entries } }) })
         .done(function({ results }) {

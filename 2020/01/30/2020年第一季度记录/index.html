@@ -109,7 +109,13 @@
 <meta property="og:image" content="http://yoursite.com/2020/01/30/2020年第一季度记录/globalthis.jpg">
 <meta property="og:image" content="http://yoursite.com/2020/01/30/2020年第一季度记录/bigint.jpg">
 <meta property="og:image" content="http://yoursite.com/2020/01/30/2020年第一季度记录/matchall.png">
-<meta property="og:updated_time" content="2020-02-03T04:27:45.762Z">
+<meta property="og:image" content="http://yoursite.com/2020/01/30/2020年第一季度记录/ping.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/30/2020年第一季度记录/ping%E7%9A%84%E7%94%A8%E6%B3%95.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/30/2020年第一季度记录/pingt.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/30/2020年第一季度记录/pinga.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/30/2020年第一季度记录/pingn.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/30/2020年第一季度记录/pingl.png">
+<meta property="og:updated_time" content="2020-02-05T09:25:58.456Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2020年第一季度记录">
 <meta name="twitter:description" content="傅里叶变换傅里叶变换，表示能将满足一定条件的某个函数表示成三角函数（正弦和/或余弦函数）或者它们的积分的线性组合。在不同的研究领域，傅里叶变换具有多种不同的变体形式，如连续傅里叶变换和离散傅里叶变换。 时域以时间作为参照来观察动态世界的方法我们称其为时域分析。 频域频域是描述信号在频率方面特性时用到的一种坐标系。用线性代数的语言就是装着正弦函数的空间。频域最重要的性质是：它不是真实的，而是一个数学">
@@ -400,7 +406,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-02-03 12:27:45" itemprop="dateModified" datetime="2020-02-03T12:27:45+08:00">2020-02-03</time>
+                <time title="修改时间：2020-02-05 17:25:58" itemprop="dateModified" datetime="2020-02-05T17:25:58+08:00">2020-02-05</time>
               </span>
             
           
@@ -548,7 +554,37 @@
 </blockquote>
 <p>浏览器兼容性：</p>
 <p><img src="/2020/01/30/2020年第一季度记录/matchall.png" alt="matchAll的浏览器兼容性"></p>
-
+<h2 id="ping命令的用法"><a href="#ping命令的用法" class="headerlink" title="ping命令的用法"></a>ping命令的用法</h2><p>在网络种ping是一个十分强大的TCP/IP工具。它的作用主要为：</p>
+<ol>
+<li>用来检测网络的连通情况和分析网络速度。</li>
+<li>根据域名得到服务器IP。</li>
+<li>根据ping返回的TTL值来判断对方所使用的操作系统及数据包经过路由器数量。</li>
+</ol>
+<p>我们通常会用它来直接ping ip地址，来测试网络的连通情况。</p>
+<p><img src="/2020/01/30/2020年第一季度记录/ping.png" alt="ping的例子"></p>
+<ul>
+<li>字节：数据包大小。</li>
+<li>时间：响应时间，这个时间越小，说明你连接这个地址速度越快。</li>
+<li>TTL：Time To Live，表示 DNS 记录在 DNS 服务器上存在的时间，它是 IP 协议包的一个值，告诉路由器该数据包何时需要被丢弃。可以通过 ping 返回的 TTL 值大小，粗略地判断目标系统类型是 Windows 系统还是 UNIX/Linux 系统。</li>
+</ul>
+<p>默认情况下，Linux 系统的 TTL 值为 64 或 255，WindowsNT/2000/XP 系统的 TTL 值为 128， Windows98 系统的 TTL 值为32， UNIX 主机的 TTL 值为 255。<br>因此一般 TTL 值：</p>
+<ul>
+<li>100~130ms之间，Windows系统；</li>
+<li>240~255ms之间，UNIX/Linux系统</li>
+</ul>
+<p>ping命令除了直接ping网络的ip地址，验证网络畅通和速度之外，它还有这些用法。</p>
+<p><img src="/2020/01/30/2020年第一季度记录/ping%E7%9A%84%E7%94%A8%E6%B3%95.png" alt="ping的用法"></p>
+<h3 id="ping-t"><a href="#ping-t" class="headerlink" title="ping -t"></a>ping -t</h3><p>不间断地ping指定计算机，直到管理员终端。</p>
+<p><img src="/2020/01/30/2020年第一季度记录/pingt.png" alt="ping -t"></p>
+<h3 id="ping-a"><a href="#ping-a" class="headerlink" title="ping -a"></a>ping -a</h3><p>ping -a 解析计算机名与 NetBios 名。就是可以通过 ping 它的 ip 地址，可以解析出主机名。</p>
+<p><img src="/2020/01/30/2020年第一季度记录/pinga.png" alt="ping -a"></p>
+<h3 id="ping-n"><a href="#ping-n" class="headerlink" title="ping -n"></a>ping -n</h3><p>在默认情况下，一般都只发送四个数据包，通过这个命令可以自己定义发送的个数，对衡量网络很有帮助。</p>
+<p><img src="/2020/01/30/2020年第一季度记录/pingn.png" alt="ping -n"></p>
+<h3 id="ping-l-size"><a href="#ping-l-size" class="headerlink" title="ping -l size"></a>ping -l size</h3><p>发送size指定大小的到目标主机的数据包。<br>在默认的情况下Windows的ping 发送的数据包大小为32bytes，最大能发送65500bytes。当一次发送的数据包大于或等于65500bytes时，将可能导致接收方计算机宕机。所以微软限制了这一数值，这个参数配合其它参数以后危害非常强大，比如攻击者可以结合 <code>-t</code> 参数实施 DDos 攻击。（所以它具有危险性，不要轻易向别人计算机使用）。</p>
+<p><img src="/2020/01/30/2020年第一季度记录/pingl.png" alt="ping -l"></p>
+<p>如果只有一台计算机不停的发送大小为65500bytes时也许没有什么效果，但如果有很多计算机那么就可以使对方完全瘫痪，网络严重堵塞，由此可见为例非同小可。</p>
+<h3 id="ping-r-count"><a href="#ping-r-count" class="headerlink" title="ping -r count"></a>ping -r count</h3><p>在“记录路由”字段种记录传出和返回数据包的路由，探测经过的路由个数，但最多只能跟踪到9个路由。</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping -n <span class="number">1</span> -r <span class="number">9</span> <span class="number">202.102</span><span class="number">.224</span><span class="number">.25</span>  <span class="comment">// 发送一个数据包，最多记录9个路由</span></span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -596,6 +632,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/02/04/前端优化/" rel="prev" title="前端优化">
+                前端优化 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -664,7 +704,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">27</span>
+                    <span class="site-state-item-count">30</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -701,7 +741,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">10</span>
+                      
+                    
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -826,7 +868,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#傅里叶变换"><span class="nav-number">1.</span> <span class="nav-text">傅里叶变换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NP完全问题"><span class="nav-number">2.</span> <span class="nav-text">NP完全问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ES2020新特性"><span class="nav-number">3.</span> <span class="nav-text">ES2020新特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Promise-allSettled"><span class="nav-number">3.1.</span> <span class="nav-text">Promise.allSettled</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可选链（Optional-chaining）"><span class="nav-number">3.2.</span> <span class="nav-text">可选链（Optional chaining）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#空值合并运算符（Nullish-coalescing-Operator）"><span class="nav-number">3.3.</span> <span class="nav-text">空值合并运算符（Nullish coalescing Operator）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dynamic-import"><span class="nav-number">3.4.</span> <span class="nav-text">dynamic-import</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#globalThis"><span class="nav-number">3.5.</span> <span class="nav-text">globalThis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BigInt"><span class="nav-number">3.6.</span> <span class="nav-text">BigInt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String-prototype-matchAll"><span class="nav-number">3.7.</span> <span class="nav-text">String.prototype.matchAll</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#傅里叶变换"><span class="nav-number">1.</span> <span class="nav-text">傅里叶变换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NP完全问题"><span class="nav-number">2.</span> <span class="nav-text">NP完全问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ES2020新特性"><span class="nav-number">3.</span> <span class="nav-text">ES2020新特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Promise-allSettled"><span class="nav-number">3.1.</span> <span class="nav-text">Promise.allSettled</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可选链（Optional-chaining）"><span class="nav-number">3.2.</span> <span class="nav-text">可选链（Optional chaining）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#空值合并运算符（Nullish-coalescing-Operator）"><span class="nav-number">3.3.</span> <span class="nav-text">空值合并运算符（Nullish coalescing Operator）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dynamic-import"><span class="nav-number">3.4.</span> <span class="nav-text">dynamic-import</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#globalThis"><span class="nav-number">3.5.</span> <span class="nav-text">globalThis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BigInt"><span class="nav-number">3.6.</span> <span class="nav-text">BigInt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String-prototype-matchAll"><span class="nav-number">3.7.</span> <span class="nav-text">String.prototype.matchAll</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ping命令的用法"><span class="nav-number">4.</span> <span class="nav-text">ping命令的用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ping-t"><span class="nav-number">4.1.</span> <span class="nav-text">ping -t</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ping-a"><span class="nav-number">4.2.</span> <span class="nav-text">ping -a</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ping-n"><span class="nav-number">4.3.</span> <span class="nav-text">ping -n</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ping-l-size"><span class="nav-number">4.4.</span> <span class="nav-text">ping -l size</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ping-r-count"><span class="nav-number">4.5.</span> <span class="nav-text">ping -r count</span></a></li></ol></li></ol></div>
             
 
           </div>
