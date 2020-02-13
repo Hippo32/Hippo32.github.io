@@ -115,7 +115,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/01/30/2020年第一季度记录/pinga.png">
 <meta property="og:image" content="http://yoursite.com/2020/01/30/2020年第一季度记录/pingn.png">
 <meta property="og:image" content="http://yoursite.com/2020/01/30/2020年第一季度记录/pingl.png">
-<meta property="og:updated_time" content="2020-02-05T09:25:58.456Z">
+<meta property="og:updated_time" content="2020-02-11T05:49:15.120Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2020年第一季度记录">
 <meta name="twitter:description" content="傅里叶变换傅里叶变换，表示能将满足一定条件的某个函数表示成三角函数（正弦和/或余弦函数）或者它们的积分的线性组合。在不同的研究领域，傅里叶变换具有多种不同的变体形式，如连续傅里叶变换和离散傅里叶变换。 时域以时间作为参照来观察动态世界的方法我们称其为时域分析。 频域频域是描述信号在频率方面特性时用到的一种坐标系。用线性代数的语言就是装着正弦函数的空间。频域最重要的性质是：它不是真实的，而是一个数学">
@@ -406,7 +406,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-02-05 17:25:58" itemprop="dateModified" datetime="2020-02-05T17:25:58+08:00">2020-02-05</time>
+                <time title="修改时间：2020-02-11 13:49:15" itemprop="dateModified" datetime="2020-02-11T13:49:15+08:00">2020-02-11</time>
               </span>
             
           
@@ -585,6 +585,20 @@
 <p>如果只有一台计算机不停的发送大小为65500bytes时也许没有什么效果，但如果有很多计算机那么就可以使对方完全瘫痪，网络严重堵塞，由此可见为例非同小可。</p>
 <h3 id="ping-r-count"><a href="#ping-r-count" class="headerlink" title="ping -r count"></a>ping -r count</h3><p>在“记录路由”字段种记录传出和返回数据包的路由，探测经过的路由个数，但最多只能跟踪到9个路由。</p>
 <figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping -n <span class="number">1</span> -r <span class="number">9</span> <span class="number">202.102</span><span class="number">.224</span><span class="number">.25</span>  <span class="comment">// 发送一个数据包，最多记录9个路由</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="YAGNI-原则"><a href="#YAGNI-原则" class="headerlink" title="YAGNI 原则"></a>YAGNI 原则</h2><p>适可而止：You Ain’t Gonna Need It</p>
+<p>YAGNI原则指的是只需要将应用程序必需的功能包含进来，而不要试图添加任何其他你认为可能需要的功能。</p>
+<p>在一个软件项目中，往往80%的时间花费在20%的功能上。<br>当你准备列出一个项目清单时，试着考虑以下问题：</p>
+<ul>
+<li>通过降低抽象的层级，来实现低复杂度。</li>
+<li>根据特性将功能独立出来。</li>
+<li>适度接受非功能性需求。</li>
+<li>识别耗时的任务，并摆脱它们。</li>
+</ul>
+<p>参考这篇文章：<a href="https://www.cnblogs.com/youring2/p/4908258.html" target="_blank" rel="noopener">https://www.cnblogs.com/youring2/p/4908258.html</a></p>
+<h2 id="node-sass-安装失败"><a href="#node-sass-安装失败" class="headerlink" title="node-sass 安装失败"></a>node-sass 安装失败</h2><p>在拉取项目代码后执行 <code>yarn install</code> 后一直报错，后来终于发现是 <code>node-sass</code> 安装失败了。</p>
+<p>解决方案：<a href="https://www.jianshu.com/p/92afe92db99f" target="_blank" rel="noopener">https://www.jianshu.com/p/92afe92db99f</a></p>
+
       
     </div>
 
@@ -704,7 +718,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">30</span>
+                    <span class="site-state-item-count">31</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -786,7 +800,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -868,7 +884,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#傅里叶变换"><span class="nav-number">1.</span> <span class="nav-text">傅里叶变换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NP完全问题"><span class="nav-number">2.</span> <span class="nav-text">NP完全问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ES2020新特性"><span class="nav-number">3.</span> <span class="nav-text">ES2020新特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Promise-allSettled"><span class="nav-number">3.1.</span> <span class="nav-text">Promise.allSettled</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可选链（Optional-chaining）"><span class="nav-number">3.2.</span> <span class="nav-text">可选链（Optional chaining）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#空值合并运算符（Nullish-coalescing-Operator）"><span class="nav-number">3.3.</span> <span class="nav-text">空值合并运算符（Nullish coalescing Operator）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dynamic-import"><span class="nav-number">3.4.</span> <span class="nav-text">dynamic-import</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#globalThis"><span class="nav-number">3.5.</span> <span class="nav-text">globalThis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BigInt"><span class="nav-number">3.6.</span> <span class="nav-text">BigInt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String-prototype-matchAll"><span class="nav-number">3.7.</span> <span class="nav-text">String.prototype.matchAll</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ping命令的用法"><span class="nav-number">4.</span> <span class="nav-text">ping命令的用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ping-t"><span class="nav-number">4.1.</span> <span class="nav-text">ping -t</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ping-a"><span class="nav-number">4.2.</span> <span class="nav-text">ping -a</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ping-n"><span class="nav-number">4.3.</span> <span class="nav-text">ping -n</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ping-l-size"><span class="nav-number">4.4.</span> <span class="nav-text">ping -l size</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ping-r-count"><span class="nav-number">4.5.</span> <span class="nav-text">ping -r count</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#傅里叶变换"><span class="nav-number">1.</span> <span class="nav-text">傅里叶变换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NP完全问题"><span class="nav-number">2.</span> <span class="nav-text">NP完全问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ES2020新特性"><span class="nav-number">3.</span> <span class="nav-text">ES2020新特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Promise-allSettled"><span class="nav-number">3.1.</span> <span class="nav-text">Promise.allSettled</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可选链（Optional-chaining）"><span class="nav-number">3.2.</span> <span class="nav-text">可选链（Optional chaining）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#空值合并运算符（Nullish-coalescing-Operator）"><span class="nav-number">3.3.</span> <span class="nav-text">空值合并运算符（Nullish coalescing Operator）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dynamic-import"><span class="nav-number">3.4.</span> <span class="nav-text">dynamic-import</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#globalThis"><span class="nav-number">3.5.</span> <span class="nav-text">globalThis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BigInt"><span class="nav-number">3.6.</span> <span class="nav-text">BigInt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String-prototype-matchAll"><span class="nav-number">3.7.</span> <span class="nav-text">String.prototype.matchAll</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ping命令的用法"><span class="nav-number">4.</span> <span class="nav-text">ping命令的用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ping-t"><span class="nav-number">4.1.</span> <span class="nav-text">ping -t</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ping-a"><span class="nav-number">4.2.</span> <span class="nav-text">ping -a</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ping-n"><span class="nav-number">4.3.</span> <span class="nav-text">ping -n</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ping-l-size"><span class="nav-number">4.4.</span> <span class="nav-text">ping -l size</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ping-r-count"><span class="nav-number">4.5.</span> <span class="nav-text">ping -r count</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#YAGNI-原则"><span class="nav-number">5.</span> <span class="nav-text">YAGNI 原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#node-sass-安装失败"><span class="nav-number">6.</span> <span class="nav-text">node-sass 安装失败</span></a></li></ol></div>
             
 
           </div>
