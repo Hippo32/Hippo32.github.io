@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="数据驱动Vue.js 的一个核心思想是数据驱动。所谓数据驱动就是视图是由数据驱动生成的，我们对视图的修改，不会直接操作 DOM ，而是通过修改数据。 下面我将从一个简单的例子，然后从源码的角度来分析在Vue中数据是如何被渲染成最终的 DOM 的。 构建一个例子我用 vue-cli 搭建了一个简单的 vue 项目。 12345678// main.jsimport Vue from &apos;vue&apos;imp">
+<meta name="keywords" content="vue,vue源码解析">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在Vue中模板和数据如何渲染成DOM">
+<meta property="og:url" content="http://yoursite.com/2020/02/15/在Vue中模板和数据如何渲染成DOM/index.html">
+<meta property="og:site_name" content="RuiYi&#39;s Notebook">
+<meta property="og:description" content="数据驱动Vue.js 的一个核心思想是数据驱动。所谓数据驱动就是视图是由数据驱动生成的，我们对视图的修改，不会直接操作 DOM ，而是通过修改数据。 下面我将从一个简单的例子，然后从源码的角度来分析在Vue中数据是如何被渲染成最终的 DOM 的。 构建一个例子我用 vue-cli 搭建了一个简单的 vue 项目。 12345678// main.jsimport Vue from &apos;vue&apos;imp">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-02-15T17:31:36.580Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在Vue中模板和数据如何渲染成DOM">
+<meta name="twitter:description" content="数据驱动Vue.js 的一个核心思想是数据驱动。所谓数据驱动就是视图是由数据驱动生成的，我们对视图的修改，不会直接操作 DOM ，而是通过修改数据。 下面我将从一个简单的例子，然后从源码的角度来分析在Vue中数据是如何被渲染成最终的 DOM 的。 构建一个例子我用 vue-cli 搭建了一个简单的 vue 项目。 12345678// main.jsimport Vue from &apos;vue&apos;imp">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2020/02/15/在Vue中模板和数据如何渲染成DOM/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>在Vue中模板和数据如何渲染成DOM | RuiYi's Notebook</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">RuiYi's Notebook</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/15/在Vue中模板和数据如何渲染成DOM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hippo">
+      <meta itemprop="description" content="日常的总结和感悟">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="RuiYi's Notebook">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">在Vue中模板和数据如何渲染成DOM
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-02-15 15:36:40" itemprop="dateCreated datePublished" datetime="2020-02-15T15:36:40+08:00">2020-02-15</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-02-16 01:31:36" itemprop="dateModified" datetime="2020-02-16T01:31:36+08:00">2020-02-16</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/vue/" itemprop="url" rel="index"><span itemprop="name">vue</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+            <span id="/2020/02/15/在Vue中模板和数据如何渲染成DOM/" class="post-meta-item leancloud_visitors" data-flag-title="在Vue中模板和数据如何渲染成DOM">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="数据驱动"><a href="#数据驱动" class="headerlink" title="数据驱动"></a>数据驱动</h1><p>Vue.js 的一个核心思想是数据驱动。所谓数据驱动就是视图是由数据驱动生成的，我们对视图的修改，不会直接操作 DOM ，而是通过修改数据。</p>
+<p>下面我将从一个简单的例子，然后从源码的角度来分析在Vue中数据是如何被渲染成最终的 DOM 的。</p>
+<h2 id="构建一个例子"><a href="#构建一个例子" class="headerlink" title="构建一个例子"></a>构建一个例子</h2><p>我用 vue-cli 搭建了一个简单的 vue 项目。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js</span></span><br><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./App.vue'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#app'</span>,</span><br><span class="line">  render: <span class="function"><span class="params">h</span> =&gt;</span> h(App)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=&quot;app&quot;&gt;</span><br><span class="line">    &#123;&#123; message &#125;&#125;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">	return &#123;</span><br><span class="line">      message: &quot;new Vue&quot;</span><br><span class="line">	&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>然后运行项目，就会在浏览器中看到有 new Vue。</p>
+<h2 id="new-Vue-发生了什么"><a href="#new-Vue-发生了什么" class="headerlink" title="new Vue 发生了什么"></a>new Vue 发生了什么</h2><p>new Vue() 实际是构建了一个 Vue 的实例，而 Vue 就是一个构造函数，这个函数在 <code>src/core/instance/index.js</code> 中定义。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/core/instance/index.js</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Vue</span>(<span class="params">options</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (process.env.NODE_ENV !== <span class="string">"production"</span> &amp;&amp; !(<span class="keyword">this</span> <span class="keyword">instanceof</span> Vue)) &#123;</span><br><span class="line">	warn(<span class="string">"Vue is a constructor and should be called with the `new` keyword"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>._init(options);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">initMixin(Vue);</span><br><span class="line">stateMixin(Vue);</span><br><span class="line">eventsMixin(Vue);</span><br><span class="line">lifecycleMixin(Vue);</span><br><span class="line">renderMixin(Vue);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Vue;</span><br></pre></td></tr></table></figure>
+
+<p>Vue 函数在执行了一个简单的判断后就执行 <code>_init</code> 函数。这个函数在 <code>initMixin</code> 中定义。跳转到 <code>./init</code> 中看。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ...</span></span><br><span class="line">Vue.prototype._init = <span class="function"><span class="keyword">function</span>(<span class="params">options?: Object</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> vm: Component = <span class="keyword">this</span>;</span><br><span class="line">  vm._uid = uid++;	</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 合并 options 等...</span></span><br><span class="line"></span><br><span class="line">  vm._self = vm;</span><br><span class="line">  <span class="comment">// 初始化生命周期，初始化事件中心，初始化渲染，初始化data、props、computed、watcher等等</span></span><br><span class="line">  initLifecycle(vm);</span><br><span class="line">  initEvents(vm);</span><br><span class="line">  initRender(vm);</span><br><span class="line">  callHook(vm, <span class="string">"beforeCreate"</span>);</span><br><span class="line">  initInjection(vm);</span><br><span class="line">  initState(vm);</span><br><span class="line">  initProvide(vm);</span><br><span class="line">  callHook(vm, <span class="string">"created"</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 判断$options中有没有 el，有的话就挂载el节点，在下一节会讲这个函数</span></span><br><span class="line">  <span class="keyword">if</span>(vm.$options.el) &#123;</span><br><span class="line">	vm.$mount(vm.$options.el);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
+
+<p>在 <code>initState</code> 中，对 options 传入的 <code>data</code> 进行了初始化。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">initState</span>(<span class="params">vm: Component</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> opts = vm.$options;</span><br><span class="line">  <span class="keyword">if</span> (opts.props) initProps(vm, opts.props) <span class="comment">// 如果有props，则初始化props</span></span><br><span class="line">  <span class="keyword">if</span> (opts.methods) initMethods(vm, opts.methods);</span><br><span class="line">  <span class="keyword">if</span> (opts.data) &#123;</span><br><span class="line">	initData(vm); <span class="comment">// 我们主要关注这里，因为我们是通过data传入了message</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    observe((vm._data = &#123;&#125;), <span class="literal">true</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">initData</span>(<span class="params">vm: Component</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> data = vm.$options.data;</span><br><span class="line">  <span class="comment">// 判断data是不是function，如果是就执行一次data()，获取data()返回的值，不是的话就直接获取到data这个对象。</span></span><br><span class="line">  data = vm._data = <span class="keyword">typeof</span> data === <span class="string">"function"</span> ? getData(data, vm) : data || &#123;&#125;;</span><br><span class="line">  <span class="comment">// 判断data是不是一个对象，如果不是对象就报一个警告</span></span><br><span class="line">  <span class="keyword">if</span> (!isPlainObject(data)) &#123;</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> keys = <span class="built_in">Object</span>.keys(data);</span><br><span class="line">  <span class="keyword">const</span> props = vm.$options.props;</span><br><span class="line">  <span class="keyword">const</span> methods = vm.$options.methods;</span><br><span class="line">  <span class="keyword">let</span> i = keys.length;</span><br><span class="line">  <span class="keyword">while</span> (i--) &#123;</span><br><span class="line">    <span class="comment">// 循环做一个对比，判断data的key值会不会跟props和methods或者保留字重复，都不满足的话就执行proxy(vm, `_data`, key)</span></span><br><span class="line">    <span class="keyword">const</span> key = keys[i];</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">	<span class="keyword">if</span> (props &amp;&amp; hasOwn(props, key)) &#123; </span><br><span class="line">	  <span class="comment">// ...</span></span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (!isReserved(key)) &#123;</span><br><span class="line">	  proxy(vm, <span class="string">`_data`</span>, key);</span><br><span class="line">	&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">proxy</span>(<span class="params">target: Object, sourceKey: string, key: string</span>) </span>&#123;</span><br><span class="line">  sharedPropertyDefinition.get = <span class="function"><span class="keyword">function</span> <span class="title">proxyGetter</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">this</span>[sourceKey][key];</span><br><span class="line">  &#125;;</span><br><span class="line">  sharedPropertyDefinition.set = <span class="function"><span class="keyword">function</span> <span class="title">proxySetter</span>(<span class="params">val</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>[sourceKey][key] = val;</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="built_in">Object</span>.defineProperty(target, key, sharedPropertyDefinition);</span><br></pre></td></tr></table></figure>
+
+<p><code>proxy()</code>中对 <code>target.key</code> 做了一层 <code>getter</code> 和 <code>setter</code> ，也就是说，当执行 <code>vm.key</code> 时，实际上是在执行 <code>vm._data.key</code>。</p>
+<h2 id="挂载的实现"><a href="#挂载的实现" class="headerlink" title="挂载的实现"></a>挂载的实现</h2><p>看完上面如何对 data 数据进行处理，这一节来看 <code>$mount</code> 函数中都做了些什么事情。</p>
+<p>Vue 中我们是通过 <code>$mount</code> 实例方法去挂载 <code>vm</code> 的， <code>$mount</code> 方法在多个文件中都有定义。因为 <code>$mount</code> 这个方法的实现是和平台、构建方式都相关的。接下来我们重点分析带 <code>compiler</code> 版本的 <code>$mount</code> 实现。</p>
+<blockquote>
+<p>这里解释一下带 <code>compiler</code> 版本和不带 <code>compiler</code> 版本的区别，带 <code>compiler</code> 版本的可以将 <code>template</code> 编译成 <code>render</code> 函数，而不带 <code>compiler</code> 版本的则不可以，因此在不带 <code>compiler</code> 版本中，不能将 HTML 变成节点，需要手写 <code>render</code> 函数。</p>
+</blockquote>
+<p>下面来看一下在 <code>src/platforms/web/entry-runtime-with-compiler.js</code> 中 <code>$mount</code> 的定义</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Vue.prototype.$mount = <span class="function"><span class="keyword">function</span>(<span class="params">el?: string | Element, hydrating?: boolean</span>): <span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="comment">// query方法在util/index.js中定义，主要将el转换为一个dom对象</span></span><br><span class="line">  el = el &amp;&amp; query(el);</span><br><span class="line">  <span class="comment">// el节点不能是body节点或者文档节点</span></span><br><span class="line">  <span class="keyword">if</span> (el === <span class="built_in">document</span>.body || el === <span class="built_in">document</span>.documentElement) &#123;</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> options = <span class="keyword">this</span>.$options;</span><br><span class="line">  <span class="comment">// 将 template/el 转化为 render 函数</span></span><br><span class="line">  <span class="keyword">if</span> (!options.render) &#123;</span><br><span class="line">    <span class="keyword">if</span> (template) &#123;</span><br><span class="line">	  <span class="comment">// 编译阶段，也就是说最终Vue只认render函数，如果是render函数，直接调用mount方法，如果没有的话就将template都编译转化成render函数</span></span><br><span class="line">	  <span class="comment">// 主要是通过 compileToFunctions 转化成render函数的，这个地方先不详细讲</span></span><br><span class="line">	  <span class="keyword">const</span> &#123; render, staticRenders &#125; = compileToFunctions(...);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> mount.call(<span class="keyword">this</span>, el, hydrating);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>在获得 <code>render</code> 函数后，调用原先原型上的 <code>$mount</code> 方法挂载。原先原型上的 <code>$mount</code> 方法在 <code>src/platform/web/runtime/index.js</code> 中定义，之所以这么设计是为了复用，因为它是可以被 <code>runtime only</code> 版本的 Vue 直接使用的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/platform/web/runtime/index.js</span></span><br><span class="line">Vue.prototype.$mount = <span class="function"><span class="keyword">function</span>(<span class="params">el?: string | Element, hydrating?: boolean</span>): <span class="title">Component</span> </span>&#123;</span><br><span class="line">  el = el &amp;&amp; inBrowser ? query(el) : <span class="literal">undefined</span>;</span><br><span class="line">  <span class="keyword">return</span> mountComponent(<span class="keyword">this</span>, el, hydrating);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><code>$mount</code> 方法支持传入2个参数，第一个是 <code>el</code>，它表示挂载的元素，可以是字符串，也可以是 DOM 对象，如果是字符串在浏览器环境下会调用 <code>query</code> 方法转换成 DOM 对象的。第二个参数是和服务端渲染相关，在浏览器环境下我们不需要传第二个参数。</p>
+<p><code>$mount</code> 调用了在 <code>src/core/instance/lifecycle.js</code> 中的 <code>mountComponent</code> 方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/core/instance/lifecycle.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">mountComponent</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">  vm: Component,</span></span></span><br><span class="line"><span class="function"><span class="params">  el: ?Element,</span></span></span><br><span class="line"><span class="function"><span class="params">  hydrating?: boolean</span></span></span><br><span class="line"><span class="function"><span class="params"></span>): <span class="title">Component</span> </span>&#123;</span><br><span class="line">  vm.$el = el; <span class="comment">// 将el缓存起来</span></span><br><span class="line">  <span class="keyword">if</span> (!vm.$options.render) &#123;</span><br><span class="line">	<span class="comment">// 判断有没有正确生成render函数，没有的话报警告	</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">  callHook(vm, <span class="string">"beforeMount"</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> updateComponent;</span><br><span class="line">  <span class="keyword">if</span> (process.env.NODE_ENV !== <span class="string">"production"</span> &amp;&amp; config.performance &amp;&amp; mark) &#123;</span><br><span class="line">    updateComponent = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> name = vm._name;</span><br><span class="line">      <span class="keyword">const</span> id = vm._uid;</span><br><span class="line">      <span class="keyword">const</span> startTag = <span class="string">`vue-perf-start:<span class="subst">$&#123;id&#125;</span>`</span>;</span><br><span class="line">      <span class="keyword">const</span> endTag = <span class="string">`vue-perf-end:<span class="subst">$&#123;id&#125;</span>`</span>;</span><br><span class="line"></span><br><span class="line">      mark(startTag);</span><br><span class="line">      <span class="keyword">const</span> vnode = vm._render();</span><br><span class="line">      mark(endTag);</span><br><span class="line">      measure(<span class="string">`vue <span class="subst">$&#123;name&#125;</span> render`</span>, startTag, endTag);</span><br><span class="line"></span><br><span class="line">      mark(startTag);</span><br><span class="line">      vm._update(vnode, hydrating);</span><br><span class="line">      mark(endTag);</span><br><span class="line">      measure(<span class="string">`vue <span class="subst">$&#123;name&#125;</span> patch`</span>, startTag, endTag);</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    updateComponent = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// _update的第一个参数是用vm._render()渲染出一个vnode</span></span><br><span class="line">      <span class="comment">// 先执行_render()，生成一个VNode，然后再调用_update()</span></span><br><span class="line">      vm._update(vm._render(), hydrating); <span class="comment">// 调用updateComponent就会执行—_update和_render方法，这两个函数就是最终我们把它挂载到真实dom上面要用的两个函数</span></span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Watcher是个渲染watch，noop是个空函数，第四个参数是个配置</span></span><br><span class="line">  <span class="keyword">new</span> Watcher(</span><br><span class="line">    vm,</span><br><span class="line">    updateComponent,</span><br><span class="line">    noop,</span><br><span class="line">    &#123;</span><br><span class="line">      before() &#123;</span><br><span class="line">        <span class="keyword">if</span> (vm._isMounted &amp;&amp; !vm._isDestroyed) &#123;</span><br><span class="line">          callHook(vm, <span class="string">"beforeUpdate"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="literal">true</span> <span class="comment">/* isRenderWatcher */</span></span><br><span class="line">  );</span><br><span class="line">  hydrating = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">  components <span class="keyword">in</span> its inserted hook</span><br><span class="line">  <span class="keyword">if</span> (vm.$vnode == <span class="literal">null</span>) &#123;</span><br><span class="line">    vm._isMounted = <span class="literal">true</span>;</span><br><span class="line">    callHook(vm, <span class="string">"mounted"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> vm;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>从上面的代码可以看到， <code>mountComponent</code> 核心就是先实例化一个渲染 <code>Watcher</code> ，在它的回调函数中会调用 <code>updateComponent</code> 方法，在此方法中调用 <code>vm._render</code> 方法先生成 VNode ，最终调用 <code>vm._update</code> 方法更新 DOM 。</p>
+<h2 id="render"><a href="#render" class="headerlink" title="_render()"></a>_render()</h2><p><code>_render</code> 方法把实例渲染成一个 VNode。定义在 <code>src/core/instance/render.js</code> 中。</p>
+<pre><code class="javascript">Vue.prototype._render = <span class="function"><span class="keyword">function</span>(<span class="params"></span>): <span class="title">VNode</span> </span>{
+  <span class="keyword">const</span> vm: Component = <span class="keyword">this</span>;
+  <span class="keyword">const</span> { render, _parentVNode } = vm.$options;
+
+  <span class="keyword">if</span> (_parentVnode) {
+    vm.$scopeSlots = normalizeScopedSlots(
+</code></pre>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/vue/" rel="tag"># vue</a>
+          
+            <a href="/tags/vue源码解析/" rel="tag"># vue源码解析</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/02/13/生成一个Vue实例时发生了什么/" rel="next" title="生成一个Vue实例时发生了什么">
+                <i class="fa fa-chevron-left"></i> 生成一个Vue实例时发生了什么
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">hippo</p>
+              <div class="site-description motion-element" itemprop="description">日常的总结和感悟</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">32</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/Hippo32" title="GitHub &rarr; https://github.com/Hippo32" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://me.csdn.net/hualala_32" title="CSDN &rarr; https://me.csdn.net/hualala_32" rel="noopener" target="_blank"><i class="fa fa-fw fa-globe"></i>CSDN</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                推荐网站
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.zoudupai.com/index.php?action=index&sy=all" title="http://www.zoudupai.com/index.php?action=index&sy=all" rel="noopener" target="_blank">走读派</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://alvabill.ml/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-NexT%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/" title="https://alvabill.ml/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-NexT%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/" rel="noopener" target="_blank">Next主题配置</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据驱动"><span class="nav-number">1.</span> <span class="nav-text">数据驱动</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#构建一个例子"><span class="nav-number">1.1.</span> <span class="nav-text">构建一个例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#new-Vue-发生了什么"><span class="nav-number">1.2.</span> <span class="nav-text">new Vue 发生了什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#挂载的实现"><span class="nav-number">1.3.</span> <span class="nav-text">挂载的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#render"><span class="nav-number">1.4.</span> <span class="nav-text">_render()</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 – <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hippo</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.2</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.2"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+  <script>
+    
+    function showTime(Counter) {
+      var entries = [];
+      var $visitors = $('.leancloud_visitors');
+
+      $visitors.each(function() {
+        entries.push( $(this).attr('id').trim() );
+      });
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url: { '$in': entries } }) })
+        .done(function({ results }) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.url;
+            var time = item.time;
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for (var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if (countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function ({ responseJSON }) {
+          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
+        });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + '89Ijcv6J3iuRaRnYokA8lFTW-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': '89Ijcv6J3iuRaRnYokA8lFTW-gzGzoHsz',
+                'X-LC-Key': 'JvlwwLCCnsM8Ov0SIjLE0l3U',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            if ($('.post-title-link').length >= 1) {
+              showTime(Counter);
+            }
+          
+        });
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
