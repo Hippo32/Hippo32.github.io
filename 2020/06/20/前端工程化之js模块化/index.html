@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="JS模块化 没有模块化规范的时候在没有CommonJS，AMD，CMD等规范的时候，人们为了让代码模块化，采用了下面这个链接里的方法：http://www.ruanyifeng.com/blog/2012/10/javascript_module.html   CommonJSNodeJS 是 CommonJS 规范的实现，webpack 也是以 CommonJS 的形式来书写。CommonJS">
+<meta name="keywords" content="模块化,前端工程化,javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端工程化之js模块化">
+<meta property="og:url" content="http://yoursite.com/2020/06/20/前端工程化之js模块化/index.html">
+<meta property="og:site_name" content="RuiYi&#39;s Notebook">
+<meta property="og:description" content="JS模块化 没有模块化规范的时候在没有CommonJS，AMD，CMD等规范的时候，人们为了让代码模块化，采用了下面这个链接里的方法：http://www.ruanyifeng.com/blog/2012/10/javascript_module.html   CommonJSNodeJS 是 CommonJS 规范的实现，webpack 也是以 CommonJS 的形式来书写。CommonJS">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/2020/06/20/前端工程化之js模块化/js%E6%A8%A1%E5%9D%97%E5%8C%96.png">
+<meta property="og:updated_time" content="2020-06-20T06:48:18.278Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端工程化之js模块化">
+<meta name="twitter:description" content="JS模块化 没有模块化规范的时候在没有CommonJS，AMD，CMD等规范的时候，人们为了让代码模块化，采用了下面这个链接里的方法：http://www.ruanyifeng.com/blog/2012/10/javascript_module.html   CommonJSNodeJS 是 CommonJS 规范的实现，webpack 也是以 CommonJS 的形式来书写。CommonJS">
+<meta name="twitter:image" content="http://yoursite.com/2020/06/20/前端工程化之js模块化/js%E6%A8%A1%E5%9D%97%E5%8C%96.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2020/06/20/前端工程化之js模块化/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>前端工程化之js模块化 | RuiYi's Notebook</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">RuiYi's Notebook</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/20/前端工程化之js模块化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hippo">
+      <meta itemprop="description" content="日常的总结和感悟">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="RuiYi's Notebook">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">前端工程化之js模块化
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-06-20 14:42:43 / 修改时间：14:48:18" itemprop="dateCreated datePublished" datetime="2020-06-20T14:42:43+08:00">2020-06-20</time>
+            </span>
+          
+
+          
+            
+
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端工程化/" itemprop="url" rel="index"><span itemprop="name">前端工程化</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端工程化/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+            <span id="/2020/06/20/前端工程化之js模块化/" class="post-meta-item leancloud_visitors" data-flag-title="前端工程化之js模块化">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="JS模块化"><a href="#JS模块化" class="headerlink" title="JS模块化"></a>JS模块化</h1><p><a name="7O4mn"></a></p>
+<h2 id="没有模块化规范的时候"><a href="#没有模块化规范的时候" class="headerlink" title="没有模块化规范的时候"></a>没有模块化规范的时候</h2><p>在没有CommonJS，AMD，CMD等规范的时候，人们为了让代码模块化，采用了下面这个链接里的方法：<a href="http://www.ruanyifeng.com/blog/2012/10/javascript_module.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2012/10/javascript_module.html</a></p>
+<p><img src="/2020/06/20/前端工程化之js模块化/js%E6%A8%A1%E5%9D%97%E5%8C%96.png" alt="image.png"></p>
+<p><a name="BMPy4"></a></p>
+<h2 id="CommonJS"><a href="#CommonJS" class="headerlink" title="CommonJS"></a><a href="http://www.commonjs.org/" target="_blank" rel="noopener">CommonJS</a></h2><p>NodeJS 是 CommonJS 规范的实现，webpack 也是以 CommonJS 的形式来书写。CommonJS 是一种只适用于 JavaScript 的静态模块化规范。只适用于 Node.js 开发，但是不适合浏览器环境。</p>
+<p><strong>原因：</strong></p>
+<ol>
+<li>浏览器环境的前端资源不仅仅是 JavaScript ，还包括 CSS 、图片等， CommonJS 无法处理 JavaScript 以外的资源。</li>
+<li>CommonJS 所有模块均是同步阻塞式加载，无法实现按需异步加载。</li>
+</ol>
+<p><br><strong>特点：</strong></p>
+<ul>
+<li>同步加载；</li>
+<li>主要用于服务器端，不适合前端；</li>
+<li>在服务器端,模块的加载是运行时同步加载的；</li>
+<li>在浏览器端，无法直接运行在浏览器端上，需要通过工具转换成标准的 ES5    ；</li>
+<li>所有代码都运行在模块作用域，不会污染全局作用域；</li>
+<li>模块可以多次加载，但是只会在第一次加载时运行一次，然后运行结果就被缓存了，以后再加载，就直接读取缓存结果。要想让模块再次运行，必须清除缓存；</li>
+<li>模块加载的顺序，按照其在代码中出现的顺序。</li>
+</ul>
+<p><strong>实现：</strong><br>NodeJS</p>
+<p><strong>使用：</strong><br>加载模块/引入模块：<br>如果是第三方模块，<code>xxx</code> 为模块名；如果是自定义模块， <code>xxx</code> 为模块文件路径。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>(xxx)</span><br></pre></td></tr></table></figure>
+
+<p>暴露模块：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = value</span><br><span class="line"><span class="comment">// 或</span></span><br><span class="line">exports.xxx = value</span><br></pre></td></tr></table></figure>
+
+<p><strong>加载机制：</strong><br>输入的是被输出的值的拷贝。也就是说，一旦输出一个值，模块内部的变化就影响不到这个值。</p>
+<p><a name="rBLwB"></a></p>
+<h2 id="AMD"><a href="#AMD" class="headerlink" title="AMD"></a>AMD</h2><p><a href="https://en.wikipedia.org/wiki/Asynchronous_module_definition" target="_blank" rel="noopener">AMD</a>，异步模块定义。浏览器的模块，不能采用“同步加载”，只能采用“异步加载”，因此 AMD 产生了。与 CommonJS 最大的不同在于它采用异步的方式去加载依赖的模块。<br><strong>特点：</strong></p>
+<ul>
+<li>专门用于浏览器端；</li>
+<li>模块的加载是异步的， 模块的加载不影响它后面语句的运行。所有依赖这个模块的语句，都定义在一个回调函数中，等到加载完成之后，这个回调函数才会运行；</li>
+<li>依赖前置。</li>
+</ul>
+<p>优点：</p>
+<ul>
+<li>可在不转换代码的情况下直接在浏览器中运行；</li>
+<li>可异步加载依赖；</li>
+<li>可并行加载多个依赖；</li>
+<li>代码可运行在浏览器环境和 Node.js 环境下。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>JS 运行环境没有原生支持 AMD，需要先导入实现了 AMD 的库后才能正常使用。</li>
+</ul>
+<p><strong>使用：</strong><br>加载模块/引入模块：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>([<span class="built_in">module</span>], callback);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 例子</span></span><br><span class="line"><span class="built_in">require</span>([<span class="string">'moduleA'</span>, <span class="string">'moduleB'</span>, <span class="string">'moduleC'</span>], <span class="function"><span class="keyword">function</span>(<span class="params">moduleA, moduleB, moduleC</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>定义模块：<br>模块必须采用特定的 <code>define()</code> 函数来定义。</p>
+<ol>
+<li><p>定义的模块不依赖其他模块</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// math.js</span></span><br><span class="line">define(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> add = <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x + y;</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    add: add</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>定义的模块依赖其他模块，那么 <code>define()</code> 函数的第一个参数，必须是一个数组，指明该模块的依赖性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">define([<span class="string">'myLib'</span>], <span class="function"><span class="keyword">function</span>(<span class="params">myLib</span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    myLib.doSomething();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    foo: foo</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p><strong>实现：</strong></p>
+<ul>
+<li>RequireJS</li>
+</ul>
+<p>RequrieJS 是一个工具库，只要用于客户端的模块。它的模块管理遵守 AMD 规范。RequireJS 的基本思想是，通过 <code>define</code> 方法，将代码定义为模块；通过 <code>require</code> 方法，实现代码的模块加载。出自 dojo 加载器的作者 <em>James Burke</em></p>
+<ul>
+<li>依赖前置。RequireJS 会先尽早地执行（依赖）模块，相当于所有的 require 都被提前了，但是模块的执行顺序不一定是 require 的顺序。</li>
+<li>RequireJS 引入的文件（模块），只会解释执行一次，所以引入的模块也可用作全局变量。</li>
+<li>RequireJS 要求，每个模块是一个单独的 js 文件。<ul>
+<li>curlJS<br><a name="LrkAu"></a><h2 id="CMD"><a href="#CMD" class="headerlink" title="CMD"></a>CMD</h2></li>
+</ul>
+<strong>特点：</strong></li>
+</ul>
+<ul>
+<li>依赖就近</li>
+<li>在浏览器端使用</li>
+<li>异步加载</li>
+<li>整合了 CommonJS 和 AMD 规范的特点</li>
+</ul>
+<p><strong>使用：</strong><br>定义模块：</p>
+<ol>
+<li><p>定义没有依赖的模块</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">define(<span class="function"><span class="keyword">function</span>(<span class="params">require, exports, module</span>) </span>&#123;</span><br><span class="line">  exports.xxx = value</span><br><span class="line">  <span class="built_in">module</span>.exports = value</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>定义有依赖的模块</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">define(<span class="function"><span class="keyword">function</span>(<span class="params">require, exports, module</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 引入依赖模块（同步）</span></span><br><span class="line">  <span class="keyword">var</span> module2 = <span class="built_in">require</span>(<span class="string">'./module2'</span>)</span><br><span class="line">  <span class="comment">// 引入依赖模块（异步）</span></span><br><span class="line">  <span class="built_in">require</span>.async(<span class="string">'./module3'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">m3</span>) </span>&#123;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="comment">// 暴露模块</span></span><br><span class="line">  exports.xxx = value</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>加载/使用模块：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">define(<span class="function"><span class="keyword">function</span> (<span class="params">require</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> m1 = <span class="built_in">require</span>(<span class="string">'./module1'</span>)</span><br><span class="line">  <span class="keyword">var</span> m4 = <span class="built_in">require</span>(<span class="string">'./module4'</span>)</span><br><span class="line">  m1.show()</span><br><span class="line">  m4.show()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>实现：</strong></p>
+<ul>
+<li>SeaJS<ul>
+<li>出自玉伯</li>
+<li>懒执行</li>
+<li>SeaJS 只会在真正需要使用（依赖）模块时才执行该模块</li>
+<li>SeaJS 执行模块的顺序是严格按照模块在代码中出现（require）的顺序。</li>
+<li>依赖就近</li>
+</ul>
+</li>
+</ul>
+<br>
+<a name="Fkjxx"></a>
+## ES6模块化
+ES6 模块化是 ECMA 提出的 JavaScript 模块化规范，它在语言的层面上实现了模块化。浏览器厂商和 Node.js 都宣布要原生支持该规范。它将逐渐取代 CommonJS 和 AMD 规范，称为浏览器和服务器通用的模块解决方案。<br>**特点：**
+
+<ul>
+<li>每一个模块只加载一次，每一个 js 只执行一次，如果下次再去加载同一个文件，直接从内存中读取。一个模块就是一个单例，或者说就是一个对象。</li>
+<li>每一个模块内声明的变量都是局部变量，不会污染全局作用域。</li>
+<li>模块内部的变量或者函数可以通过 export 导出。</li>
+<li>一个模块可以导入别的模块。</li>
+</ul>
+<p><br><strong>使用：</strong><br>导出模块：<code>export</code> 命令用于规定模块的对外接口。<br>引入模块：<code>import</code> 命令用于输入其他模块提供的功能。<br>例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义模块math.js</span></span><br><span class="line"><span class="keyword">var</span> basicNum = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> add = <span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">export</span> &#123; basicNum, add &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 引用模块</span></span><br><span class="line"><span class="keyword">import</span> &#123; basicNum, add &#125; <span class="keyword">from</span> <span class="string">'./math'</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">ele</span>) </span>&#123;</span><br><span class="line">  ele.textContent = add(<span class="number">99</span> + basicNum);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a name="z6is2"></a></p>
+<h2 id="ES6模块-VS-CommonJS"><a href="#ES6模块-VS-CommonJS" class="headerlink" title="ES6模块 VS CommonJS"></a>ES6模块 VS CommonJS</h2><table>
+<thead>
+<tr>
+<th></th>
+<th><strong>模块输出</strong></th>
+<th><strong>加载方式</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CommonJS</td>
+<td>值拷贝</td>
+<td>对象</td>
+</tr>
+<tr>
+<td>ES6</td>
+<td>引用（符号链接）</td>
+<td>静态解析</td>
+</tr>
+</tbody></table>
+<p><em>注意：由于 ES6模块化 目前无法在浏览器中执行，所以，我们只能通过 babel 将不被支持的 <code>import</code> 编译为当前受到广泛支持的 <code>require</code> 。</em><br><a name="rVsyQ"></a></p>
+<h2 id="UMD"><a href="#UMD" class="headerlink" title="UMD"></a>UMD</h2><p><strong>特点：</strong></p>
+<ul>
+<li>UMD 是 AMD 和 CommonJS 的糅合</li>
+<li>UMD 先判断是否支持 Node.js 的模块（exports）是否存在，存在则使用 Node.js 模块模式；再判断是否支持AMD（define）是否存在，存在则使用 AMD 方式加载模块。</li>
+<li>常用的场景就是当你封装的模块需要适配不同平台（浏览器、node.js）</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/模块化/" rel="tag"># 模块化</a>
+          
+            <a href="/tags/前端工程化/" rel="tag"># 前端工程化</a>
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/04/20/2020年第二季度记录/" rel="next" title="2020年第二季度记录">
+                <i class="fa fa-chevron-left"></i> 2020年第二季度记录
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">hippo</p>
+              <div class="site-description motion-element" itemprop="description">日常的总结和感悟</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">37</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/Hippo32" title="GitHub &rarr; https://github.com/Hippo32" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://me.csdn.net/hualala_32" title="CSDN &rarr; https://me.csdn.net/hualala_32" rel="noopener" target="_blank"><i class="fa fa-fw fa-globe"></i>CSDN</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                推荐网站
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.zoudupai.com/index.php?action=index&sy=all" title="http://www.zoudupai.com/index.php?action=index&sy=all" rel="noopener" target="_blank">走读派</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://alvabill.ml/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-NexT%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/" title="https://alvabill.ml/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-NexT%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/" rel="noopener" target="_blank">Next主题配置</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JS模块化"><span class="nav-number">1.</span> <span class="nav-text">JS模块化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#没有模块化规范的时候"><span class="nav-number">1.1.</span> <span class="nav-text">没有模块化规范的时候</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CommonJS"><span class="nav-number">1.2.</span> <span class="nav-text">CommonJS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AMD"><span class="nav-number">1.3.</span> <span class="nav-text">AMD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CMD"><span class="nav-number">1.4.</span> <span class="nav-text">CMD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ES6模块-VS-CommonJS"><span class="nav-number">1.5.</span> <span class="nav-text">ES6模块 VS CommonJS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UMD"><span class="nav-number">1.6.</span> <span class="nav-text">UMD</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 – <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hippo</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.2</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.2"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $('.leancloud_visitors');
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
+            
+              .done(function() {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.time + 1);
+              })
+            
+              .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+              })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+        .fail(function ({ responseJSON }) {
+          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
+        });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + '89Ijcv6J3iuRaRnYokA8lFTW-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': '89Ijcv6J3iuRaRnYokA8lFTW-gzGzoHsz',
+                'X-LC-Key': 'JvlwwLCCnsM8Ov0SIjLE0l3U',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            const localhost = /http:\/\/(localhost|127.0.0.1|0.0.0.0)/;
+            if (localhost.test(document.URL)) return;
+            addCount(Counter);
+          
+        });
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
