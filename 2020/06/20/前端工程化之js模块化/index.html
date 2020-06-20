@@ -103,7 +103,7 @@
 <meta property="og:description" content="JS模块化 没有模块化规范的时候在没有CommonJS，AMD，CMD等规范的时候，人们为了让代码模块化，采用了下面这个链接里的方法：http://www.ruanyifeng.com/blog/2012/10/javascript_module.html   CommonJSNodeJS 是 CommonJS 规范的实现，webpack 也是以 CommonJS 的形式来书写。CommonJS">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/2020/06/20/前端工程化之js模块化/js%E6%A8%A1%E5%9D%97%E5%8C%96.png">
-<meta property="og:updated_time" content="2020-06-20T06:48:18.278Z">
+<meta property="og:updated_time" content="2020-06-20T06:57:22.487Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端工程化之js模块化">
 <meta name="twitter:description" content="JS模块化 没有模块化规范的时候在没有CommonJS，AMD，CMD等规范的时候，人们为了让代码模块化，采用了下面这个链接里的方法：http://www.ruanyifeng.com/blog/2012/10/javascript_module.html   CommonJSNodeJS 是 CommonJS 规范的实现，webpack 也是以 CommonJS 的形式来书写。CommonJS">
@@ -379,7 +379,7 @@
                 
               
 
-              <time title="创建时间：2020-06-20 14:42:43 / 修改时间：14:48:18" itemprop="dateCreated datePublished" datetime="2020-06-20T14:42:43+08:00">2020-06-20</time>
+              <time title="创建时间：2020-06-20 14:42:43 / 修改时间：14:57:22" itemprop="dateCreated datePublished" datetime="2020-06-20T14:42:43+08:00">2020-06-20</time>
             </span>
           
 
@@ -521,10 +521,11 @@
 <li>依赖前置。RequireJS 会先尽早地执行（依赖）模块，相当于所有的 require 都被提前了，但是模块的执行顺序不一定是 require 的顺序。</li>
 <li>RequireJS 引入的文件（模块），只会解释执行一次，所以引入的模块也可用作全局变量。</li>
 <li>RequireJS 要求，每个模块是一个单独的 js 文件。<ul>
-<li>curlJS<br><a name="LrkAu"></a><h2 id="CMD"><a href="#CMD" class="headerlink" title="CMD"></a>CMD</h2></li>
+<li>curlJS<br><a name="LrkAu"></a></li>
 </ul>
-<strong>特点：</strong></li>
+</li>
 </ul>
+<h2 id="CMD"><a href="#CMD" class="headerlink" title="CMD"></a>CMD</h2><p><strong>特点：</strong></p>
 <ul>
 <li>依赖就近</li>
 <li>在浏览器端使用</li>
@@ -557,9 +558,8 @@
 </ul>
 <br>
 <a name="Fkjxx"></a>
-## ES6模块化
-ES6 模块化是 ECMA 提出的 JavaScript 模块化规范，它在语言的层面上实现了模块化。浏览器厂商和 Node.js 都宣布要原生支持该规范。它将逐渐取代 CommonJS 和 AMD 规范，称为浏览器和服务器通用的模块解决方案。<br>**特点：**
 
+<h2 id="ES6模块化"><a href="#ES6模块化" class="headerlink" title="ES6模块化"></a>ES6模块化</h2><p>ES6 模块化是 ECMA 提出的 JavaScript 模块化规范，它在语言的层面上实现了模块化。浏览器厂商和 Node.js 都宣布要原生支持该规范。它将逐渐取代 CommonJS 和 AMD 规范，称为浏览器和服务器通用的模块解决方案。<br><strong>特点：</strong></p>
 <ul>
 <li>每一个模块只加载一次，每一个 js 只执行一次，如果下次再去加载同一个文件，直接从内存中读取。一个模块就是一个单例，或者说就是一个对象。</li>
 <li>每一个模块内声明的变量都是局部变量，不会污染全局作用域。</li>
@@ -894,7 +894,7 @@ ES6 模块化是 ECMA 提出的 JavaScript 模块化规范，它在语言的层�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JS模块化"><span class="nav-number">1.</span> <span class="nav-text">JS模块化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#没有模块化规范的时候"><span class="nav-number">1.1.</span> <span class="nav-text">没有模块化规范的时候</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CommonJS"><span class="nav-number">1.2.</span> <span class="nav-text">CommonJS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AMD"><span class="nav-number">1.3.</span> <span class="nav-text">AMD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CMD"><span class="nav-number">1.4.</span> <span class="nav-text">CMD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ES6模块-VS-CommonJS"><span class="nav-number">1.5.</span> <span class="nav-text">ES6模块 VS CommonJS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UMD"><span class="nav-number">1.6.</span> <span class="nav-text">UMD</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JS模块化"><span class="nav-number">1.</span> <span class="nav-text">JS模块化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#没有模块化规范的时候"><span class="nav-number">1.1.</span> <span class="nav-text">没有模块化规范的时候</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CommonJS"><span class="nav-number">1.2.</span> <span class="nav-text">CommonJS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AMD"><span class="nav-number">1.3.</span> <span class="nav-text">AMD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CMD"><span class="nav-number">1.4.</span> <span class="nav-text">CMD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ES6模块化"><span class="nav-number">1.5.</span> <span class="nav-text">ES6模块化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ES6模块-VS-CommonJS"><span class="nav-number">1.6.</span> <span class="nav-text">ES6模块 VS CommonJS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UMD"><span class="nav-number">1.7.</span> <span class="nav-text">UMD</span></a></li></ol></li></ol></div>
             
 
           </div>
