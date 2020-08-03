@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="RuiYi&#39;s Notebook">
 <meta property="og:description" content="经常会看到一些关于css的知识点，不记下来浑身不自在，担心我这鱼的记忆转眼就忘了，所以就有了这篇文章的存在。不是干货，纯属查漏补缺。 CSS模块 CSS语法 CSS层叠与继承 CSS颜色 选择符 CSS背景与边框 CSS值与单位 CSS文本排版 CSS文本装饰效果 CSS字体 CSS基本UI特性 CSS变形 图像混合效果 滤镜效果 CSS遮罩 CSS伸缩盒布局 CSS网格布局  浏览器兼容性 关于">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-07-01T02:45:00.328Z">
+<meta property="og:updated_time" content="2020-07-25T08:52:58.348Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于CSS的那些事">
 <meta name="twitter:description" content="经常会看到一些关于css的知识点，不记下来浑身不自在，担心我这鱼的记忆转眼就忘了，所以就有了这篇文章的存在。不是干货，纯属查漏补缺。 CSS模块 CSS语法 CSS层叠与继承 CSS颜色 选择符 CSS背景与边框 CSS值与单位 CSS文本排版 CSS文本装饰效果 CSS字体 CSS基本UI特性 CSS变形 图像混合效果 滤镜效果 CSS遮罩 CSS伸缩盒布局 CSS网格布局  浏览器兼容性 关于">
@@ -392,7 +392,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-07-01 10:45:00" itemprop="dateModified" datetime="2020-07-01T10:45:00+08:00">2020-07-01</time>
+                <time title="修改时间：2020-07-25 16:52:58" itemprop="dateModified" datetime="2020-07-25T16:52:58+08:00">2020-07-25</time>
               </span>
             
           
@@ -508,66 +508,6 @@ background: linear-gradient(90deg, yellow, red); // IE9及之前的版本不支�
 <li>当图片（或其他元素）以行列式进行布局时，让视口的宽度来决定列的数量。弹性盒布局（即Flexbox）或者display: inline-block加上常规的文本折行行为，都可以实现这一点。</li>
 <li>在使用多列文本时，指定column-width（列宽）而不是指定column-count（列数），这样它就可以在较小的屏幕上自动显示为单列布局。</li>
 <li>优化网页在小屏幕上的表现，其实只意味着把一些外边距收拢到最小程度，然后把因为屏幕太窄而无法显示成双列的侧栏调整为单列布局而已。</li>
-</ul>
-<h2 id="基于关系的选择器"><a href="#基于关系的选择器" class="headerlink" title="基于关系的选择器"></a>基于关系的选择器</h2><table>
-<thead>
-<tr>
-<th>选择器</th>
-<th>选择的元素</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>A E</code></td>
-<td>元素A的任一后代E（后代节点指A的子节点，子节点的子节点，以此类推）</td>
-</tr>
-<tr>
-<td><code>A &gt; E</code></td>
-<td>元素A的任一子元素E（也就是直系后代）</td>
-</tr>
-<tr>
-<td><code>E:first-child</code></td>
-<td>任一是其父母节点的第一个子节点的元素E</td>
-</tr>
-<tr>
-<td><code>B + E</code></td>
-<td>元素B的任一下一个兄弟元素E</td>
-</tr>
-<tr>
-<td><code>B ~ E</code></td>
-<td>B元素后面的拥有共同父元素的兄弟元素E</td>
-</tr>
-</tbody></table>
-<p>p,span{}选择了p元素和span元素，这是多元素选择器，同时选择多个元素，元素之间用逗号分隔。</p>
-<h2 id="伪类列表"><a href="#伪类列表" class="headerlink" title="伪类列表"></a>伪类列表</h2><ul>
-<li><code>:link</code></li>
-<li><code>:visited</code></li>
-<li><code>:active</code></li>
-<li><code>:hover</code></li>
-<li><code>:focus</code></li>
-<li><code>:first-child</code>：表示在一组兄弟元素中的第一个元素。</li>
-<li><code>:last-child</code>：表示父元素的最后一个子元素。相当于<code>:nth-last-child(1)</code></li>
-<li><code>:nth-child()</code><ul>
-<li><code>:nth-child(n)</code>：匹配父元素中的第n个子元素</li>
-<li><code>:nth-child(2n+1)</code> = <code>:nth-child(odd)</code></li>
-<li><code>:nth-child(2n)</code> = <code>:nth-child(even)</code></li>
-<li><code>span:nth-child(0n+1)</code>：表示子元素中第一个且为span的元素，与<code>:first-child</code>选择器作用相同</li>
-<li><code>span:nth-child(1)</code>：表示父元素中子元素为第一的并且名字为span的标签被选中</li>
-<li><code>span:nth-child(-n+3)</code>：匹配前三个子元素中的span元素</li>
-</ul>
-</li>
-<li><code>:nth-last-child</code>：从兄弟节点中从后往前匹配处于某些位置的元素。</li>
-<li><code>:nth-of-type()</code><ul>
-<li><code>:nth-of-type(n)</code>：匹配同类型中的第n个同级兄弟元素</li>
-</ul>
-</li>
-<li><code>:first-of-type</code></li>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/:last-of-type" title=":last-of-type" target="_blank" rel="noopener">:last-of-type</a>：匹配属于其父元素的最后一个子元素的每个元素。</li>
-<li><code>:empty</code></li>
-<li><code>:target</code></li>
-<li><code>:checked</code></li>
-<li><code>:enabled</code></li>
-<li><code>:disabled</code></li>
-<li><code>:only-child</code>：匹配没有任何兄弟元素的元素，等效于<code>:first-child:last-child</code>，即如果第一项同时也是最后一项，那从逻辑上来说它就是唯一的那一项。</li>
 </ul>
 <h2 id="优先级积分"><a href="#优先级积分" class="headerlink" title="优先级积分"></a>优先级积分</h2><ul>
 <li>标签选择符、伪类及伪对象：优先级积分为1</li>
@@ -889,7 +829,7 @@ background: linear-gradient(90deg, yellow, red); // IE9及之前的版本不支�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS模块"><span class="nav-number">1.</span> <span class="nav-text">CSS模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器兼容性"><span class="nav-number">2.</span> <span class="nav-text">浏览器兼容性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS编码技巧"><span class="nav-number">3.</span> <span class="nav-text">CSS编码技巧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#响应式网页设计"><span class="nav-number">4.</span> <span class="nav-text">响应式网页设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基于关系的选择器"><span class="nav-number">5.</span> <span class="nav-text">基于关系的选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#伪类列表"><span class="nav-number">6.</span> <span class="nav-text">伪类列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优先级积分"><span class="nav-number">7.</span> <span class="nav-text">优先级积分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS样式所采用的优先顺序为："><span class="nav-number">8.</span> <span class="nav-text">CSS样式所采用的优先顺序为：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小tips"><span class="nav-number">9.</span> <span class="nav-text">小tips</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS模块"><span class="nav-number">1.</span> <span class="nav-text">CSS模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器兼容性"><span class="nav-number">2.</span> <span class="nav-text">浏览器兼容性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS编码技巧"><span class="nav-number">3.</span> <span class="nav-text">CSS编码技巧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#响应式网页设计"><span class="nav-number">4.</span> <span class="nav-text">响应式网页设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优先级积分"><span class="nav-number">5.</span> <span class="nav-text">优先级积分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS样式所采用的优先顺序为："><span class="nav-number">6.</span> <span class="nav-text">CSS样式所采用的优先顺序为：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小tips"><span class="nav-number">7.</span> <span class="nav-text">小tips</span></a></li></ol></div>
             
 
           </div>

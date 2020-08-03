@@ -94,18 +94,20 @@
 
 
 
-  <meta name="description" content="日常的总结和感悟">
+  <meta name="description" content="基本选择器层次选择器   选择器 选择器名称 选择的元素    A E  元素A的任一后代E（后代节点指A的子节点，子节点的子节点，以此类推）   A &amp;gt; E 子选择器 元素A的任一子元素E（也就是直系后代）   B + E 相邻兄弟选择器 元素B的任一下一个兄弟元素E   B ~ E 通用选择器 B元素后面的拥有共同父元素的兄弟元素E   p,span{}选择了p元素和span元素，这是多">
 <meta name="keywords" content="CSS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSS选择符">
 <meta property="og:url" content="http://yoursite.com/2019/10/28/CSS选择符/index.html">
 <meta property="og:site_name" content="RuiYi&#39;s Notebook">
-<meta property="og:description" content="日常的总结和感悟">
+<meta property="og:description" content="基本选择器层次选择器   选择器 选择器名称 选择的元素    A E  元素A的任一后代E（后代节点指A的子节点，子节点的子节点，以此类推）   A &amp;gt; E 子选择器 元素A的任一子元素E（也就是直系后代）   B + E 相邻兄弟选择器 元素B的任一下一个兄弟元素E   B ~ E 通用选择器 B元素后面的拥有共同父元素的兄弟元素E   p,span{}选择了p元素和span元素，这是多">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-30T15:24:32.528Z">
+<meta property="og:image" content="http://yoursite.com/2019/10/28/CSS选择符/dir.png">
+<meta property="og:updated_time" content="2020-07-25T08:52:52.527Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS选择符">
-<meta name="twitter:description" content="日常的总结和感悟">
+<meta name="twitter:description" content="基本选择器层次选择器   选择器 选择器名称 选择的元素    A E  元素A的任一后代E（后代节点指A的子节点，子节点的子节点，以此类推）   A &amp;gt; E 子选择器 元素A的任一子元素E（也就是直系后代）   B + E 相邻兄弟选择器 元素B的任一下一个兄弟元素E   B ~ E 通用选择器 B元素后面的拥有共同父元素的兄弟元素E   p,span{}选择了p元素和span元素，这是多">
+<meta name="twitter:image" content="http://yoursite.com/2019/10/28/CSS选择符/dir.png">
 
 
 
@@ -392,7 +394,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-01-30 23:24:32" itemprop="dateModified" datetime="2020-01-30T23:24:32+08:00">2020-01-30</time>
+                <time title="修改时间：2020-07-25 16:52:52" itemprop="dateModified" datetime="2020-07-25T16:52:52+08:00">2020-07-25</time>
               </span>
             
           
@@ -454,7 +456,118 @@
       
 
       
-        
+        <h1 id="基本选择器"><a href="#基本选择器" class="headerlink" title="基本选择器"></a>基本选择器</h1><h1 id="层次选择器"><a href="#层次选择器" class="headerlink" title="层次选择器"></a>层次选择器</h1><table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>选择器名称</th>
+<th>选择的元素</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>A E</code></td>
+<td></td>
+<td>元素A的任一后代E（后代节点指A的子节点，子节点的子节点，以此类推）</td>
+</tr>
+<tr>
+<td><code>A &gt; E</code></td>
+<td>子选择器</td>
+<td>元素A的任一子元素E（也就是直系后代）</td>
+</tr>
+<tr>
+<td><code>B + E</code></td>
+<td>相邻兄弟选择器</td>
+<td>元素B的任一下一个兄弟元素E</td>
+</tr>
+<tr>
+<td><code>B ~ E</code></td>
+<td>通用选择器</td>
+<td>B元素后面的拥有共同父元素的兄弟元素E</td>
+</tr>
+</tbody></table>
+<p>p,span{}选择了p元素和span元素，这是多元素选择器，同时选择多个元素，元素之间用逗号分隔。</p>
+<h1 id="伪类选择器"><a href="#伪类选择器" class="headerlink" title="伪类选择器"></a>伪类选择器</h1><h2 id="动态伪类选择器"><a href="#动态伪类选择器" class="headerlink" title="动态伪类选择器"></a>动态伪类选择器</h2><ul>
+<li>链接伪类选择器<ul>
+<li><code>:link</code>：未被访问过</li>
+<li><code>:visited</code>：已被访问过</li>
+</ul>
+</li>
+<li>用户行为伪类选择器<ul>
+<li><code>:active</code>：点击时</li>
+<li><code>:hover</code>：鼠标滑过时</li>
+<li><code>:focus</code>：元素获得焦点时</li>
+</ul>
+</li>
+</ul>
+<h2 id="目标伪类选择器"><a href="#目标伪类选择器" class="headerlink" title="目标伪类选择器"></a>目标伪类选择器</h2><p>一个URI，除了可以直接指向某文档外，还可以通过井号（<code>#</code>）后跟一个锚点或元素id，来指向页面的某个特定元素。</p>
+<p>目标伪类选择器，就是用来匹配页面上被URI的某个标识符指定的目标元素，并为它应用样式。</p>
+<ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/:target" target="_blank" rel="noopener">:target</a>：代表一个唯一的页面元素（目标元素），其id与当前URL片段匹配。</li>
+</ul>
+<h2 id="语言伪类选择器"><a href="#语言伪类选择器" class="headerlink" title="语言伪类选择器"></a>语言伪类选择器</h2><ul>
+<li><code>:dir()</code>：匹配特定文字书写方向的元素，兼容性不可观。</li>
+</ul>
+<p><img src="/2019/10/28/CSS选择符/dir.png" alt="dir"></p>
+<p>在HTML中，文字方向由 <code>dir</code> 属性决定。其他的文档类型可能有其他定义文字方向的方法。</p>
+<p><code>:dir()</code> 并不等于使用 <code>[dir=...]</code> 属性选择器。后者匹配 <code>dir</code> 的值且不会匹配到未定义此属性的元素，即使该元素继承了父元素的属性；类似的， <code>[dir=rtl]</code> 或 <code>[dir=ltr]</code> 不会匹配到 <code>dir</code> 属性的值为 <code>auto</code> 的元素。 而 <code>:dir()</code> 会匹配经过客户端计算后的属性，不管是继承的 dir 值 还是 dir 值为 auto 的。</p>
+<ul>
+<li><code>:lang()</code>：基于元素语言来匹配页面元素</li>
+</ul>
+<p><em>浏览器支持状态：没有一个支持的。</em></p>
+<p>例子：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 下例表示选择文本语言带有—TN的div元素（ar-TN，fr-TN）. */</span></span><br><span class="line"></span><br><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:lang(</span>*<span class="selector-tag">-TN</span>) &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: green</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="UI元素状态伪类选择器"><a href="#UI元素状态伪类选择器" class="headerlink" title="UI元素状态伪类选择器"></a>UI元素状态伪类选择器</h2><h2 id="结构伪类选择器"><a href="#结构伪类选择器" class="headerlink" title="结构伪类选择器"></a>结构伪类选择器</h2><ul>
+<li><code>:first-child</code>：表示在一组兄弟元素中的第一个元素。</li>
+<li><code>:last-child</code>：表示父元素的最后一个子元素。相当于<code>:nth-last-child(1)</code></li>
+<li><code>:nth-child()</code><ul>
+<li><code>:nth-child(n)</code>：匹配父元素中的第n个子元素</li>
+<li><code>:nth-child(2n+1)</code> = <code>:nth-child(odd)</code></li>
+<li><code>:nth-child(2n)</code> = <code>:nth-child(even)</code></li>
+<li><code>span:nth-child(0n+1)</code>：表示子元素中第一个且为span的元素，与<code>:first-child</code>选择器作用相同</li>
+<li><code>span:nth-child(1)</code>：表示父元素中子元素为第一的并且名字为span的标签被选中</li>
+<li><code>span:nth-child(-n+3)</code>：匹配前三个子元素中的span元素</li>
+</ul>
+</li>
+<li><code>:only-child</code>：匹配没有任何兄弟元素的元素，等效于<code>:first-child:last-child</code>，即如果第一项同时也是最后一项，那从逻辑上来说它就是唯一的那一项。</li>
+<li><code>:nth-last-child</code>：从兄弟节点中从后往前匹配处于某些位置的元素。</li>
+<li><code>:first-of-type</code>：匹配同级兄弟元素中的第一个元素</li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/:last-of-type" title=":last-of-type" target="_blank" rel="noopener">:last-of-type</a>：匹配属于其父元素的最后一个子元素的每个元素。</li>
+<li><code>:nth-of-type(n)</code>：匹配同类型中的第n个同级兄弟元素</li>
+<li><code>X:only-of-type</code>：匹配属于同类型中唯一兄弟元素的X</li>
+<li><code>X:nth-last-of-type(n)</code>：匹配同类型中的倒数第n个同级兄弟元素</li>
+</ul>
+<h2 id="否定伪类选择器"><a href="#否定伪类选择器" class="headerlink" title="否定伪类选择器"></a>否定伪类选择器</h2><ul>
+<li><code>:not(p)</code>：选择所有不含有p元素的元素，很多都不支持</li>
+</ul>
+<h1 id="伪元素"><a href="#伪元素" class="headerlink" title="伪元素"></a>伪元素</h1><h1 id="属性选择器"><a href="#属性选择器" class="headerlink" title="属性选择器"></a>属性选择器</h1><h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><ul>
+<li><code>:nth-col()</code>：表示选择正向的表格行的节点，与 <code>:nth-child</code> 类似，没有任何浏览器支持</li>
+<li><code>:nth-last-col()</code>：表示选择反向的表格行的节点，与 <code>:nth-last-child</code> 类似，没有任何浏览器支持</li>
+<li><code>:user-invalid</code>：匹配输入错误的元素。不过跟其它的输入伪类不同的是，它近匹配用户输入时的错不，而不是静默状态下的错误，这样就会比较人性化，可惜，目前没有任何一款浏览器支持。</li>
+<li><code>:blank</code>：用于匹配如下节点，有点类似于 <code>:empty</code> ，但是比 <code>:empty</code> 宽松，目前还是没有任何一款浏览器支持<ul>
+<li>没有子节点</li>
+<li>仅有空的文本节点</li>
+<li>仅有空白符的文本节点</li>
+</ul>
+</li>
+<li><code>:required</code>：匹配了 <code>&lt;input&gt;</code>，<code>&lt;select&gt;</code>或<code>&lt;textarea&gt;</code> 元素。表示必填。</li>
+<li><code>:optional</code>：匹配了 <code>&lt;input&gt;</code>，<code>&lt;select&gt;</code>或<code>&lt;textarea&gt;</code> 元素。表示可选。</li>
+<li><code>:in-range</code> 与 <code>:out-of-range</code>：如果一个时间或数字 <code>&lt;input&gt;</code> 具有 <code>max</code> 或 <code>min</code> 属性，那么 <code>:in-range</code> 会匹配到输入值在指定范围内的 <code>&lt;input&gt;</code> ，<code>:out-of-input</code>则匹配输入值不在指定范围的 <code>&lt;input&gt;</code> 。如果没有规定范围，则都不匹配。</li>
+<li><code>:valid</code> 与 <code>:invalid</code> ：判断有效性的伪类选择器。</li>
+<li><code>:indeterminate</code> ：表示状态不确定的表单元素</li>
+<li><code>:default</code>：表示一组相关元素中的默认表单元素。该选择器可以在 <code>&lt;button&gt;</code> , <code>&lt;input type=&quot;checkbox&quot;&gt;</code> , <code>&lt;input type=&quot;radio&quot;&gt;</code>, 以及 <code>&lt;option&gt;</code> 上使用。</li>
+<li><code>:placeholder-shown</code>：在 <code>&lt;input&gt;</code> 或 <code>&lt;textarea&gt;</code> 元素显示 placeholder text时生效。</li>
+<li><code>:read-only</code> ：表示当前元素是用户不可修改的</li>
+<li><code>:read-write</code>：表示当前元素是用户可修改的。</li>
+<li><code>:current</code> &amp;&amp; <code>:past</code> &amp;&amp; <code>:future</code>：目前没有任何浏览器支持。</li>
+<li><code>:focus-within</code>：适用于 <code>:focus</code> 所匹配的元素，以及它DOM节点内所有匹配的元素。</li>
+<li><code>:focus-visible</code></li>
+<li><code>:empty</code></li>
+<li><code>:checked</code></li>
+<li><code>:enabled</code></li>
+<li><code>:disabled</code></li>
+</ul>
+
       
     </div>
 
@@ -549,8 +662,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -732,6 +854,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本选择器"><span class="nav-number">1.</span> <span class="nav-text">基本选择器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#层次选择器"><span class="nav-number">2.</span> <span class="nav-text">层次选择器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#伪类选择器"><span class="nav-number">3.</span> <span class="nav-text">伪类选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#动态伪类选择器"><span class="nav-number">3.1.</span> <span class="nav-text">动态伪类选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#目标伪类选择器"><span class="nav-number">3.2.</span> <span class="nav-text">目标伪类选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语言伪类选择器"><span class="nav-number">3.3.</span> <span class="nav-text">语言伪类选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UI元素状态伪类选择器"><span class="nav-number">3.4.</span> <span class="nav-text">UI元素状态伪类选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结构伪类选择器"><span class="nav-number">3.5.</span> <span class="nav-text">结构伪类选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#否定伪类选择器"><span class="nav-number">3.6.</span> <span class="nav-text">否定伪类选择器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#伪元素"><span class="nav-number">4.</span> <span class="nav-text">伪元素</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#属性选择器"><span class="nav-number">5.</span> <span class="nav-text">属性选择器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他"><span class="nav-number">6.</span> <span class="nav-text">其他</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
