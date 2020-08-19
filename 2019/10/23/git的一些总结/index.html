@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="RuiYi&#39;s Notebook">
 <meta property="og:description" content="检出仓库1git clone xxx.git  配置用户名和邮箱12git config --global user.name &quot;Your Name&quot;git config --global user.email &quot;email@example.com&quot;  如果不想全局配置就把 --global 去掉。 查看用户名和邮箱： 12git config user.namegit config user.e">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-07-22T10:02:32.963Z">
+<meta property="og:updated_time" content="2020-08-07T02:51:27.957Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git的一些总结">
 <meta name="twitter:description" content="检出仓库1git clone xxx.git  配置用户名和邮箱12git config --global user.name &quot;Your Name&quot;git config --global user.email &quot;email@example.com&quot;  如果不想全局配置就把 --global 去掉。 查看用户名和邮箱： 12git config user.namegit config user.e">
@@ -392,7 +392,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-07-22 18:02:32" itemprop="dateModified" datetime="2020-07-22T18:02:32+08:00">2020-07-22</time>
+                <time title="修改时间：2020-08-07 10:51:27" itemprop="dateModified" datetime="2020-08-07T10:51:27+08:00">2020-08-07</time>
               </span>
             
           
@@ -488,10 +488,13 @@
 <h2 id="将本地项目上传到gitlab"><a href="#将本地项目上传到gitlab" class="headerlink" title="将本地项目上传到gitlab"></a>将本地项目上传到gitlab</h2><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git remote <span class="keyword">add</span><span class="bash"> origin 项目地址</span></span><br><span class="line">git <span class="keyword">add</span><span class="bash"> .</span></span><br><span class="line">git commit -m <span class="string">'第一次提交'</span></span><br><span class="line">git pull origin master --allow-unrelated-histories</span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
 
 <p><code>--allow-unrelated-histories</code> 指把两段不相干的分支强行合并</p>
-<h2 id="克隆仓库时拉取指定分支的代码"><a href="#克隆仓库时拉取指定分支的代码" class="headerlink" title="克隆仓库时拉取指定分支的代码"></a>克隆仓库时拉取指定分支的代码</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git -b <span class="tag">&lt;<span class="name">分支名</span>&gt;</span> <span class="tag">&lt;<span class="name">仓库地址</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="克隆仓库时拉取指定分支的代码"><a href="#克隆仓库时拉取指定分支的代码" class="headerlink" title="克隆仓库时拉取指定分支的代码"></a>克隆仓库时拉取指定分支的代码</h2><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">clone</span> <span class="title">-b</span> <span class="tag">&lt;分支名&gt;</span> <span class="tag">&lt;仓库地址&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="回到某个版本代码"><a href="#回到某个版本代码" class="headerlink" title="回到某个版本代码"></a>回到某个版本代码</h2><p>已经执行 <code>git add .</code>，也执行 <code>git commit</code>， 也执行 <code>git push</code></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">reset</span> <span class="comment">--hard &lt;那个版本的hash值&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="执行-commit-后-回退-commit"><a href="#执行-commit-后-回退-commit" class="headerlink" title="执行 commit 后 回退 commit"></a>执行 commit 后 回退 commit</h2><p>执行完 commit 后想要撤销这次 commit</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">reset</span> <span class="comment">--soft HEAD^</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="git常见命令"><a href="#git常见命令" class="headerlink" title="git常见命令"></a>git常见命令</h2><ul>
 <li>git branch ：查看当前分支</li>
@@ -801,7 +804,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#检出仓库"><span class="nav-number">1.</span> <span class="nav-text">检出仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置用户名和邮箱"><span class="nav-number">2.</span> <span class="nav-text">配置用户名和邮箱</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建分支后的一系列操作"><span class="nav-number">3.</span> <span class="nav-text">创建分支后的一系列操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改后再提交"><span class="nav-number">4.</span> <span class="nav-text">修改后再提交</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-commit-message"><span class="nav-number">5.</span> <span class="nav-text">git commit message</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改远程仓库地址"><span class="nav-number">6.</span> <span class="nav-text">修改远程仓库地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将本地项目上传到gitlab"><span class="nav-number">7.</span> <span class="nav-text">将本地项目上传到gitlab</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#克隆仓库时拉取指定分支的代码"><span class="nav-number">8.</span> <span class="nav-text">克隆仓库时拉取指定分支的代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回到某个版本代码"><span class="nav-number">9.</span> <span class="nav-text">回到某个版本代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git常见命令"><span class="nav-number">10.</span> <span class="nav-text">git常见命令</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#检出仓库"><span class="nav-number">1.</span> <span class="nav-text">检出仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置用户名和邮箱"><span class="nav-number">2.</span> <span class="nav-text">配置用户名和邮箱</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建分支后的一系列操作"><span class="nav-number">3.</span> <span class="nav-text">创建分支后的一系列操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改后再提交"><span class="nav-number">4.</span> <span class="nav-text">修改后再提交</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-commit-message"><span class="nav-number">5.</span> <span class="nav-text">git commit message</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改远程仓库地址"><span class="nav-number">6.</span> <span class="nav-text">修改远程仓库地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将本地项目上传到gitlab"><span class="nav-number">7.</span> <span class="nav-text">将本地项目上传到gitlab</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#克隆仓库时拉取指定分支的代码"><span class="nav-number">8.</span> <span class="nav-text">克隆仓库时拉取指定分支的代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回到某个版本代码"><span class="nav-number">9.</span> <span class="nav-text">回到某个版本代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行-commit-后-回退-commit"><span class="nav-number">10.</span> <span class="nav-text">执行 commit 后 回退 commit</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git常见命令"><span class="nav-number">11.</span> <span class="nav-text">git常见命令</span></a></li></ol></div>
             
 
           </div>
